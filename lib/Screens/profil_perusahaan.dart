@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_go_job/Screens/profil_perusahaan.dart';
+import 'package:mobile_go_job/Screens/detail_lowongan.dart';
+import 'package:mobile_go_job/Screens/profil.dart';
 import 'package:mobile_go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 
-class DetailLowongan extends StatefulWidget {
-  const DetailLowongan({Key? key}) : super(key: key);
+class ProfilPerusahaan extends StatefulWidget {
+  const ProfilPerusahaan({Key? key}) : super(key: key);
 
   @override
-  State<DetailLowongan> createState() => _DetailLowonganState();
+  State<ProfilPerusahaan> createState() => _ProfilPerusahaanState();
 }
 
-class _DetailLowonganState extends State<DetailLowongan> {
+class _ProfilPerusahaanState extends State<ProfilPerusahaan> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "detailpekerjaan".tr,
+          "detailperusahaan".tr,
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
@@ -83,7 +84,7 @@ class _DetailLowonganState extends State<DetailLowongan> {
                           width: MediaQuery.of(context).size.width / 2.2,
                           child: MaterialButton(
                             child: Text(
-                              "Perusahaan".tr,
+                              "perusahaan".tr,
                               style:
                                   TextStyle(fontSize: 20, color: primarycolor),
                             ),
@@ -122,25 +123,9 @@ class _DetailLowonganState extends State<DetailLowongan> {
                 Column(
                   children: <Widget>[
                     Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Padding(padding: EdgeInsets.only(top: 40)),
-                          Text(
-                            "Web Developtment Staff",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15,
-                                color: primarycolor),
-                          ),
-                        ]),
-                  ],
-                ),
-                Column(
-                  children: <Widget>[
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Padding(padding: EdgeInsets.only(top: 30)),
+                          Padding(padding: EdgeInsets.only(top: 50)),
                           Text(
                             "Surabaya, Jawa Timur",
                             style: TextStyle(
@@ -162,7 +147,7 @@ class _DetailLowonganState extends State<DetailLowongan> {
                 color: Colors.grey,
               ),
               child: Text(
-                "deskripsi".tr,
+                "tentangperusahaan".tr,
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,

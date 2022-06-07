@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_job/pages/profil.dart';
-import 'package:go_job/pages/profil_perusahaan.dart';
+import 'package:mobile_go_job/Screens/profil.dart';
+import 'package:mobile_go_job/Screens/profil_perusahaan.dart';
 import 'package:mobile_go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
