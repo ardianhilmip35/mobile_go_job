@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_go_job/shared/shared.dart';
 
 class RoundedButton extends StatelessWidget {
   final String btnText;
@@ -11,7 +12,8 @@ class RoundedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       elevation: 5,
-      color: Colors.black,
+      color: primarycolor,
+        // icon: Icon(Icons.login, size: 24.0,),
       borderRadius: BorderRadius.circular(30),
       child: MaterialButton(
         onPressed: () {
