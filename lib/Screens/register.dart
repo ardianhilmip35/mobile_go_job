@@ -10,17 +10,17 @@ import 'package:mobile_go_job/shared/shared.dart';
 
 import '../rounded_button.dart';
 import 'home_screen.dart';
-import 'login_screen.dart';
+import 'login.dart';
 import 'package:http/http.dart' as http;
 
-class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({Key? key}) : super(key: key);
+class Register extends StatefulWidget {
+  const Register({Key? key}) : super(key: key);
 
   @override
-  _RegisterScreenState createState() => _RegisterScreenState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _RegisterState extends State<Register> {
   String _email = '';
   String _password = '';
   String _namaPelamar = '';
@@ -248,7 +248,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => LoginScreen()),
+                                    builder: (context) => Login()),
                               );
                             },
                           ))
