@@ -9,7 +9,7 @@ import 'package:mobile_go_job/rounded_button.dart';
 import 'package:http/http.dart' as http;
 import 'package:mobile_go_job/shared/shared.dart';
 
-import 'home_screen.dart';
+import 'dashboard.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -30,7 +30,7 @@ class _LoginState extends State<Login> {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (BuildContext context) => const HomeScreen(),
+              builder: (BuildContext context) => const Dashboard(),
             ));
       } else {
         errorSnackBar(context, responseMap.values.first);

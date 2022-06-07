@@ -9,7 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_go_job/shared/shared.dart';
 
 import '../rounded_button.dart';
-import 'home_screen.dart';
+import 'dashboard.dart';
 import 'login.dart';
 import 'package:http/http.dart' as http;
 
@@ -37,7 +37,7 @@ class _RegisterState extends State<Register> {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (BuildContext context) => const HomeScreen(),
+              builder: (BuildContext context) => const Dashboard(),
             ));
       } else {
         errorSnackBar(context, responseMap.values.first[0]);
