@@ -2,12 +2,15 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mobile_go_job/Screens/profil.dart';
 import 'package:mobile_go_job/Screens/register.dart';
 import 'package:mobile_go_job/Services/auth_services.dart';
 import 'package:mobile_go_job/Services/globals.dart';
+import 'package:mobile_go_job/main.dart';
 import 'package:mobile_go_job/rounded_button.dart';
 import 'package:http/http.dart' as http;
 import 'package:mobile_go_job/shared/shared.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'dashboard.dart';
 
@@ -27,11 +30,14 @@ class _LoginState extends State<Login> {
       http.Response response = await AuthServices.login(_email, _password);
       Map responseMap = jsonDecode(response.body);
       if (response.statusCode == 200) {
+        SharedPreferences preferences = await SharedPreferences.getInstance();
+          await preferences.setString("login", "token");
         Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (BuildContext context) => const Dashboard(),
-            ));
+          context,
+          MaterialPageRoute(
+            builder: (BuildContext context) => MyBottomBar(),
+          )
+        );
       } else {
         errorSnackBar(context, responseMap.values.first);
       }

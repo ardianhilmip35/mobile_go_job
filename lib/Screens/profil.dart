@@ -1,13 +1,16 @@
+import 'dart:ffi';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:mobile_go_job/controller/logincontroller.dart';
 import 'package:mobile_go_job/Screens/lamar_sekarang.dart';
+import 'package:mobile_go_job/Services/auth_services.dart';
 import 'package:mobile_go_job/Screens/riwayat_lamaran.dart';
 import 'package:mobile_go_job/Screens/simpan_lowongan.dart';
 import 'package:mobile_go_job/Screens/view_peofil.dart';
 import 'package:mobile_go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mobile_go_job/Screens/login.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -18,6 +21,15 @@ class Profil extends StatefulWidget {
 
 class _ProfilState extends State<Profil> {
   final controller = Get.put(LoginController());
+
+  get nama_pelamar => null;
+
+  
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   final Email email = Email(
     body: 'Hello,',
@@ -108,7 +120,8 @@ class _ProfilState extends State<Profil> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          controller.googleAccount.value?.displayName ?? '',
+                          "$nama_pelamar",
+                          // controller.googleAccount.value?.displayName ?? '',
                           style: GoogleFonts.poppins(
                               fontWeight: FontWeight.bold,
                               fontSize: 20,

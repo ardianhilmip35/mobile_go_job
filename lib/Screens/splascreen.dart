@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:mobile_go_job/Screens/dashboard.dart';
 import 'package:mobile_go_job/Screens/login.dart';
+import 'package:mobile_go_job/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -33,7 +34,7 @@ class _SplashScreen extends State<SplashScreen> {
     return Timer(duration, () {
       if (isAuth) {
         Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => Dashboard()));
+            MaterialPageRoute(builder: (context) => MyBottomBar()));
       } else {
         Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => Login()));
