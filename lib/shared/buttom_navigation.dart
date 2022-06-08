@@ -1,49 +1,46 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:mobile_go_job/Screens/dashboard.dart';
-import 'package:mobile_go_job/Screens/edit_profil.dart';
-import 'package:mobile_go_job/Screens/login.dart';
 import 'package:mobile_go_job/Screens/lowongan_pekerjaan.dart';
 import 'package:mobile_go_job/Screens/profil.dart';
-import 'package:mobile_go_job/Screens/register.dart';
 import 'package:mobile_go_job/Screens/simpan_lowongan.dart';
-import 'package:mobile_go_job/Screens/splascreen.dart';
-
 import 'package:mobile_go_job/shared/shared.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-
-  @override
-  Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: MyBottomBar(),
-    );
-  }
-}
-
 class MyBottomBar extends StatefulWidget {
+  const MyBottomBar({Key? key}) : super(key: key);
+
   @override
   State<MyBottomBar> createState() => _MyBottomBarState();
 }
 
 class _MyBottomBarState extends State<MyBottomBar> {
+  PageController pageController = PageController(viewportFraction: 0.8);
   int _currentIndex = 0;
+  bool isAuth = false;
+  
   final List<Widget> _children = [
     Dashboard(),
     LowonganPekerjaan(),
     SimpanLowongan(),
     Profil(),
   ];
+
   void onTappedBar(int index) {
     setState(() {
       _currentIndex = index;
     });
+  }
+
+  void _checkIfLoggedIn() async {
+    SharedPreferences localStorage = await SharedPreferences.getInstance();
+    var token = localStorage.getString('token');
+    if (token != null) {
+      if (mounted) {
+        setState(() {
+          isAuth = true;
+        });
+      }
+    }
   }
 
   @override
@@ -87,46 +84,6 @@ class _MyBottomBarState extends State<MyBottomBar> {
         onTap: onTappedBar,
         currentIndex: _currentIndex,
       ),
-    );
-  }
-}
-
-class CheckAuth extends StatefulWidget {
-
-  @override
-  _CheckAuthState createState() => _CheckAuthState();
-}
-
-class _CheckAuthState extends State<CheckAuth> {
-  bool isAuth = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _checkIfLoggedIn();
-  }
-
-  void _checkIfLoggedIn() async {
-    SharedPreferences localStorage = await SharedPreferences.getInstance();
-    var token = localStorage.getString('token');
-    if(token != null) {
-      if(mounted) {
-        setState(() {
-          isAuth = true;
-        });
-      }
-    }
-  }
-   
-  Widget build(BuildContext context) {
-    Widget child;
-    if(isAuth) {
-      child = Dashboard();
-    } else {
-      child = Login();
-    }
-    return Scaffold(
-      body: child,
     );
   }
 }

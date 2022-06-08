@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_go_job/Screens/lowongan_pekerjaan.dart';
+import 'package:mobile_go_job/Screens/profil.dart';
+import 'package:mobile_go_job/Screens/simpan_lowongan.dart';
 import 'package:mobile_go_job/controller/logincontroller.dart';
 import 'package:mobile_go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -24,6 +27,7 @@ class _DashboardState extends State<Dashboard> {
             style:
                 GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
           ),
+          // automaticallyImplyLeading: false,
           backgroundColor: primarycolor,
         ),
         body: SingleChildScrollView(
