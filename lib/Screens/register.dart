@@ -37,7 +37,7 @@ class _RegisterState extends State<Register> {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (BuildContext context) => const Dashboard(),
+              builder: (BuildContext context) => const Login(),
             ));
       } else {
         errorSnackBar(context, responseMap.values.first[0]);
