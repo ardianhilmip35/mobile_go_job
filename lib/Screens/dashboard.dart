@@ -141,8 +141,7 @@ class _DashboardState extends State<Dashboard> {
                                     children: <Widget>[
                                       Container(
                                         width:
-                                            MediaQuery.of(context).size.width /
-                                                2.3,
+                                            MediaQuery.of(context).size.width /2.3,
                                         height: 145,
                                         decoration: BoxDecoration(
                                           color: Colors.white,
@@ -152,8 +151,7 @@ class _DashboardState extends State<Dashboard> {
                                           padding: EdgeInsets.only(top: 10)),
                                       Container(
                                         width:
-                                            MediaQuery.of(context).size.width /
-                                                2.2,
+                                            MediaQuery.of(context).size.width /2.2,
                                         height: 145,
                                         decoration: BoxDecoration(
                                           color: Colors.white,

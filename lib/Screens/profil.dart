@@ -1,4 +1,7 @@
-import 'dart:ffi';
+// import 'dart:ffi';
+// ignore_for_file: non_constant_identifier_names
+
+import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
@@ -15,21 +18,33 @@ import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Profil extends StatefulWidget {
+  const Profil({Key? key}) : super(key: key);
+
   @override
   State<Profil> createState() => _ProfilState();
 }
 
 class _ProfilState extends State<Profil> {
+
   final controller = Get.put(LoginController());
-
-  get nama_pelamar => null;
-
-  
+  String _nama_pelamar = "";
+  String _email = "";
 
   @override
   void initState() {
     super.initState();
+    DataPelamar();
   }
+
+  DataPelamar() {
+    final response = AuthServices().profil();
+    var body = json.decode(response.body);
+
+    setState(() {
+      _nama_pelamar = body['nama_pelamar'];
+      _email = body['email'];
+    });
+  } 
 
   final Email email = Email(
     body: 'Hello,',
@@ -92,7 +107,7 @@ class _ProfilState extends State<Profil> {
         centerTitle: true,
         backgroundColor: primarycolor,
       ),
-      body: Container(
+      body: SafeArea(
         child: Column(
           children: <Widget>[
             Container(
@@ -120,7 +135,15 @@ class _ProfilState extends State<Profil> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          "$nama_pelamar",
+                          "$_nama_pelamar",
+                          // controller.googleAccount.value?.displayName ?? '',
+                          style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              color: Colors.white),
+                        ),
+                        Text(
+                          "$_email",
                           // controller.googleAccount.value?.displayName ?? '',
                           style: GoogleFonts.poppins(
                               fontWeight: FontWeight.bold,

@@ -31,7 +31,7 @@ class _LoginState extends State<Login> {
       Map responseMap = jsonDecode(response.body);
       if (response.statusCode == 200) {
         SharedPreferences preferences = await SharedPreferences.getInstance();
-          await preferences.setString("login", "token");
+          preferences.setString('id', responseMap['id']);
         Navigator.push(
           context,
           MaterialPageRoute(
