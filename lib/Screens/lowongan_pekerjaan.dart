@@ -12,13 +12,17 @@ class LowonganPekerjaan extends StatefulWidget {
 }
 
 class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
+  // Future<List<dynamic>> profil() async {
+  //   var result = await http.get(apiUrl);
+  //   return json.decode(result.body)['data'];
+  // }
   Color _iconColor = Colors.grey;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Lowongan".tr,
+          "Lowongan",
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
@@ -40,7 +44,7 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
               textInputAction: TextInputAction.search,
               style: Theme.of(context).textTheme.bodyText1,
               decoration: InputDecoration(
-                  labelText: "caripekerjaan".tr,
+                  labelText: 'Find Job',
                   border: OutlineInputBorder(),
                   focusColor: Color(0xFF0A9EA2),
                   labelStyle:
@@ -149,7 +153,7 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                                     textColor: Colors.white,
                                     color: primarycolor,
                                     child: Text(
-                                      "lamarsekarang".tr,
+                                      'Apply Now',
                                       style: TextStyle(
                                           fontSize: 20, color: Colors.white),
                                     ),

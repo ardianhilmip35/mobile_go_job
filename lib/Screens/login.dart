@@ -31,7 +31,7 @@ class _LoginState extends State<Login> {
       Map responseMap = jsonDecode(response.body);
       if (response.statusCode == 200) {
         SharedPreferences preferences = await SharedPreferences.getInstance();
-          preferences.setString('id', responseMap['id']);
+          // preferences.setString('id', responseMap['id']);
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -67,7 +67,7 @@ class _LoginState extends State<Login> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
+                  padding: const EdgeInsets.only(top: 50.0),
                   child: Image.asset(
                     //untuk logo image
                     'assets/images/logo1.png',
@@ -93,7 +93,7 @@ class _LoginState extends State<Login> {
                     },
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'emailkosong';
+                        return 'Email is required';
                       }
                       // email = value;
                       return null;
@@ -119,7 +119,7 @@ class _LoginState extends State<Login> {
                     },
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'sandikosong';
+                        return 'Password is required';
                       }
                       // password = passwordValue;
                       return null;
@@ -133,7 +133,7 @@ class _LoginState extends State<Login> {
                   width: 210,
                   child: ElevatedButton(
                     child: Text(
-                      'Masuk',
+                      'Login',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     style: ElevatedButton.styleFrom(
@@ -180,7 +180,7 @@ class _LoginState extends State<Login> {
                       size: 24.0,
                     ),
                     label: Text(
-                      'Masuk Google',
+                      'Sign In with Google',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),

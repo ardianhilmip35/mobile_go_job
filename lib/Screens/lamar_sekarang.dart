@@ -20,7 +20,7 @@ class _LamarSekarangState extends State<LamarSekarang> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "lamarsekarang".tr,
+          'Apply Now',
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
@@ -190,7 +190,7 @@ class _LamarSekarangState extends State<LamarSekarang> {
                                   child: MaterialButton(
                                     textColor: primarycolor,
                                     child: Text(
-                                      "lihat".tr,
+                                      'Lihat',
                                       style: TextStyle(
                                         fontSize: 15.0,
                                       ),
@@ -241,7 +241,7 @@ class _LamarSekarangState extends State<LamarSekarang> {
                 maxLines: 5,
                 style: Theme.of(context).textTheme.bodyText1,
                 decoration: InputDecoration(
-                    hintText: "informasipengalaman".tr,
+                    hintText: "Informasi Pengalaman",
                     border: OutlineInputBorder(),
                     focusColor: Colors.grey,
                     labelStyle:
@@ -288,7 +288,7 @@ class _LamarSekarangState extends State<LamarSekarang> {
                                             MainAxisAlignment.center,
                                         children: <Widget>[
                                           Text(
-                                            "pilihfile".tr,
+                                            'Pilih File ',
                                             style: TextStyle(
                                               fontSize: 15.0,
                                             ),
@@ -314,7 +314,7 @@ class _LamarSekarangState extends State<LamarSekarang> {
                       color: primarycolor,
                       textColor: Colors.white,
                       child: new Text(
-                        "kirimlamaran".tr,
+                        'Kirim Lamaran',
                         style: TextStyle(
                           fontSize: 15.0,
                         ),

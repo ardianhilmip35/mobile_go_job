@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_go_job/Screens/lamar_sekarang.dart';
 import 'package:mobile_go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
@@ -18,7 +19,7 @@ class _SimpanLowonganState extends State<SimpanLowongan> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "lowongantersimpan".tr,
+          'Lowongan Tersimpan',
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
@@ -126,11 +127,15 @@ class _SimpanLowonganState extends State<SimpanLowongan> {
                                     textColor: Colors.white,
                                     color: primarycolor,
                                     child: Text(
-                                      "lamar".tr,
+                                      'Lamar Sekarang',
                                       style: TextStyle(
                                           fontSize: 20, color: Colors.white),
                                     ),
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Route route =
+                                          MaterialPageRoute(builder: (context) => LamarSekarang());
+                                      Navigator.push(context, route);
+                                    },
                                     shape: new RoundedRectangleBorder(
                                       borderRadius:
                                           new BorderRadius.circular(12.0),

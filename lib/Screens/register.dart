@@ -117,7 +117,7 @@ class _RegisterState extends State<Register> {
                     },
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'emailkosong';
+                        return 'Email is required';
                       }
                       // email = emailValue;
                       // return null;
@@ -142,7 +142,7 @@ class _RegisterState extends State<Register> {
                     },
                     // validator: (value) {
                     //   if (value!.isEmpty) {
-                    //     return 'sandikosong'.tr;
+                    //     return 'Password is required';
                     //   }
                     //   // password = passwordValue;
                     //   // return null;
@@ -163,7 +163,7 @@ class _RegisterState extends State<Register> {
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return "konfir kosong";
+                        return 'Please Confirm Your Password ';
                       }
                       return null;
                     },
@@ -223,7 +223,7 @@ class _RegisterState extends State<Register> {
                       size: 24.0,
                     ),
                     label: Text(
-                      'Daftar Google',
+                      'Sign Up with Google',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -241,7 +241,7 @@ class _RegisterState extends State<Register> {
                           WidgetSpan(
                               child: GestureDetector(
                             child: Text(
-                              'Masuk',
+                              'Login',
                               style: TextStyle(color: primarycolor),
                             ),
                             onTap: () {

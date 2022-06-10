@@ -16,7 +16,7 @@ class _EditProfilState extends State<EditProfil> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "editprofil".tr,
+          "Edit Profile",
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
@@ -56,7 +56,7 @@ class _EditProfilState extends State<EditProfil> {
               TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: "jember",
+                  hintText: "Jember",
                 ),
               ),
               Text(
@@ -66,7 +66,7 @@ class _EditProfilState extends State<EditProfil> {
               TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: "islam",
+                  hintText: "Islam",
                 ),
               ),
               Text(
@@ -107,7 +107,7 @@ class _EditProfilState extends State<EditProfil> {
                       textColor: Colors.white,
                       color: primarycolor,
                       child: Text(
-                        "simpan".tr,
+                        "Save",
                         style: TextStyle(fontSize: 18, color: Colors.white),
                       ),
                       onPressed: () {},
@@ -122,7 +122,7 @@ class _EditProfilState extends State<EditProfil> {
                       textColor: Colors.white,
                       color: Colors.red,
                       child: Text(
-                        "batal".tr,
+                        "Cancel",
                         style: TextStyle(fontSize: 18, color: Colors.white),
                       ),
                       onPressed: () {},

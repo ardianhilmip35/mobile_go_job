@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_go_job/Screens/detail_lowongan.dart';
+import 'package:mobile_go_job/Screens/lamar_sekarang.dart';
 import 'package:mobile_go_job/Screens/lowongan_pekerjaan.dart';
 import 'package:mobile_go_job/Screens/profil.dart';
 import 'package:mobile_go_job/Screens/simpan_lowongan.dart';
 import 'package:mobile_go_job/controller/logincontroller.dart';
 import 'package:mobile_go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mobile_go_job/Screens/localestring.dart';
 import 'package:get/get.dart';
 
 class Dashboard extends StatefulWidget {
@@ -43,7 +46,8 @@ class _DashboardState extends State<Dashboard> {
                       Container(
                         child: Row(children: <Widget>[
                           Text(
-                            controller.googleAccount.value?.displayName ?? '',
+                            'Tanti Wulansari',
+                            // controller.googleAccount.value?.displayName ?? '',
                             textAlign: TextAlign.end,
                             style: GoogleFonts.poppins(
                                 fontSize: 20, color: Colors.black),
@@ -83,7 +87,7 @@ class _DashboardState extends State<Dashboard> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              "informasi".tr,
+                              "Information",
                               style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20,
@@ -99,7 +103,7 @@ class _DashboardState extends State<Dashboard> {
                             ElevatedButton(
                               onPressed: () {},
                               child: Text(
-                                'info'.tr,
+                                'More Info',
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                               style: ElevatedButton.styleFrom(
@@ -115,7 +119,7 @@ class _DashboardState extends State<Dashboard> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            "caripekerjaan".tr,
+                            "Cari Pekerjaan",
                             style: GoogleFonts.poppins(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
@@ -174,7 +178,7 @@ class _DashboardState extends State<Dashboard> {
                           Container(
                             width: MediaQuery.of(context).size.width / 2.2,
                             child: Text(
-                              "list".tr,
+                              "Job List",
                               style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20,
@@ -184,7 +188,7 @@ class _DashboardState extends State<Dashboard> {
                           Container(
                             width: MediaQuery.of(context).size.width / 2.2,
                             child: Text(
-                              "lihat".tr,
+                              "View All",
                               textAlign: TextAlign.end,
                               style: GoogleFonts.poppins(
                                   fontSize: 15, color: Colors.grey),
@@ -233,14 +237,14 @@ class _DashboardState extends State<Dashboard> {
                                               CrossAxisAlignment.start,
                                           children: <Widget>[
                                             Text(
-                                              "Text Job",
+                                              "Web Developer",
                                               style: GoogleFonts.poppins(
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 20,
                                                   color: Colors.black),
                                             ),
                                             Text(
-                                              "Text Job",
+                                              "Surabaya",
                                               style: GoogleFonts.poppins(
                                                   fontSize: 15,
                                                   color: Colors.black),
@@ -274,8 +278,12 @@ class _DashboardState extends State<Dashboard> {
                                   child: Row(
                                     children: <Widget>[
                                       ElevatedButton(
-                                        onPressed: () {},
-                                        child: Text('buka'.tr),
+                                        onPressed: () {
+                                          Route route =
+                                          MaterialPageRoute(builder: (context) => DetailLowongan());
+                                            Navigator.push(context, route);
+                                        },
+                                        child: Text('View'),
                                         style: ElevatedButton.styleFrom(
                                             primary: primarycolor,
                                             shape: StadiumBorder()),
@@ -284,8 +292,12 @@ class _DashboardState extends State<Dashboard> {
                                         width: 10,
                                       ),
                                       ElevatedButton(
-                                        onPressed: () {},
-                                        child: Text('lamar'.tr),
+                                        onPressed: () {
+                                          Route route =
+                                          MaterialPageRoute(builder: (context) => LamarSekarang());
+                                            Navigator.push(context, route);
+                                        },
+                                        child: Text('Apply'),
                                         style: ElevatedButton.styleFrom(
                                             primary: primarycolor,
                                             shape: StadiumBorder()),

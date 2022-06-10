@@ -10,7 +10,7 @@ import 'package:mobile_go_job/Screens/lamar_sekarang.dart';
 import 'package:mobile_go_job/Services/auth_services.dart';
 import 'package:mobile_go_job/Screens/riwayat_lamaran.dart';
 import 'package:mobile_go_job/Screens/simpan_lowongan.dart';
-import 'package:mobile_go_job/Screens/view_peofil.dart';
+import 'package:mobile_go_job/Screens/view_profil.dart';
 import 'package:mobile_go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_go_job/Screens/login.dart';
@@ -31,20 +31,20 @@ class _ProfilState extends State<Profil> {
   String _email = "";
 
   @override
-  void initState() {
-    super.initState();
-    DataPelamar();
-  }
+  // void initState() {
+  //   super.initState();
+  //   DataPelamar();
+  // }
 
-  DataPelamar() {
-    final response = AuthServices().profil();
-    var body = json.decode(response.body);
+  // DataPelamar() {
+  //   final response = AuthServices().profil();
+  //   var body = json.decode(response.body);
 
-    setState(() {
-      _nama_pelamar = body['nama_pelamar'];
-      _email = body['email'];
-    });
-  } 
+  //   setState(() {
+  //     _nama_pelamar = body['nama_pelamar'];
+  //     _email = body['email'];
+  //   });
+  // } 
 
   final Email email = Email(
     body: 'Hello,',
@@ -68,7 +68,7 @@ class _ProfilState extends State<Profil> {
         context: context,
         builder: (builder) {
           return AlertDialog(
-            title: Text('gantibahasamu'.tr),
+            title: Text('Choose Your Language'),
             content: Container(
               width: double.maxFinite,
               child: ListView.separated(
@@ -101,7 +101,7 @@ class _ProfilState extends State<Profil> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "profil".tr,
+          'Profile',
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
@@ -112,7 +112,6 @@ class _ProfilState extends State<Profil> {
           children: <Widget>[
             Container(
               //Container Profil
-
               height: 150,
               decoration: BoxDecoration(
                 color: primarycolor,
@@ -123,9 +122,15 @@ class _ProfilState extends State<Profil> {
                   Padding(padding: EdgeInsets.only(left: 10)),
                   CircleAvatar(
                     radius: 50,
-                    backgroundImage: Image.network(
-                            controller.googleAccount.value?.photoUrl ?? '')
-                        .image,
+                    child: Image.asset(
+                    //untuk logo image
+                    'assets/images/logo1.png',
+                    height: 50,
+                    width: 100,
+                  )
+                    // Image(
+                    //         controller.googleAccount.value?.photoUrl ?? '')
+                    //     .image,
                   ),
                   Container(
                     //Container Nama Profil
@@ -135,7 +140,8 @@ class _ProfilState extends State<Profil> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          "$_nama_pelamar",
+                          "Tanti Wulansari",
+                          // "$_nama_pelamar",
                           // controller.googleAccount.value?.displayName ?? '',
                           style: GoogleFonts.poppins(
                               fontWeight: FontWeight.bold,
@@ -143,7 +149,8 @@ class _ProfilState extends State<Profil> {
                               color: Colors.white),
                         ),
                         Text(
-                          "$_email",
+                          // "$_email",
+                          "tanti@gmail.com",
                           // controller.googleAccount.value?.displayName ?? '',
                           style: GoogleFonts.poppins(
                               fontWeight: FontWeight.bold,
@@ -155,7 +162,7 @@ class _ProfilState extends State<Profil> {
                             WidgetSpan(
                                 child: GestureDetector(
                               child: Text(
-                                'kelola'.tr,
+                                'Kelola Profilmu',
                                 style: GoogleFonts.poppins(
                                     fontSize: 15, color: Colors.white),
                               ),
@@ -200,7 +207,7 @@ class _ProfilState extends State<Profil> {
                       Container(
                           margin: const EdgeInsets.only(left: 10.0),
                           child: Text(
-                            "riwayat".tr,
+                            'Riwayat Lamaran',
                             style: GoogleFonts.poppins(fontSize: 15.0),
                           ))
                     ],
@@ -231,7 +238,7 @@ class _ProfilState extends State<Profil> {
                       Container(
                           margin: const EdgeInsets.only(left: 10.0),
                           child: Text(
-                            "gantibahasa".tr,
+                            'Ganti Bahasa',
                             style: GoogleFonts.poppins(fontSize: 15.0),
                           ))
                     ],
@@ -262,7 +269,7 @@ class _ProfilState extends State<Profil> {
                       Container(
                           margin: const EdgeInsets.only(left: 10.0),
                           child: Text(
-                            "hubungi".tr,
+                            'Hubungi Kami',
                             style: GoogleFonts.poppins(fontSize: 15.0),
                           ))
                     ],
@@ -293,7 +300,7 @@ class _ProfilState extends State<Profil> {
                       Container(
                           margin: const EdgeInsets.only(left: 10.0),
                           child: Text(
-                            "keluar".tr,
+                            'Logout',
                             style: GoogleFonts.poppins(fontSize: 15.0),
                           ))
                     ],

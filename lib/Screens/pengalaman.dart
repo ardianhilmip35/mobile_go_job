@@ -16,7 +16,7 @@ class _PengalamanState extends State<Pengalaman> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "pengalaman".tr,
+          'Experience',
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
@@ -40,7 +40,7 @@ class _PengalamanState extends State<Pengalaman> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                "pengalamankerja".tr,
+                'Work Experience',
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextFormField(
@@ -54,7 +54,7 @@ class _PengalamanState extends State<Pengalaman> {
                         TextStyle(fontWeight: FontWeight.normal, fontSize: 14)),
               ),
               Text(
-                "pendidikan".tr,
+                'Education',
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextFormField(
@@ -68,7 +68,7 @@ class _PengalamanState extends State<Pengalaman> {
                         TextStyle(fontWeight: FontWeight.normal, fontSize: 14)),
               ),
               Text(
-                "keterampilan".tr,
+                'Skills',
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextFormField(
@@ -89,7 +89,7 @@ class _PengalamanState extends State<Pengalaman> {
                       textColor: Colors.white,
                       color: primarycolor,
                       child: Text(
-                        "simpan".tr,
+                        'Simpan',
                         style: TextStyle(fontSize: 18, color: Colors.white),
                       ),
                       onPressed: () {},
@@ -104,7 +104,7 @@ class _PengalamanState extends State<Pengalaman> {
                       textColor: Colors.white,
                       color: Colors.red,
                       child: Text(
-                        "batal".tr,
+                        'Batal',
                         style: TextStyle(fontSize: 18, color: Colors.white),
                       ),
                       onPressed: () {},

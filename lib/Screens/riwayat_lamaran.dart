@@ -16,7 +16,7 @@ class _RiwayatLamaranState extends State<RiwayatLamaran> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "history".tr,
+          'Application History',
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,

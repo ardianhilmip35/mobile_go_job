@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:mobile_go_job/Services/globals.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 class AuthServices {
   var token;
@@ -60,7 +62,7 @@ class AuthServices {
       body: body,
     );
     print(jsonDecode(response.body));
-    return response;
+    // return response;
   }
 
   // Future<http.Response> 
