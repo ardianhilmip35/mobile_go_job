@@ -26,25 +26,24 @@ class Profil extends StatefulWidget {
 
 class _ProfilState extends State<Profil> {
 
-  final controller = Get.put(LoginController());
   String _nama_pelamar = "";
   String _email = "";
 
   @override
-  // void initState() {
-  //   super.initState();
-  //   DataPelamar();
-  // }
+  void initState() {
+    super.initState();
+    DataPelamar();
+  }
 
-  // DataPelamar() {
-  //   final response = AuthServices().profil();
-  //   var body = json.decode(response.body);
+  DataPelamar() {
+    final response = AuthServices().profil();
+    var body = jsonDecode(response.body);
 
-  //   setState(() {
-  //     _nama_pelamar = body['nama_pelamar'];
-  //     _email = body['email'];
-  //   });
-  // } 
+    setState(() {
+      _nama_pelamar = body['nama_pelamar'];
+      _email = body['email'];
+    });
+  } 
 
   final Email email = Email(
     body: 'Hello,',
@@ -140,7 +139,7 @@ class _ProfilState extends State<Profil> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          "Tanti Wulansari",
+                          "$_nama_pelamar",
                           // "$_nama_pelamar",
                           // controller.googleAccount.value?.displayName ?? '',
                           style: GoogleFonts.poppins(
@@ -150,7 +149,7 @@ class _ProfilState extends State<Profil> {
                         ),
                         Text(
                           // "$_email",
-                          "tanti@gmail.com",
+                          "$_email",
                           // controller.googleAccount.value?.displayName ?? '',
                           style: GoogleFonts.poppins(
                               fontWeight: FontWeight.bold,
@@ -287,7 +286,7 @@ class _ProfilState extends State<Profil> {
               child: RaisedButton(
                 //Button Logout
                 onPressed: () {
-                  controller.logout();
+                  // controller.logout();
                 },
                 color: Colors.white,
                 child: Container(

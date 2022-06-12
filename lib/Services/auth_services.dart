@@ -44,40 +44,36 @@ class AuthServices {
     return response;
   }
   
-   profil() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    var id = prefs.getString('id');
-    Map data = {
-      "id" : id
-    };
-    var body = json.encode(data);
-    var url = Uri.parse(profilURL);
-    http.Response response = await http.post(
-      url,
-      headers: {
-        'Content-type': 'application/json',
-        'Accept': 'application/json',
-        'Authorization': 'Bearer $id',
-      },
-      body: body,
-    );
-    print(jsonDecode(response.body));
-    // return response;
-  }
+  // Future<dynamic> profil() async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   var id = prefs.getInt('id');
+  //   Map data = {
+  //     "id": id
+  //   };
+  //   var body = json.encode(data);
+  //   var url = Uri.parse(loginURL + "/" + id.toString());
+  //   http.Response response = await http.post(
+  //     url,
+  //     headers: headers,
+  //     body: body,
+  //   );
+  //   print(response.body);
+  //   return response;
+  // }
 
   // Future<http.Response> 
 
-  // getUserData() async {
-  //   SharedPreferences preferences = await SharedPreferences.getInstance();
-  //   var id = preferences.getInt('id');
-  //   var requsest = await http.get(Uri.parse("$profilURL"), headers: {
-  //       'Content-type': 'application/json',
-  //       'Accept': 'application/json',
-  //       'Authorization': 'Bearer $token',
-  //     });
-  //   var body = jsonDecode(requsest.body);
-  //   return requsest;
-  // }
+  profil() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    var id = preferences.getInt('id');
+    var request = await http.get(Uri.parse("$profilURL/$id"), headers: {
+        'Content-type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $token',
+      });
+    // var body = jsonDecode(request.body);
+    return request;
+  }
   
   // Future _getToken() async {
   //   SharedPreferences localStorage = await SharedPreferences.getInstance();
