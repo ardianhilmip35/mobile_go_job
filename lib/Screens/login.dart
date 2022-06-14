@@ -29,18 +29,21 @@ class _LoginState extends State<Login> {
     if (_email.isNotEmpty && _password.isNotEmpty) {
       http.Response response = await AuthServices.login(_email, _password);
       Map responseMap = jsonDecode(response.body);
-      if (response.statusCode == 200) {
+      // if (response==401) {
+      //   errorSnackBar(context, responseMap.values.first);
+      // } else {
         SharedPreferences preferences = await SharedPreferences.getInstance();
+        preferences.setString('id', jsonDecode(responseMap['id']));
+        preferences.setString('nama_pelamar', jsonDecode(responseMap['nama_pelamar']));
+        preferences.setString('email', jsonDecode(responseMap['email']));
           // preferences.setString('id', responseMap['id']);
-        Navigator.push(
+        Navigator.pushReplacement(
           context,
-          MaterialPageRoute(
-            builder: (BuildContext context) => MyBottomBar(),
+          new MaterialPageRoute(
+            builder: (context) => MyBottomBar(),
           )
         );
-      } else {
-        errorSnackBar(context, responseMap.values.first);
-      }
+      // }
     } else {
       errorSnackBar(context, 'enter all required fields');
     }

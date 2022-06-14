@@ -4,8 +4,8 @@ import 'dart:convert';
 // To parse this JSON data, do
 //
 //     final profil = profilFromJson(jsonString);
-
-import 'dart:convert';
+// 
+// import 'dart:convert';
 
 Profil profilFromJson(String str) => Profil.fromJson(json.decode(str));
 

@@ -2,6 +2,7 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'dart:convert';
+import 'dart:html';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
@@ -26,26 +27,27 @@ class Profil extends StatefulWidget {
 
 class _ProfilState extends State<Profil> {
 
-  String _nama_pelamar = "";
-  String _email = "";
+  String nama_pelamar = "";
+  String email = "";
+
 
   @override
   void initState() {
     super.initState();
     DataPelamar();
   }
-
   DataPelamar() {
-    final response = AuthServices().profil();
+
+    final response = AuthServices();
     var body = jsonDecode(response.body);
 
     setState(() {
-      _nama_pelamar = body['nama_pelamar'];
-      _email = body['email'];
+      nama_pelamar = body['nama_pelamar'];
+      email = body['email'];
     });
   } 
 
-  final Email email = Email(
+  final Email _email = Email(
     body: 'Hello,',
     subject: 'I Need Help',
     recipients: ['galuhapriliano30@gmail.com'],
@@ -139,7 +141,7 @@ class _ProfilState extends State<Profil> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          "$_nama_pelamar",
+                          "$nama_pelamar",
                           // "$_nama_pelamar",
                           // controller.googleAccount.value?.displayName ?? '',
                           style: GoogleFonts.poppins(
@@ -149,7 +151,7 @@ class _ProfilState extends State<Profil> {
                         ),
                         Text(
                           // "$_email",
-                          "$_email",
+                          "$email",
                           // controller.googleAccount.value?.displayName ?? '',
                           style: GoogleFonts.poppins(
                               fontWeight: FontWeight.bold,
@@ -255,7 +257,7 @@ class _ProfilState extends State<Profil> {
               child: RaisedButton(
                 //Button Hubungi Kami
                 onPressed: () async {
-                  await FlutterEmailSender.send(email);
+                  await FlutterEmailSender.send(_email);
                 },
                 color: Colors.white,
                 child: Container(

@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_go_job/Screens/lamar_sekarang.dart';
+import 'package:mobile_go_job/models/lowongan_model.dart';
 import 'package:mobile_go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 
 class LowonganPekerjaan extends StatefulWidget {
-  const LowonganPekerjaan({Key? key}) : super(key: key);
+  // final Lowongan lowongan;
+  // final int id;
+  // const LowonganPekerjaan({Key? key, required this.lowongan, required this.id}) : super(key: key);
 
   @override
   State<LowonganPekerjaan> createState() => _LowonganPekerjaanState();
