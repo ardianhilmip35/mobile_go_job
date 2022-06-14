@@ -16,38 +16,75 @@ import 'dashboard.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
+  
 
   @override
   _LoginState createState() => _LoginState();
+
+  // static login(String text, String text2) {}
 }
 
 class _LoginState extends State<Login> {
-  String _email = '';
-  String _password = '';
+  final _formKey = GlobalKey<FormState>();
+  final _toast = ShowToast();
+  final _alert = ShowAlert();
+  String _idUser = "";
 
-  loginPressed() async {
-    if (_email.isNotEmpty && _password.isNotEmpty) {
-      http.Response response = await AuthServices.login(_email, _password);
-      Map responseMap = jsonDecode(response.body);
-      // if (response==401) {
-      //   errorSnackBar(context, responseMap.values.first);
-      // } else {
-        SharedPreferences preferences = await SharedPreferences.getInstance();
-        preferences.setString('id', jsonDecode(responseMap['id']));
-        preferences.setString('nama_pelamar', jsonDecode(responseMap['nama_pelamar']));
-        preferences.setString('email', jsonDecode(responseMap['email']));
-          // preferences.setString('id', responseMap['id']);
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  void _login() async {
+    AuthServices.login(_emailController.text, _passwordController.text)
+        .then((value) {
+      if (value.kode == 200) {
+        _idUser = value.id.toString();
+        sessionLogin();
+        _toast.showToast(value.pesan);
         Navigator.pushReplacement(
           context,
-          new MaterialPageRoute(
+          MaterialPageRoute(
             builder: (context) => MyBottomBar(),
-          )
+          ),
         );
-      // }
-    } else {
-      errorSnackBar(context, 'enter all required fields');
-    }
+      } else {
+        _toast.showToast(value.pesan);
+      }
+    });
   }
+
+  Future sessionLogin() async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    setState(() {
+      pref.setString("id_user", _idUser);
+      pref.setBool("is_login", true);
+    });
+  }
+  // String _email = '';
+  // String _password = '';
+
+  // loginPressed() async {
+  //   if (_email.isNotEmpty && _password.isNotEmpty) {
+  //     http.Response response = await AuthServices.login(_email, _password);
+  //     Map responseMap = jsonDecode(response.body);
+  //     // if (response==401) {
+  //     //   errorSnackBar(context, responseMap.values.first);
+  //     // } else {
+  //       SharedPreferences preferences = await SharedPreferences.getInstance();
+  //       // await preferences.setInt('id', jsonDecode(responseMap[id]));
+  //       await preferences.setString('nama_pelamar', responseMap['nama_pelamar']);
+  //       await preferences.setString('email', responseMap['email']);
+  //       await preferences.setInt('id', responseMap['id']);
+  //       Navigator.pushReplacement(
+  //         context,
+  //         new MaterialPageRoute(
+  //           builder: (context) => MyBottomBar(),
+  //         )
+  //       );
+  //     // }
+  //   } else {
+  //     errorSnackBar(context, 'enter all required fields');
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
