@@ -5,6 +5,8 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mobile_go_job/models/lowongan_model.dart';
 
+import '../models/login_model.dart';
+
 
 class AuthServices {
   var token;
@@ -36,7 +38,7 @@ class AuthServices {
   }
 
   //login
-  static login (String _email, String password) async {
+  static Future login<Login> (String _email, String password) async {
 
     Map data = {
       "email": _email,
@@ -49,6 +51,11 @@ class AuthServices {
       headers: headers,
       body: body,
     );
+    // if (response.statusCode == 200) {
+    //   return Login.fromJson(json.decode(response.body));
+    // } else {
+    //   throw Exception("Failed to login User");
+    // }
     print(response.body);
     return response;
   }

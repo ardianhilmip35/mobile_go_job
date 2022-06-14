@@ -20,11 +20,11 @@ class Profil {
         required this.email,
     });
 
-    bool success;
-    String message;
-    int id;
-    String namaPelamar;
-    String email;
+    bool? success;
+    String? message;
+    int? id;
+    String? namaPelamar;
+    String? email;
 
     factory Profil.fromJson(Map<String, dynamic> json) => Profil(
         success: json["success"],
