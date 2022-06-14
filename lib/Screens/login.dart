@@ -11,7 +11,8 @@ import 'package:mobile_go_job/rounded_button.dart';
 import 'package:http/http.dart' as http;
 import 'package:mobile_go_job/shared/shared.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:mobile_go_job/Notifikasi/toast.dart';
+import 'package:mobile_go_job/Notifikasi/alert.dart';
 import 'dashboard.dart';
 
 class Login extends StatefulWidget {
@@ -100,7 +101,7 @@ class _LoginState extends State<Login> {
       ),
         body: SingleChildScrollView(
         child: Form(
-          // key: _formKey,
+          key: _formKey,
           child: Container(
             margin: const EdgeInsets.only(top: 10.0),
             padding: EdgeInsets.all(20.0),
@@ -121,16 +122,16 @@ class _LoginState extends State<Login> {
                   child: TextFormField(
                     //untuk input email
                     // onSaved: (value) => requestModel.email = value,
-                    // controller: _emailController,
+                    controller: _emailController,
                     decoration: new InputDecoration(
                       labelText: "Email",
                       icon: Icon(Icons.email),
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(0)),
                     ),
-                    onChanged: (value) {
-                      _email = value;
-                    },
+                    // onChanged: (value) {
+                    //   _email = value;
+                    // },
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Email is required';
@@ -145,7 +146,7 @@ class _LoginState extends State<Login> {
                       const EdgeInsets.only(top: 25.0, left: 8.8, right: 8.8),
                   child: TextFormField(
                     //untuk textfield password
-                    // controller: _passwordController,
+                    controller: _passwordController,
                     // onSaved: (value) => requestModel.password = value,
                     obscureText: true,
                     decoration: new InputDecoration(
@@ -154,9 +155,9 @@ class _LoginState extends State<Login> {
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(0)),
                     ),
-                    onChanged: (value) {
-                      _password = value;
-                    },
+                    // onChanged: (value) {
+                    //   _password = value;
+                    // },
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Password is required';
@@ -179,7 +180,12 @@ class _LoginState extends State<Login> {
                     style: ElevatedButton.styleFrom(
                       primary: primarycolor,
                     ),
-                    onPressed: () => loginPressed(),
+                    // onPressed: () => loginPressed(),
+                    onPressed: () {
+                                  if (_formKey.currentState!.validate()) {
+                                    _login();
+                                  }
+                                },
                       // if (_formKey.currentState!.validate()) {
                       //   _login();
                       // }

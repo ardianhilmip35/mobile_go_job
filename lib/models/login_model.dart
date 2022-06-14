@@ -12,7 +12,7 @@ class Login {
     Login({
         required this.message,
         required this.accessToken,
-        required  this.tokenType,
+        required this.tokenType,
         required this.id,
     });
 

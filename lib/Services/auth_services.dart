@@ -38,7 +38,7 @@ class AuthServices {
   }
 
   //login
-  static Future login<Login> (String _email, String password) async {
+  static Future login (String _email, String password) async {
 
     Map data = {
       "email": _email,
@@ -51,11 +51,11 @@ class AuthServices {
       headers: headers,
       body: body,
     );
-    // if (response.statusCode == 200) {
-    //   return Login.fromJson(json.decode(response.body));
-    // } else {
-    //   throw Exception("Failed to login User");
-    // }
+    if (response.statusCode == 200) {
+      return Login.fromJson(json.decode(response.body));
+    } else {
+      throw Exception("Failed to login User");
+    }
     print(response.body);
     return response;
   }
