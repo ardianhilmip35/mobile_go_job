@@ -1,9 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:mobile_go_job/Screens/lamar_sekarang.dart';
 import 'package:mobile_go_job/models/lowongan_model.dart';
 import 'package:mobile_go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
+import 'package:mobile_go_job/Services/globals.dart';
 
 class LowonganPekerjaan extends StatefulWidget {
   // final Lowongan lowongan;
@@ -19,9 +23,16 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
   //   var result = await http.get(apiUrl);
   //   return json.decode(result.body)['data'];
   // }
+  final String url = lowonganURL;
+  Future getLowongan() async {
+    var response = await http.get(Uri.parse(url));
+    print(json.decode(response.body));
+    return json.decode(response.body);
+  }
   Color _iconColor = Colors.grey;
   @override
   Widget build(BuildContext context) {
+    getLowongan();
     return Scaffold(
       appBar: AppBar(
         title: Text(

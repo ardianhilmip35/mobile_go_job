@@ -33,7 +33,7 @@ class _LoginState extends State<Login> {
       //   errorSnackBar(context, responseMap.values.first);
       // } else {
         SharedPreferences preferences = await SharedPreferences.getInstance();
-        preferences.setString('id', jsonDecode(responseMap['id']));
+        preferences.setInt('id', jsonDecode(responseMap['id']));
         preferences.setString('nama_pelamar', jsonDecode(responseMap['nama_pelamar']));
         preferences.setString('email', jsonDecode(responseMap['email']));
           // preferences.setString('id', responseMap['id']);
