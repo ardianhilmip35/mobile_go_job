@@ -1,7 +1,9 @@
 import 'dart:convert';
+import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:mobile_go_job/Screens/lamar_sekarang.dart';
+import 'package:mobile_go_job/Services/auth_services.dart';
 import 'package:mobile_go_job/models/lowongan_model.dart';
 import 'package:mobile_go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,16 +25,25 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
   //   var result = await http.get(apiUrl);
   //   return json.decode(result.body)['data'];
   // }
-  final String url = lowonganURL;
-  Future getLowongan() async {
-    var response = await http.get(Uri.parse(url));
-    print(json.decode(response.body));
-    return json.decode(response.body);
+  int _index = 0;
+  List<Lowongan> _lowongan = [];
+
+  _getData() async {
+    _lowongan = await AuthServices.geLowongan();
+    if (mounted) {
+      setState(() {});
+    }
   }
-  Color _iconColor = Colors.grey;
+
+  @override
+  void initState() {
+    super.initState();
+    _getData();
+  }
+
   @override
   Widget build(BuildContext context) {
-    getLowongan();
+    // getLowongan();
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -79,6 +90,8 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                       color: primarycolor,
                       border: Border.all(color: primarycolor, width: 4),
                     ),
+                    itemCount: _lowongan.length,
+                    
                     child: Column(
                       children: <Widget>[
                         Container(
@@ -149,14 +162,14 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                                   IconButton(
                                       alignment: Alignment.topRight,
                                       iconSize: 45,
-                                      color: _iconColor,
+                                      // color: _iconColor,
                                       onPressed: () {
                                         setState(() {
-                                          if (_iconColor == Colors.grey) {
-                                            _iconColor = primarycolor;
-                                          } else {
-                                            _iconColor = Colors.grey;
-                                          }
+                                          // if (_iconColor == Colors.grey) {
+                                          //   _iconColor = primarycolor;
+                                          // } else {
+                                          //   _iconColor = Colors.grey;
+                                          // }
                                         });
                                       },
                                       icon: Icon(Icons.bookmark)),
