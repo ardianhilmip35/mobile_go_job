@@ -79,6 +79,7 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                   )),
             ),
             GridView.builder(
+              shrinkWrap: true,
               padding: EdgeInsets.only(top: 15.0, bottom: 5.0),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
