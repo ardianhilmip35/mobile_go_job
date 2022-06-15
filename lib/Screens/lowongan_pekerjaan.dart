@@ -21,10 +21,6 @@ class LowonganPekerjaan extends StatefulWidget {
 }
 
 class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
-  // Future<List<dynamic>> profil() async {
-  //   var result = await http.get(apiUrl);
-  //   return json.decode(result.body)['data'];
-  // }
   int _index = 0;
   List<Lowongan> _lowongan = [];
 
@@ -82,7 +78,7 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
               shrinkWrap: true,
               padding: EdgeInsets.only(top: 15.0, bottom: 5.0),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
+                    crossAxisCount: 1,
                     crossAxisSpacing: 15,
                     mainAxisSpacing: 15,
                   ),
