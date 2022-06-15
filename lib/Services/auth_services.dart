@@ -103,40 +103,24 @@ class AuthServices {
     // return request;
   }
   
-  // Future _getToken() async {
-  //   SharedPreferences localStorage = await SharedPreferences.getInstance();
-  //   token = jsonDecode(localStorage.getString('token'))['token'];
-  // }
+  static Future<List<Lowongan>> geLowongan() async {    
+    
+    var response = await http.get(Uri.parse("$lowonganURL"));
+    var responseData = jsonDecode(response.body);
 
-  //lihat data lowongan
-  //  Future<List<Lowongan>> getAllProducts() async {
-  //   try {
-  //     final response = await http.get(Uri.parse("$baseURL/products"));
-  //     if (response.statusCode == 200) {
-  //       List<dynamic> json = jsonDecode(response.body);
-  //       return List<Lowongan>.from(json.map((e) => Lowongan.fromJson(e)));
-  //     } else {
-  //       return [];
-  //     }
-  //   } catch (e) {
-  //     return [];
-  //   }
-  // }
-  // Future<List<Lowongan>> getBestSeller() async {
-  //   try {
-  //     final response =
-  //         await http.get(Uri.parse("$baseURL/products/bestseller"));
-  //     if (response.statusCode == 200) {
-  //       List<dynamic> json = jsonDecode(response.body);
-  //       return List<Lowongan>.from(json.map((e) => Lowongan.fromJson(e)));
-  //     } else {
-  //       return [];
-  //     }
-  //   } catch (e) {
-  //     return [];
-  //   }
-  // }
+    if(response.statusCode == 200) {
+      List<dynamic> listLowongan = (responseData as Map<String, dynamic>)['data'];
 
+      List<Lowongan> lowongans = [];
+      for (int i = 0; i < listLowongan.length; i++) {
+        lowongans.add(Lowongan.fromJson(listLowongan[i]));
+      } 
+      return lowongans;
+    } else {
+      throw Exception("Failed to load wisata");
+    }
+      // print(json.decode(response.body));
+      // return json.decode(response.body);
+  }
   
-
 }
