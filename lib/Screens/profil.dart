@@ -29,27 +29,28 @@ class Profil extends StatefulWidget {
 }
 
 class _ProfilState extends State<Profil> {
-
   String? _namaPelamar, _email;
   final _alert = ShowAlert();
   final _toast = ShowToast();
-
 
   @override
   void initState() {
     super.initState();
     getUser();
   }
+
   getUser() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     String idUser = pref.getString("id") ?? "";
     AuthServices.getUser(idUser).then((value) {
       setState(() {
-        _namaPelamar = value.namaPelamar;
-        _email = value.email;
+        _namaPelamar = value.namaPelamar.toString();
+        _email = value.email.toString();
+        print(idUser);
+        print(_namaPelamar);
       });
     });
-  } 
+  }
 
   final Email email = Email(
     body: 'Hello,',
@@ -106,7 +107,7 @@ class _ProfilState extends State<Profil> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Profile',
+          'Profil',
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
@@ -126,17 +127,17 @@ class _ProfilState extends State<Profil> {
                 children: <Widget>[
                   Padding(padding: EdgeInsets.only(left: 10)),
                   CircleAvatar(
-                    radius: 50,
-                    child: Image.asset(
-                    //untuk logo image
-                    'assets/images/logo1.png',
-                    height: 50,
-                    width: 100,
-                  )
-                    // Image(
-                    //         controller.googleAccount.value?.photoUrl ?? '')
-                    //     .image,
-                  ),
+                      radius: 50,
+                      child: Image.asset(
+                        //untuk logo image
+                        'assets/images/logo1.png',
+                        height: 50,
+                        width: 100,
+                      )
+                      // Image(
+                      //         controller.googleAccount.value?.photoUrl ?? '')
+                      //     .image,
+                      ),
                   Container(
                     //Container Nama Profil
                     margin: EdgeInsets.only(left: 20),
