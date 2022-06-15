@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'dart:ffi';
+// import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:mobile_go_job/Screens/lamar_sekarang.dart';
@@ -78,9 +78,17 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                     Icons.search,
                   )),
             ),
-            Container(
+            GridView.builder(
               padding: EdgeInsets.only(top: 15.0, bottom: 5.0),
-              child: Column(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 15,
+                    mainAxisSpacing: 15,
+                  ),
+              itemCount: _lowongan.length,
+              itemBuilder: (context, index) {
+                return InkWell(
+                child: Column(
                 children: <Widget>[
                   Container(
                     padding: EdgeInsets.all(5),
@@ -90,8 +98,6 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                       color: primarycolor,
                       border: Border.all(color: primarycolor, width: 4),
                     ),
-                    itemCount: _lowongan.length,
-                    
                     child: Column(
                       children: <Widget>[
                         Container(
@@ -106,7 +112,8 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                           ),
                         ),
                         Text(
-                          "PT Patma Tirta Jaya",
+                          _lowongan[index].namaperusahaan.toString(),
+                          // "PT Patma Tirta Jaya",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 25,
@@ -131,7 +138,8 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
                                     Text(
-                                      "Web Developtment Staff",
+                                      // "Web Developtment Staff",
+                                      _lowongan[index].namalowongan.toString(),
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 20,
@@ -139,7 +147,8 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                                     ),
                                     Padding(padding: EdgeInsets.only(top: 20)),
                                     Text(
-                                      "Surabaya, Jawa Timur",
+                                      // "Surabaya, Jawa Timur",
+                                      _lowongan[index].alamatperusahaan.toString(),
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 20,
@@ -147,7 +156,8 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                                     ),
                                     Padding(padding: EdgeInsets.only(top: 70)),
                                     Text(
-                                      "5 Hari yang lalu",
+                                      // "5 Hari yang lalu",
+                                      _lowongan[index].gajipekerjaan.toString(),
                                       style: TextStyle(
                                           fontSize: 20, color: primarycolor),
                                     ),
@@ -204,6 +214,10 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                   ),
                 ],
               ),
+              );
+                
+              },
+              
             ),
           
           ],
