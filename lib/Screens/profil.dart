@@ -6,6 +6,8 @@ import 'dart:html';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
+import 'package:mobile_go_job/Notifikasi/alert.dart';
+import 'package:mobile_go_job/Notifikasi/toast.dart';
 import 'package:mobile_go_job/controller/logincontroller.dart';
 import 'package:mobile_go_job/Screens/lamar_sekarang.dart';
 import 'package:mobile_go_job/Services/auth_services.dart';
@@ -16,6 +18,7 @@ import 'package:mobile_go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_go_job/Screens/login.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Profil extends StatefulWidget {
@@ -27,27 +30,28 @@ class Profil extends StatefulWidget {
 
 class _ProfilState extends State<Profil> {
 
-  String nama_pelamar = "";
-  String email = "";
+  String? _namaPelamar, _email;
+  final _alert = ShowAlert();
+  final _toast = ShowToast();
 
 
   @override
   void initState() {
     super.initState();
-    DataPelamar();
+    getUser();
   }
-  DataPelamar() {
-
-    final response = AuthServices();
-    var body = jsonDecode(response.body);
-
-    setState(() {
-      nama_pelamar = body['nama_pelamar'];
-      email = body['email'];
+  getUser() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    String idUser = pref.getString("id") ?? "";
+    AuthServices.getUser(idUser).then((value) {
+      setState(() {
+        _namaPelamar = value.namaPelamar;
+        _email = value.email;
+      });
     });
   } 
 
-  final Email _email = Email(
+  final Email email = Email(
     body: 'Hello,',
     subject: 'I Need Help',
     recipients: ['galuhapriliano30@gmail.com'],
@@ -141,7 +145,7 @@ class _ProfilState extends State<Profil> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          "$nama_pelamar",
+                          "$_namaPelamar",
                           // "$_nama_pelamar",
                           // controller.googleAccount.value?.displayName ?? '',
                           style: GoogleFonts.poppins(
@@ -151,7 +155,7 @@ class _ProfilState extends State<Profil> {
                         ),
                         Text(
                           // "$_email",
-                          "$email",
+                          "$_email",
                           // controller.googleAccount.value?.displayName ?? '',
                           style: GoogleFonts.poppins(
                               fontWeight: FontWeight.bold,
@@ -257,7 +261,7 @@ class _ProfilState extends State<Profil> {
               child: RaisedButton(
                 //Button Hubungi Kami
                 onPressed: () async {
-                  await FlutterEmailSender.send(_email);
+                  await FlutterEmailSender.send(email);
                 },
                 color: Colors.white,
                 child: Container(

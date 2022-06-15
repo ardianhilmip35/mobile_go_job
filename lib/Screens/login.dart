@@ -37,10 +37,10 @@ class _LoginState extends State<Login> {
   void _login() async {
     AuthServices.login(_emailController.text, _passwordController.text)
         .then((value) {
-      if (value.kode == 200) {
+      if (value.message == 'success') {
         _idUser = value.id.toString();
         sessionLogin();
-        _toast.showToast(value.pesan);
+        _toast.showToast(value.message);
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
@@ -48,7 +48,7 @@ class _LoginState extends State<Login> {
           ),
         );
       } else {
-        _toast.showToast(value.pesan);
+        _toast.showToast(value.message);
       }
     });
   }
@@ -56,7 +56,7 @@ class _LoginState extends State<Login> {
   Future sessionLogin() async {
     final SharedPreferences pref = await SharedPreferences.getInstance();
     setState(() {
-      pref.setString("id_user", _idUser);
+      pref.setString("id", _idUser);
       pref.setBool("is_login", true);
     });
   }

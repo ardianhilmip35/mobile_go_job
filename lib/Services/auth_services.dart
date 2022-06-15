@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mobile_go_job/models/lowongan_model.dart';
 
 import '../models/login_model.dart';
+import '../models/profil_model.dart';
 
 
 class AuthServices {
@@ -38,7 +39,7 @@ class AuthServices {
   }
 
   //login
-  static Future login (String _email, String password) async {
+  static Future<Login> login (String _email, String password) async {
 
     Map data = {
       "email": _email,
@@ -56,8 +57,8 @@ class AuthServices {
     } else {
       throw Exception("Failed to login User");
     }
-    print(response.body);
-    return response;
+    // print(response.body);
+    // return response;
   }
   
   // Future<dynamic> profil() async {
@@ -80,16 +81,26 @@ class AuthServices {
   // Future<http.Response> 
 
   //menampilkan profil
-  profil() async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    var id = preferences.getInt('id');
-    var request = await http.get(Uri.parse("$profilURL/$id"), headers: {
-        'Content-type': 'application/json',
-        'Accept': 'application/json',
-        'Authorization': 'Bearer $token',
-      });
-    // var body = jsonDecode(request.body);
-    return request;
+  static Future<Profil> getUser(String id) async {
+    var response = await http.post(Uri.parse("$profilURL"),
+      body: {
+        "id": id,
+      },);
+
+    if (response.statusCode == 200) {
+      return Profil.fromJson(json.decode(response.body));
+    } else {
+      throw Exception("Failed to read user");
+    }
+    // SharedPreferences preferences = await SharedPreferences.getInstance();
+    // var id = preferences.getString('id');
+    // var request = await http.get(Uri.parse("$profilURL/$id"), headers: {
+    //     'Content-type': 'application/json',
+    //     'Accept': 'application/json',
+    //     'Authorization': 'Bearer $token',
+    //   });
+    // // var body = jsonDecode(request.body);
+    // return request;
   }
   
   // Future _getToken() async {
