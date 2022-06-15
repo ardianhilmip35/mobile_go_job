@@ -17,7 +17,7 @@ class _SplashScreen extends State<SplashScreen> {
   _splashScreen() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString('token');
-    var id = prefs.getInt('id');
+    var id = prefs.getString('id');
     if (token != null && id != null) {
       if (mounted) {
         setState(() {

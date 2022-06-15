@@ -9,6 +9,12 @@ import 'package:mobile_go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_go_job/Screens/localestring.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../Notifikasi/alert.dart';
+import '../Notifikasi/toast.dart';
+import '../Services/auth_services.dart';
+
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -17,7 +23,29 @@ class Dashboard extends StatefulWidget {
   State<Dashboard> createState() => _DashboardState();
 }
 
+
+
 class _DashboardState extends State<Dashboard> {
+  String? _namaPelamar;
+  final _alert = ShowAlert();
+  final _toast = ShowToast();
+
+  @override
+  void initState() {
+    super.initState();
+    getUser();
+  }
+
+  getUser() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    String idUser = pref.getString("id") ?? "";
+    AuthServices.getUser(idUser).then((value) {
+      setState(() {
+        _namaPelamar = value.namaPelamar.toString();
+      });
+    });
+  }
+
   final controller = Get.put(LoginController());
 
   Color _iconColor = Colors.grey;
@@ -46,7 +74,7 @@ class _DashboardState extends State<Dashboard> {
                       Container(
                         child: Row(children: <Widget>[
                           Text(
-                            'Tanti Wulansari',
+                            "$_namaPelamar",
                             // controller.googleAccount.value?.displayName ?? '',
                             textAlign: TextAlign.end,
                             style: GoogleFonts.poppins(
