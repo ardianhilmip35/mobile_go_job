@@ -47,7 +47,7 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Lowongan",
+          "lowongan".tr,
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
@@ -69,7 +69,7 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
               textInputAction: TextInputAction.search,
               style: Theme.of(context).textTheme.bodyText1,
               decoration: InputDecoration(
-                  labelText: 'Find Job',
+                  labelText: 'caripekerjaan'.tr,
                   border: OutlineInputBorder(),
                   focusColor: Color(0xFF0A9EA2),
                   labelStyle:
@@ -191,7 +191,7 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                                     textColor: Colors.white,
                                     color: primarycolor,
                                     child: Text(
-                                      'Apply Now',
+                                      'lamarsekarang'.tr,
                                       style: TextStyle(
                                           fontSize: 20, color: Colors.white),
                                     ),

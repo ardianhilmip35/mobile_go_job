@@ -15,15 +15,12 @@ import '../Notifikasi/alert.dart';
 import '../Notifikasi/toast.dart';
 import '../Services/auth_services.dart';
 
-
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
 
   @override
   State<Dashboard> createState() => _DashboardState();
 }
-
-
 
 class _DashboardState extends State<Dashboard> {
   String? _namaPelamar;
@@ -115,7 +112,7 @@ class _DashboardState extends State<Dashboard> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              "Information",
+                              "informasi".tr,
                               style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20,
@@ -131,7 +128,7 @@ class _DashboardState extends State<Dashboard> {
                             ElevatedButton(
                               onPressed: () {},
                               child: Text(
-                                'More Info',
+                                'info'.tr,
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                               style: ElevatedButton.styleFrom(
@@ -147,7 +144,7 @@ class _DashboardState extends State<Dashboard> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            "Cari Pekerjaan",
+                            "caripekerjaan".tr,
                             style: GoogleFonts.poppins(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
@@ -173,7 +170,8 @@ class _DashboardState extends State<Dashboard> {
                                     children: <Widget>[
                                       Container(
                                         width:
-                                            MediaQuery.of(context).size.width /2.3,
+                                            MediaQuery.of(context).size.width /
+                                                2.3,
                                         height: 145,
                                         decoration: BoxDecoration(
                                           color: Colors.white,
@@ -183,7 +181,8 @@ class _DashboardState extends State<Dashboard> {
                                           padding: EdgeInsets.only(top: 10)),
                                       Container(
                                         width:
-                                            MediaQuery.of(context).size.width /2.2,
+                                            MediaQuery.of(context).size.width /
+                                                2.2,
                                         height: 145,
                                         decoration: BoxDecoration(
                                           color: Colors.white,
@@ -202,25 +201,20 @@ class _DashboardState extends State<Dashboard> {
                       width: double.infinity,
                       padding: EdgeInsets.all(10),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Container(
-                            width: MediaQuery.of(context).size.width / 2.2,
-                            child: Text(
-                              "Job List",
-                              style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                  color: Colors.black),
-                            ),
+                          Text(
+                            "list".tr,
+                            style: GoogleFonts.poppins(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                                color: Colors.black),
                           ),
-                          Container(
-                            width: MediaQuery.of(context).size.width / 2.2,
-                            child: Text(
-                              "View All",
-                              textAlign: TextAlign.end,
-                              style: GoogleFonts.poppins(
-                                  fontSize: 15, color: Colors.grey),
-                            ),
+                          Text(
+                            "lihat".tr,
+                            textAlign: TextAlign.end,
+                            style: GoogleFonts.poppins(
+                                fontSize: 15, color: Colors.grey),
                           ),
                         ],
                       ),
@@ -260,44 +254,49 @@ class _DashboardState extends State<Dashboard> {
                                         width: 15,
                                       ),
                                       Container(
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: <Widget>[
-                                            Text(
-                                              "Web Developer",
-                                              style: GoogleFonts.poppins(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 20,
-                                                  color: Colors.black),
-                                            ),
-                                            Text(
-                                              "Surabaya",
-                                              style: GoogleFonts.poppins(
-                                                  fontSize: 15,
-                                                  color: Colors.black),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Container(
                                         width:
                                             MediaQuery.of(context).size.width /
-                                                2.2,
-                                        alignment: Alignment.centerRight,
-                                        child: IconButton(
-                                            iconSize: 45,
-                                            color: _iconColor,
-                                            onPressed: () {
-                                              setState(() {
-                                                if (_iconColor == Colors.grey) {
-                                                  _iconColor = primarycolor;
-                                                } else {
-                                                  _iconColor = Colors.grey;
-                                                }
-                                              });
-                                            },
-                                            icon: Icon(Icons.bookmark)),
+                                                1.44,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: <Widget>[
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: <Widget>[
+                                                Text(
+                                                  "Web Developer",
+                                                  style: GoogleFonts.poppins(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 20,
+                                                      color: Colors.black),
+                                                ),
+                                                Text(
+                                                  "Surabaya",
+                                                  style: GoogleFonts.poppins(
+                                                      fontSize: 15,
+                                                      color: Colors.black),
+                                                ),
+                                              ],
+                                            ),
+                                            IconButton(
+                                                iconSize: 45,
+                                                color: _iconColor,
+                                                onPressed: () {
+                                                  setState(() {
+                                                    if (_iconColor ==
+                                                        Colors.grey) {
+                                                      _iconColor = primarycolor;
+                                                    } else {
+                                                      _iconColor = Colors.grey;
+                                                    }
+                                                  });
+                                                },
+                                                icon: Icon(Icons.bookmark)),
+                                          ],
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -307,11 +306,12 @@ class _DashboardState extends State<Dashboard> {
                                     children: <Widget>[
                                       ElevatedButton(
                                         onPressed: () {
-                                          Route route =
-                                          MaterialPageRoute(builder: (context) => DetailLowongan());
-                                            Navigator.push(context, route);
+                                          Route route = MaterialPageRoute(
+                                              builder: (context) =>
+                                                  DetailLowongan());
+                                          Navigator.push(context, route);
                                         },
-                                        child: Text('View'),
+                                        child: Text('buka'.tr),
                                         style: ElevatedButton.styleFrom(
                                             primary: primarycolor,
                                             shape: StadiumBorder()),
@@ -321,11 +321,12 @@ class _DashboardState extends State<Dashboard> {
                                       ),
                                       ElevatedButton(
                                         onPressed: () {
-                                          Route route =
-                                          MaterialPageRoute(builder: (context) => LamarSekarang());
-                                            Navigator.push(context, route);
+                                          Route route = MaterialPageRoute(
+                                              builder: (context) =>
+                                                  LamarSekarang());
+                                          Navigator.push(context, route);
                                         },
-                                        child: Text('Apply'),
+                                        child: Text('lamar'.tr),
                                         style: ElevatedButton.styleFrom(
                                             primary: primarycolor,
                                             shape: StadiumBorder()),

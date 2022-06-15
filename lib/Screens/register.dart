@@ -7,7 +7,7 @@ import 'package:mobile_go_job/Services/auth_services.dart';
 import 'package:mobile_go_job/Services/globals.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_go_job/shared/shared.dart';
-
+import 'package:get/get.dart';
 import '../rounded_button.dart';
 import 'dashboard.dart';
 import 'login.dart';
@@ -81,7 +81,7 @@ class _RegisterState extends State<Register> {
                     // controller: namaPelamar,
                     //untuk input email
                     decoration: new InputDecoration(
-                      labelText: "Nama",
+                      labelText: "nama".tr,
                       icon: Icon(
                         Icons.person,
                       ),
@@ -117,7 +117,7 @@ class _RegisterState extends State<Register> {
                     },
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Email is required';
+                        return 'emailkosong'.tr;
                       }
                       // email = emailValue;
                       // return null;
@@ -132,7 +132,7 @@ class _RegisterState extends State<Register> {
                     //untuk textfield password
                     obscureText: true,
                     decoration: new InputDecoration(
-                      labelText: "Password",
+                      labelText: "sandi".tr,
                       icon: Icon(Icons.lock),
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(0)),
@@ -142,7 +142,7 @@ class _RegisterState extends State<Register> {
                     },
                     // validator: (value) {
                     //   if (value!.isEmpty) {
-                    //     return 'Password is required';
+                    //     return 'sandikosong'.tr;
                     //   }
                     //   // password = passwordValue;
                     //   // return null;
@@ -156,14 +156,14 @@ class _RegisterState extends State<Register> {
                     //untuk textfield password
                     obscureText: true,
                     decoration: new InputDecoration(
-                      labelText: "Konfirmasi Password",
+                      labelText: "konfirsandi".tr,
                       icon: Icon(Icons.security),
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(0)),
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Please Confirm Your Password ';
+                        return 'konfirkosong'.tr;
                       }
                       return null;
                     },
@@ -184,7 +184,7 @@ class _RegisterState extends State<Register> {
                     ),
                     onPressed: () => createAccountPressed(),
                     child: Text(
-                      'Register',
+                      'daftar'.tr,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -202,7 +202,7 @@ class _RegisterState extends State<Register> {
                   padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
                   child: new Text(
                     //untuk text or
-                    "atau",
+                    "atau".tr,
                     style: TextStyle(
                       fontSize: 15.0,
                     ),
@@ -223,7 +223,7 @@ class _RegisterState extends State<Register> {
                       size: 24.0,
                     ),
                     label: Text(
-                      'Sign Up with Google',
+                      'daftargoogle'.tr,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -236,12 +236,12 @@ class _RegisterState extends State<Register> {
                       RichText(
                         text: TextSpan(children: [
                           TextSpan(
-                              text: 'Sudah Punya Akun? ',
+                              text: 'sudahpunyaakun'.tr,
                               style: TextStyle(color: Colors.grey)),
                           WidgetSpan(
                               child: GestureDetector(
                             child: Text(
-                              'Login',
+                              'masuk'.tr,
                               style: TextStyle(color: primarycolor),
                             ),
                             onTap: () {

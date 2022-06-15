@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_go_job/Screens/profil.dart';
@@ -134,7 +134,7 @@ class _LoginState extends State<Login> {
                     // },
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Email is required';
+                        return 'emailkosong'.tr;
                       }
                       // email = value;
                       return null;
@@ -150,7 +150,7 @@ class _LoginState extends State<Login> {
                     // onSaved: (value) => requestModel.password = value,
                     obscureText: true,
                     decoration: new InputDecoration(
-                      labelText: "Password",
+                      labelText: "sandi".tr,
                       icon: Icon(Icons.lock),
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(0)),
@@ -160,7 +160,7 @@ class _LoginState extends State<Login> {
                     // },
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Password is required';
+                        return 'sandikosong'.tr;
                       }
                       // password = passwordValue;
                       return null;
@@ -174,7 +174,7 @@ class _LoginState extends State<Login> {
                   width: 210,
                   child: ElevatedButton(
                     child: Text(
-                      'Login',
+                      'masuk'.tr,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     style: ElevatedButton.styleFrom(
@@ -206,7 +206,7 @@ class _LoginState extends State<Login> {
                   padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
                   child: new Text(
                     //untuk text or
-                    "atau",
+                    "atau".tr,
                     style: TextStyle(
                       fontSize: 15.0,
                     ),
@@ -226,7 +226,7 @@ class _LoginState extends State<Login> {
                       size: 24.0,
                     ),
                     label: Text(
-                      'Sign In with Google',
+                      'masukgoogle'.tr,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -239,12 +239,12 @@ class _LoginState extends State<Login> {
                       RichText(
                         text: TextSpan(children: [
                           TextSpan(
-                              text: 'Belum Punya Akun? ',
+                              text: 'belumpunyaakun'.tr,
                               style: TextStyle(color: Colors.grey)),
                           WidgetSpan(
                               child: GestureDetector(
                             child: Text(
-                              'Daftar',
+                              'daftar'.tr,
                               style: TextStyle(color: primarycolor),
                             ),
                             onTap: () {

@@ -60,6 +60,11 @@ class LocaleString extends Translations {
           'pendidikan' : 'Education',
           'keterampilan' : 'Skills',
           'tambahpengalaman' : 'Add Experience',
+          'alamat': 'Address',
+          'nohp': 'Phone Number',
+          'Agama': 'Religion',
+          'tanggallahir': 'Date of Birth',
+          'email': 'Email',
         },
         'id_ID': {
           'kelola': 'Kelola Profilmu',
@@ -117,6 +122,11 @@ class LocaleString extends Translations {
           'pendidikan' : 'Pendidikan',
           'keterampilan' : 'Keterampilan',
           'tambahpengalaman' : 'Tambah Pengalaman',
+          'alamat': 'Alamat',
+          'nohp': 'No Hp',
+          'tanggallahir': 'Tanggal Lahir',
+          'agama': 'Agama',
+          'email': 'Email',
         }
       };
 }

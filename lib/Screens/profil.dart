@@ -2,7 +2,7 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'dart:convert';
-import 'dart:html';
+import 'package:http/http.dart';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
@@ -22,7 +22,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Profil extends StatefulWidget {
-  const Profil({Key? key}) : super(key: key);
 
   @override
   State<Profil> createState() => _ProfilState();
@@ -74,7 +73,7 @@ class _ProfilState extends State<Profil> {
         context: context,
         builder: (builder) {
           return AlertDialog(
-            title: Text('Choose Your Language'),
+            title: Text('gantibahasamu'.tr),
             content: Container(
               width: double.maxFinite,
               child: ListView.separated(
@@ -107,7 +106,7 @@ class _ProfilState extends State<Profil> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Profil',
+          'profil'.tr,
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
@@ -168,7 +167,7 @@ class _ProfilState extends State<Profil> {
                             WidgetSpan(
                                 child: GestureDetector(
                               child: Text(
-                                'Kelola Profilmu',
+                                'kelola'.tr,
                                 style: GoogleFonts.poppins(
                                     fontSize: 15, color: Colors.white),
                               ),
@@ -213,7 +212,7 @@ class _ProfilState extends State<Profil> {
                       Container(
                           margin: const EdgeInsets.only(left: 10.0),
                           child: Text(
-                            'Riwayat Lamaran',
+                            'riwayat'.tr,
                             style: GoogleFonts.poppins(fontSize: 15.0),
                           ))
                     ],
@@ -244,7 +243,7 @@ class _ProfilState extends State<Profil> {
                       Container(
                           margin: const EdgeInsets.only(left: 10.0),
                           child: Text(
-                            'Ganti Bahasa',
+                            'gantibahasa'.tr,
                             style: GoogleFonts.poppins(fontSize: 15.0),
                           ))
                     ],
@@ -275,7 +274,7 @@ class _ProfilState extends State<Profil> {
                       Container(
                           margin: const EdgeInsets.only(left: 10.0),
                           child: Text(
-                            'Hubungi Kami',
+                            'hubungi'.tr,
                             style: GoogleFonts.poppins(fontSize: 15.0),
                           ))
                     ],
@@ -306,7 +305,7 @@ class _ProfilState extends State<Profil> {
                       Container(
                           margin: const EdgeInsets.only(left: 10.0),
                           child: Text(
-                            'Logout',
+                            'keluar'.tr,
                             style: GoogleFonts.poppins(fontSize: 15.0),
                           ))
                     ],

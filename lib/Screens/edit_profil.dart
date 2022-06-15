@@ -16,7 +16,7 @@ class _EditProfilState extends State<EditProfil> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Edit Profile",
+          "editprofil".tr,
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
@@ -40,7 +40,7 @@ class _EditProfilState extends State<EditProfil> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                "Nama",
+                "nama".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
@@ -50,7 +50,7 @@ class _EditProfilState extends State<EditProfil> {
                 ),
               ),
               Text(
-                "Alamat",
+                "alamat".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
@@ -60,7 +60,7 @@ class _EditProfilState extends State<EditProfil> {
                 ),
               ),
               Text(
-                "Agama",
+                "agama".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
@@ -70,7 +70,7 @@ class _EditProfilState extends State<EditProfil> {
                 ),
               ),
               Text(
-                "No. HP",
+                "nohp".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
@@ -80,7 +80,7 @@ class _EditProfilState extends State<EditProfil> {
                 ),
               ),
               Text(
-                "Email",
+                "email".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
@@ -90,7 +90,7 @@ class _EditProfilState extends State<EditProfil> {
                 ),
               ),
               Text(
-                "Tanggal Lahir",
+                "tanggallahir".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
@@ -107,7 +107,7 @@ class _EditProfilState extends State<EditProfil> {
                       textColor: Colors.white,
                       color: primarycolor,
                       child: Text(
-                        "Save",
+                        "simpan".tr,
                         style: TextStyle(fontSize: 18, color: Colors.white),
                       ),
                       onPressed: () {},
@@ -122,7 +122,7 @@ class _EditProfilState extends State<EditProfil> {
                       textColor: Colors.white,
                       color: Colors.red,
                       child: Text(
-                        "Cancel",
+                        "batal".tr,
                         style: TextStyle(fontSize: 18, color: Colors.white),
                       ),
                       onPressed: () {},

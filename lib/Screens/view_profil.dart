@@ -21,7 +21,7 @@ class _ViewProfilState extends State<ViewProfil> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Lihat Profil',
+          'lihatprofil'.tr,
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
@@ -138,7 +138,7 @@ class _ViewProfilState extends State<ViewProfil> {
                             Icon(Icons.business_center),
                             Padding(padding: EdgeInsets.only(left: 10)),
                             Text(
-                              'Pengalaman Kerja',
+                              'pengalamankerja'.tr,
                               style: GoogleFonts.poppins(fontSize: 20),
                             ),
                           ],
@@ -152,7 +152,7 @@ class _ViewProfilState extends State<ViewProfil> {
                             WidgetSpan(
                                 child: GestureDetector(
                               child: Text(
-                                'Tambah Pengalaman',
+                                'tambahpengalaman'.tr,
                                 style: GoogleFonts.poppins(
                                     fontSize: 15, color: primarycolor),
                               ),
@@ -186,7 +186,7 @@ class _ViewProfilState extends State<ViewProfil> {
                             Icon(Icons.school),
                             Padding(padding: EdgeInsets.only(left: 10)),
                             Text(
-                              'Pendidikan',
+                              'pendidikan'.tr,
                               style: GoogleFonts.poppins(fontSize: 20),
                             ),
                           ],
@@ -203,7 +203,7 @@ class _ViewProfilState extends State<ViewProfil> {
                           children: <Widget>[
                             Padding(padding: EdgeInsets.only(left: 10)),
                             Text(
-                              'Pendidikan',
+                              'pendidikan'.tr,
                               style: GoogleFonts.poppins(
                                   fontSize: 15, fontWeight: FontWeight.bold),
                             ),
@@ -248,7 +248,7 @@ class _ViewProfilState extends State<ViewProfil> {
                             Icon(Icons.emoji_objects),
                             Padding(padding: EdgeInsets.only(left: 10)),
                             Text(
-                              'Keterampilan',
+                              'keterampilan'.tr,
                               style: GoogleFonts.poppins(fontSize: 20),
                             ),
                           ],

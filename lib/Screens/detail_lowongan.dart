@@ -17,7 +17,7 @@ class _DetailLowonganState extends State<DetailLowongan> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Job Detail",
+          "detailpekerjaan".tr,
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
@@ -67,7 +67,7 @@ class _DetailLowonganState extends State<DetailLowongan> {
                           width: MediaQuery.of(context).size.width / 2.2,
                           child: MaterialButton(
                             child: Text(
-                              "Job",
+                              "pekerjaan".tr,
                               style:
                                   TextStyle(fontSize: 20, color: primarycolor),
                             ),
@@ -83,7 +83,7 @@ class _DetailLowonganState extends State<DetailLowongan> {
                           width: MediaQuery.of(context).size.width / 2.2,
                           child: MaterialButton(
                             child: Text(
-                              "Company",
+                              "perusahaan".tr,
                               style:
                                   TextStyle(fontSize: 20, color: primarycolor),
                             ),
@@ -162,7 +162,7 @@ class _DetailLowonganState extends State<DetailLowongan> {
                 color: Colors.grey,
               ),
               child: Text(
-                "Deskripsi Pekerjaan",
+                "deskripsi".tr,
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
@@ -176,7 +176,7 @@ class _DetailLowonganState extends State<DetailLowongan> {
                   textColor: Colors.white,
                   color: primarycolor,
                   child: Text(
-                    "Save",
+                    "simpan".tr,
                     style: TextStyle(fontSize: 18, color: Colors.white),
                   ),
                   onPressed: () {},
@@ -190,7 +190,7 @@ class _DetailLowonganState extends State<DetailLowongan> {
                 textColor: Colors.white,
                 color: primarycolor,
                 child: Text(
-                  "Apply",
+                  "lamar".tr,
                   style: TextStyle(fontSize: 18, color: Colors.white),
                 ),
                 onPressed: () {},

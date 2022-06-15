@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:mobile_go_job/Screens/dashboard.dart';
 import 'package:mobile_go_job/Screens/edit_profil.dart';
+import 'package:mobile_go_job/Screens/localestring.dart';
 import 'package:mobile_go_job/Screens/login.dart';
 import 'package:mobile_go_job/Screens/lowongan_pekerjaan.dart';
 import 'package:mobile_go_job/Screens/profil.dart';
@@ -9,9 +10,9 @@ import 'package:mobile_go_job/Screens/register.dart';
 import 'package:mobile_go_job/Screens/simpan_lowongan.dart';
 import 'package:mobile_go_job/Screens/splascreen.dart';
 import 'package:mobile_go_job/models/lowongan_model.dart';
-import 'package:mobile_go_job/Screens/lowongan_pekerjaan.dart';
 import 'package:mobile_go_job/shared/shared.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -23,6 +24,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      translations: LocaleString(),
+      locale: Locale('id', 'ID'),
       home: MyBottomBar(),
     );
   }

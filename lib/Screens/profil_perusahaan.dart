@@ -18,7 +18,7 @@ class _ProfilPerusahaanState extends State<ProfilPerusahaan> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Company Detail',
+          'detailperusahaan'.tr,
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
@@ -68,7 +68,7 @@ class _ProfilPerusahaanState extends State<ProfilPerusahaan> {
                           width: MediaQuery.of(context).size.width / 2.2,
                           child: MaterialButton(
                             child: Text(
-                              'Job',
+                              'pekerjaan'.tr,
                               style:
                                   TextStyle(fontSize: 20, color: primarycolor),
                             ),
@@ -84,7 +84,7 @@ class _ProfilPerusahaanState extends State<ProfilPerusahaan> {
                           width: MediaQuery.of(context).size.width / 2.2,
                           child: MaterialButton(
                             child: Text(
-                              'Company',
+                              'perusahaan'.tr,
                               style:
                                   TextStyle(fontSize: 20, color: primarycolor),
                             ),
@@ -147,7 +147,7 @@ class _ProfilPerusahaanState extends State<ProfilPerusahaan> {
                 color: Colors.grey,
               ),
               child: Text(
-                'About Company',
+                'tentangperusahaan'.tr,
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
@@ -161,7 +161,7 @@ class _ProfilPerusahaanState extends State<ProfilPerusahaan> {
                   textColor: Colors.white,
                   color: primarycolor,
                   child: Text(
-                    'Save',
+                    'simpan'.tr,
                     style: TextStyle(fontSize: 18, color: Colors.white),
                   ),
                   onPressed: () {},
@@ -175,7 +175,7 @@ class _ProfilPerusahaanState extends State<ProfilPerusahaan> {
                 textColor: Colors.white,
                 color: primarycolor,
                 child: Text(
-                  "Lamar Sekarang",
+                  "lamar".tr,
                   style: TextStyle(fontSize: 18, color: Colors.white),
                 ),
                 onPressed: () {},
