@@ -5,6 +5,11 @@ import 'package:mobile_go_job/Screens/pengalaman.dart';
 import 'package:mobile_go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../Notifikasi/alert.dart';
+import '../Notifikasi/toast.dart';
+import '../Services/auth_services.dart';
 
 class ViewProfil extends StatefulWidget {
   const ViewProfil({Key? key}) : super(key: key);
@@ -14,7 +19,30 @@ class ViewProfil extends StatefulWidget {
 }
 
 class _ViewProfilState extends State<ViewProfil> {
-  final controller = Get.put(LoginController());
+ String? _namaPelamar, 
+ _email, _telpPelamar, 
+ _alamatPelamar, _tanggalLahirPelamar, 
+ _jenisKelaminPelamar, _pendidikanPelamar, _;
+  final _alert = ShowAlert();
+  final _toast = ShowToast();
+
+  @override
+  void initState() {
+    super.initState();
+    getUser();
+  }
+
+  getUser() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    String idUser = pref.getString("id") ?? "";
+    AuthServices.getUser(idUser).then((value) {
+      setState(() {
+        _namaPelamar = value.namaPelamar.toString();
+        _email = value.email.toString();
+        _telpPelamar = value.telpPelamar.toString();
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +113,7 @@ class _ViewProfilState extends State<ViewProfil> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          controller.googleAccount.value?.displayName ?? '',
+                         "$_namaPelamar",
                           textAlign: TextAlign.center,
                           style: GoogleFonts.poppins(
                               fontWeight: FontWeight.bold,
@@ -96,7 +124,7 @@ class _ViewProfilState extends State<ViewProfil> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Text(
-                              "0882153572313",
+                              "$_telpPelamar",
                               style: GoogleFonts.poppins(
                                   fontSize: 15, color: Colors.grey),
                             ),
@@ -108,7 +136,7 @@ class _ViewProfilState extends State<ViewProfil> {
                             ),
                             Padding(padding: EdgeInsets.only(right: 5)),
                             Text(
-                              'tanti@gmail.com',
+                              "$_email",
                               // controller.googleAccount.value?.email ?? '',
                               style: GoogleFonts.poppins(
                                   fontSize: 15, color: Colors.grey),
@@ -203,7 +231,41 @@ class _ViewProfilState extends State<ViewProfil> {
                           children: <Widget>[
                             Padding(padding: EdgeInsets.only(left: 10)),
                             Text(
-                              'pendidikan'.tr,
+                              'Jurusan'.tr,
+                              style: GoogleFonts.poppins(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Padding(padding: EdgeInsets.only(left: 10)),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              "Teknologi Informasi",
+                              style: GoogleFonts.poppins(fontSize: 15),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+
+                  Row(
+                    children: <Widget>[
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Row(
+                          children: <Widget>[
+                            Padding(padding: EdgeInsets.only(left: 10)),
+                            Text(
+                              'Prodi'.tr,
                               style: GoogleFonts.poppins(
                                   fontSize: 15, fontWeight: FontWeight.bold),
                             ),

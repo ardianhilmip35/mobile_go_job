@@ -30,6 +30,7 @@ class LocaleString extends Translations {
           'masukgoogle': 'Sign In with Google',
           'belumpunyaakun': 'Don\'t have an account?',
           'daftar': 'Register!',
+          'lowongan' : 'Job List',
           'lowongantersimpan': 'Job Saved',
           'detailpekerjaan': 'Job Detail',
           'caripekerjaan': 'Find Job',
