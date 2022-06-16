@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:go_job/controller/logincontroller.dart';
-import 'package:go_job/pages/editprofil.dart';
-import 'package:go_job/pages/pendidikan.dart';
-import 'package:go_job/pages/pengalaman.dart';
-import 'package:go_job/shared/shared.dart';
+import 'package:mobile_go_job/controller/logincontroller.dart';
+import 'package:mobile_go_job/Screens/edit_profil.dart';
+import 'package:mobile_go_job/Screens/pengalaman.dart';
+import 'package:mobile_go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 
@@ -361,7 +360,7 @@ class _ViewProfilState extends State<ViewProfil> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => EditPendidikan()),
+                                builder: (context) => EditProfil()),
                           );
                         },
                       ))
