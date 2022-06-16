@@ -10,6 +10,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:mobile_go_job/Services/globals.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LowonganPekerjaan extends StatefulWidget {
   // final Lowongan lowongan;
@@ -27,8 +28,21 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
   _getData() async {
     _lowongan = await AuthServices.getLowongan();
     if (mounted) {
-      setState(() {});
+      setState(() {
+        _lowongan;
+      });
     }
+  }
+
+  Future<void> sessionDetailLowongan() async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    setState(() {
+      pref.setString("id", _lowongan[_index].id.toString());
+      pref.setString("logo", _lowongan[_index].logo.toString());
+      pref.setString("namalowongan", _lowongan[_index].namalowongan.toString());
+      pref.setString("namaperusahaan", _lowongan[_index].namaperusahaan.toString());
+      pref.setString("alamatperusahaan", _lowongan[_index].alamatperusahaan.toString());
+    });
   }
 
   @override
@@ -200,7 +214,8 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                                     ),
                                   ),
                                 ],
-                              )),
+                              )
+                              ),
                             ],
                           ),
                         ),
@@ -210,11 +225,8 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                 ],
               ),
               );
-                
               },
-              
             ),
-          
           ],
         ),
       ),
