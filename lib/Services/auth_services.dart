@@ -96,10 +96,6 @@ class AuthServices {
   //menampilkan profil
   static Future<Profil> getUser(String id) async {
     final Uri profilURL =  Uri.parse("https://ws-tif.com/kel24/api/profile");
-    // var response = await http.post(Uri.parse(profilURL),
-    //   body: {
-    //     "id": id,
-    //   },);
 
     var response = await http.post(profilURL, body: {"id": id});
 

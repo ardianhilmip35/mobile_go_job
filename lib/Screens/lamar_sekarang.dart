@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_go_job/Screens/profil.dart';
 import 'package:mobile_go_job/Screens/profil_perusahaan.dart';
+import 'package:mobile_go_job/Services/auth_services.dart';
 import 'package:mobile_go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
@@ -17,6 +18,8 @@ class LamarSekarang extends StatefulWidget {
 class _LamarSekarangState extends State<LamarSekarang> {
   final _formKey = GlobalKey<FormState>();
   double nilaiSlider = 1;
+  String? _namaPelamar, _email;
+
 
   String _namaPerusahaan = "",
       _namaLowongan = "",
@@ -35,10 +38,22 @@ class _LamarSekarangState extends State<LamarSekarang> {
     });
   }
 
+  getUser() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String idUser = prefs.getString("id") ?? "";
+    AuthServices.getUser(idUser).then((value) {
+      setState(() {
+        _namaPelamar = value.namaPelamar.toString();
+        _email = value.email.toString();
+      });
+    });
+  }
+
   @override
   void initState() {
     super.initState();
     _getSessionLowongan();
+    getUser();
   }
   
   @override
@@ -211,7 +226,8 @@ class _LamarSekarangState extends State<LamarSekarang> {
                                   width:
                                       MediaQuery.of(context).size.width / 2.2,
                                   child: Text(
-                                    "Tanti Wulansari",
+                                    // "Tanti Wulansari",
+                                    "$_namaPelamar",
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 20,
@@ -259,7 +275,10 @@ class _LamarSekarangState extends State<LamarSekarang> {
                                   alignment: Alignment.centerRight,
                                   width:
                                       MediaQuery.of(context).size.width / 2.2,
-                                  child: Text("tantiwulansari@gmail.com")),
+                                  child: Text(
+                                    // "tantiwulansari@gmail.com"
+                                    "$_email",
+                                  )),
                             ],
                           ),
                         ],
