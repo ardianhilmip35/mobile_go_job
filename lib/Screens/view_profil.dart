@@ -19,10 +19,15 @@ class ViewProfil extends StatefulWidget {
 }
 
 class _ViewProfilState extends State<ViewProfil> {
- String? _namaPelamar, 
- _email, _telpPelamar, 
- _alamatPelamar, _tanggalLahirPelamar, 
- _jenisKelaminPelamar, _pendidikanPelamar, _;
+  String? _namaPelamar, _tglPelamar,  
+  _telpPelamar, _kelaminPelamar,
+  _agamaPelamar, _alamatPelamar,
+  _universitasPelamar, _jurusanPelamar,
+  _prodiPelamar, _pengalamanPelamar, 
+  _posisiPelamar, _perusahaanPelamar, 
+  _tahunPelamar, _spesialisPelamar, 
+  _lokasiPelamar, _gajiPelamar,
+  _email;
   final _alert = ShowAlert();
   final _toast = ShowToast();
 
@@ -40,6 +45,20 @@ class _ViewProfilState extends State<ViewProfil> {
         _namaPelamar = value.namaPelamar.toString();
         _email = value.email.toString();
         _telpPelamar = value.telpPelamar.toString();
+        _tglPelamar = value.tanggalLahir.toString();
+        _kelaminPelamar = value.jenisKelamin.toString();
+        _agamaPelamar = value.agama.toString();
+        _alamatPelamar = value.alamatPelamar.toString();
+        _universitasPelamar = value.universitas.toString();
+        _jurusanPelamar = value.jurusan.toString();
+        _prodiPelamar = value.prodi.toString();
+        _pengalamanPelamar = value.pengalaman.toString();
+        _posisiPelamar = value.posisi.toString();
+        _perusahaanPelamar = value.perusahaan.toString();
+        _tahunPelamar = value.tahun.toString();
+        _spesialisPelamar = value.spesialis.toString();
+        _lokasiPelamar = value.lokasi.toString();
+        _gajiPelamar = value.gaji.toString();
       });
     });
   }
@@ -248,7 +267,7 @@ class _ViewProfilState extends State<ViewProfil> {
                           Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "Teknologi Informasi",
+                              "$_jurusanPelamar",
                               style: GoogleFonts.poppins(fontSize: 15),
                             ),
                           ),
@@ -282,7 +301,7 @@ class _ViewProfilState extends State<ViewProfil> {
                           Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "Teknik Informatika",
+                              "$_prodiPelamar",
                               style: GoogleFonts.poppins(fontSize: 15),
                             ),
                           ),
