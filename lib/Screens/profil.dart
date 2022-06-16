@@ -14,6 +14,7 @@ import 'package:mobile_go_job/Services/auth_services.dart';
 import 'package:mobile_go_job/Screens/riwayat_lamaran.dart';
 import 'package:mobile_go_job/Screens/simpan_lowongan.dart';
 import 'package:mobile_go_job/Screens/view_profil.dart';
+import 'package:mobile_go_job/main.dart';
 import 'package:mobile_go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_go_job/Screens/login.dart';
@@ -31,6 +32,7 @@ class _ProfilState extends State<Profil> {
   String? _namaPelamar, _email;
   final _alert = ShowAlert();
   final _toast = ShowToast();
+  bool _isLoading = true;
 
   @override
   void initState() {
@@ -99,6 +101,55 @@ class _ProfilState extends State<Profil> {
             ),
           );
         });
+  }
+
+  confirmLogout(BuildContext context) {
+    Widget cancel = FlatButton(
+        onPressed: () {
+          Navigator.pop(context);
+        },
+        child: Text(
+          "Batal",
+        ));
+    Widget confirm = FlatButton(
+        onPressed: () {
+          Navigator.pop(context);
+          _logout();
+        },
+        child: Text(
+          "Logout",
+        ));
+    AlertDialog alert = AlertDialog(
+      title: Text("Konfirmasi Logout"),
+      content: Text("Apakah Anda yakin ingin keluar ?"),
+      actions: [
+        cancel,
+        confirm,
+      ],
+    );
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
+  _logout() async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    setState(() {
+      pref.remove("is_login");
+      pref.clear();
+    });
+    _toast.showToast("Berhasil Logout");
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(
+        builder: (BuildContext context) => const Login(),
+      ),
+      (route) => false,
+    );
   }
 
   @override
@@ -295,6 +346,7 @@ class _ProfilState extends State<Profil> {
                 //Button Logout
                 onPressed: () {
                   // controller.logout();
+                  confirmLogout(context);
                 },
                 color: Colors.white,
                 child: Container(
@@ -320,4 +372,34 @@ class _ProfilState extends State<Profil> {
       ),
     );
   }
+  
+
+  // void logout() async {
+  //   setState(() {
+  //     _isLoading = true;
+  //   });
+  //   var res = await AuthServices().logout();
+  //   var body = jsonDecode(res);
+  //   if (body['success']) {
+  //     SharedPreferences localStorage = await SharedPreferences.getInstance();
+  //     localStorage.remove('id');
+  //     localStorage.remove('nama_pelamar');
+  //     localStorage.remove('email');
+  //     localStorage.remove('access_token');
+  //     localStorage.clear();
+  //     setState(() {
+  //       _isLoading = false;
+  //     });
+  //     // Navigator.pushReplacement(
+  //     //     context, MaterialPageRoute(builder: (context) => WelcomePage()));
+  //     Navigator.of(context).pushAndRemoveUntil(
+  //         MaterialPageRoute(builder: (context) => Login()),
+  //         (Route<dynamic> route) => false);
+  //   } else {
+  //     setState(() {
+  //       _isLoading = false;
+  //     });
+  //     ShowToast;
+  //   }
+  // }
 }

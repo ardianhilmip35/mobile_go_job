@@ -25,7 +25,7 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
   List<Lowongan> _lowongan = [];
 
   _getData() async {
-    _lowongan = await AuthServices.geLowongan();
+    _lowongan = await AuthServices.getLowongan();
     if (mounted) {
       setState(() {});
     }
@@ -43,7 +43,7 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "lowongan".tr,
+          "Lowongan",
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
@@ -76,11 +76,9 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
             ),
             GridView.builder(
               shrinkWrap: true,
-              padding: EdgeInsets.only(top: 15.0, bottom: 5.0),
+              padding: EdgeInsets.only(top: 15.0),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 1,
-                    crossAxisSpacing: 15,
-                    mainAxisSpacing: 15,
                   ),
               itemCount: _lowongan.length,
               itemBuilder: (context, index) {
@@ -88,7 +86,7 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                 child: Column(
                 children: <Widget>[
                   Container(
-                    padding: EdgeInsets.all(5),
+                    padding: EdgeInsets.all(1),
                     height: 315,
                     width: double.infinity,
                     decoration: BoxDecoration(
