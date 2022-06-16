@@ -204,15 +204,17 @@ class _ProfilState extends State<Profil> {
                               fontSize: 20,
                               color: Colors.white),
                         ),
+                        
                         Text(
                           // "$_email",
                           "$_email",
                           // controller.googleAccount.value?.displayName ?? '',
                           style: GoogleFonts.poppins(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
+                              fontSize: 15,
                               color: Colors.white),
+                              
                         ),
+                        Padding(padding: EdgeInsets.only(top: 12)),
                         RichText(
                           text: TextSpan(children: [
                             WidgetSpan(
