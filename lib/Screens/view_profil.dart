@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_go_job/controller/logincontroller.dart';
-import 'package:mobile_go_job/Screens/edit_profil.dart';
-import 'package:mobile_go_job/Screens/pengalaman.dart';
-import 'package:mobile_go_job/shared/shared.dart';
+import 'package:go_job/controller/logincontroller.dart';
+import 'package:go_job/pages/editprofil.dart';
+import 'package:go_job/pages/pendidikan.dart';
+import 'package:go_job/pages/pengalaman.dart';
+import 'package:go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-import '../Notifikasi/alert.dart';
-import '../Notifikasi/toast.dart';
-import '../Services/auth_services.dart';
 
 class ViewProfil extends StatefulWidget {
   const ViewProfil({Key? key}) : super(key: key);
@@ -19,56 +15,14 @@ class ViewProfil extends StatefulWidget {
 }
 
 class _ViewProfilState extends State<ViewProfil> {
-  String? _namaPelamar, _tglPelamar,  
-  _telpPelamar, _kelaminPelamar,
-  _agamaPelamar, _alamatPelamar,
-  _universitasPelamar, _jurusanPelamar,
-  _prodiPelamar, _pengalamanPelamar, 
-  _posisiPelamar, _perusahaanPelamar, 
-  _tahunPelamar, _spesialisPelamar, 
-  _lokasiPelamar, _gajiPelamar,
-  _email;
-  final _alert = ShowAlert();
-  final _toast = ShowToast();
-
-  @override
-  void initState() {
-    super.initState();
-    getUser();
-  }
-
-  getUser() async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    String idUser = pref.getString("id") ?? "";
-    AuthServices.getUser(idUser).then((value) {
-      setState(() {
-        _namaPelamar = value.namaPelamar.toString();
-        _email = value.email.toString();
-        _telpPelamar = value.telpPelamar.toString();
-        _tglPelamar = value.tanggalLahir.toString();
-        _kelaminPelamar = value.jenisKelamin.toString();
-        _agamaPelamar = value.agama.toString();
-        _alamatPelamar = value.alamatPelamar.toString();
-        _universitasPelamar = value.universitas.toString();
-        _jurusanPelamar = value.jurusan.toString();
-        _prodiPelamar = value.prodi.toString();
-        _pengalamanPelamar = value.pengalaman.toString();
-        _posisiPelamar = value.posisi.toString();
-        _perusahaanPelamar = value.perusahaan.toString();
-        _tahunPelamar = value.tahun.toString();
-        _spesialisPelamar = value.spesialis.toString();
-        _lokasiPelamar = value.lokasi.toString();
-        _gajiPelamar = value.gaji.toString();
-      });
-    });
-  }
+  final controller = Get.put(LoginController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'lihatprofil'.tr,
+          "lihatprofil".tr,
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
@@ -132,7 +86,7 @@ class _ViewProfilState extends State<ViewProfil> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                         "$_namaPelamar",
+                          controller.googleAccount.value?.displayName ?? '',
                           textAlign: TextAlign.center,
                           style: GoogleFonts.poppins(
                               fontWeight: FontWeight.bold,
@@ -143,7 +97,7 @@ class _ViewProfilState extends State<ViewProfil> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Text(
-                              "$_telpPelamar",
+                              "0882153572313",
                               style: GoogleFonts.poppins(
                                   fontSize: 15, color: Colors.grey),
                             ),
@@ -155,8 +109,7 @@ class _ViewProfilState extends State<ViewProfil> {
                             ),
                             Padding(padding: EdgeInsets.only(right: 5)),
                             Text(
-                              "$_email",
-                              // controller.googleAccount.value?.email ?? '',
+                              controller.googleAccount.value?.email ?? '',
                               style: GoogleFonts.poppins(
                                   fontSize: 15, color: Colors.grey),
                             ),
@@ -182,10 +135,10 @@ class _ViewProfilState extends State<ViewProfil> {
                         child: Row(
                           children: <Widget>[
                             Padding(padding: EdgeInsets.only(left: 10)),
-                            Icon(Icons.business_center),
+                            Icon(Icons.person_add),
                             Padding(padding: EdgeInsets.only(left: 10)),
                             Text(
-                              'pengalamankerja'.tr,
+                              "biodata".tr,
                               style: GoogleFonts.poppins(fontSize: 20),
                             ),
                           ],
@@ -193,26 +146,102 @@ class _ViewProfilState extends State<ViewProfil> {
                       ),
                     ],
                   ),
-                  Padding(padding: EdgeInsets.only(top: 100)),
-                  RichText(
-                          text: TextSpan(children: [
-                            WidgetSpan(
-                                child: GestureDetector(
-                              child: Text(
-                                'tambahpengalaman'.tr,
-                                style: GoogleFonts.poppins(
-                                    fontSize: 15, color: primarycolor),
-                              ),
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Pengalaman()),
-                                );
-                              },
-                            ))
-                          ]),
+                  Container(
+                    margin: EdgeInsets.only(top: 10),
+                    padding: EdgeInsets.only(left: 10, right: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          'tanggallahir'.tr,
+                          style: GoogleFonts.poppins(
+                              fontSize: 15, fontWeight: FontWeight.bold),
                         ),
+                        Container(
+                            width: MediaQuery.of(context).size.width / 2.2,
+                            child: Text(
+                              '1-1-2000',
+                              textAlign: TextAlign.start,
+                            )),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 10, right: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          'alamat'.tr,
+                          style: GoogleFonts.poppins(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                        Container(
+                            width: MediaQuery.of(context).size.width / 2.2,
+                            child: Text(
+                              'Jember',
+                              textAlign: TextAlign.start,
+                            )),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 10, right: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          'agama'.tr,
+                          style: GoogleFonts.poppins(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                        Container(
+                            width: MediaQuery.of(context).size.width / 2.2,
+                            child: Text(
+                              'Krislam',
+                              textAlign: TextAlign.start,
+                            )),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 10, right: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          'nohp'.tr,
+                          style: GoogleFonts.poppins(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                        Container(
+                            width: MediaQuery.of(context).size.width / 2.2,
+                            child: Text(
+                              '0812345679',
+                              textAlign: TextAlign.start,
+                            )),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 10, right: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          'jeniskelamin'.tr,
+                          style: GoogleFonts.poppins(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                        Container(
+                            width: MediaQuery.of(context).size.width / 2.2,
+                            child: Text(
+                              'perempuan',
+                              textAlign: TextAlign.start,
+                            )),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -233,7 +262,7 @@ class _ViewProfilState extends State<ViewProfil> {
                             Icon(Icons.school),
                             Padding(padding: EdgeInsets.only(left: 10)),
                             Text(
-                              'pendidikan'.tr,
+                              "pendidikan".tr,
                               style: GoogleFonts.poppins(fontSize: 20),
                             ),
                           ],
@@ -242,78 +271,107 @@ class _ViewProfilState extends State<ViewProfil> {
                     ],
                   ),
                   Padding(padding: EdgeInsets.only(top: 10)),
-                  Row(
-                    children: <Widget>[
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: Row(
-                          children: <Widget>[
-                            Padding(padding: EdgeInsets.only(left: 10)),
-                            Text(
-                              'Jurusan'.tr,
-                              style: GoogleFonts.poppins(
-                                  fontSize: 15, fontWeight: FontWeight.bold),
-                            ),
-                          ],
+                  Container(
+                    padding: EdgeInsets.only(left: 10, right: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          'universitas'.tr,
+                          style: GoogleFonts.poppins(
+                              fontSize: 15, fontWeight: FontWeight.bold),
                         ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                          Padding(padding: EdgeInsets.only(left: 10)),
-                          Align(
-                            alignment: Alignment.centerLeft,
+                        Container(
+                            width: MediaQuery.of(context).size.width / 2.2,
                             child: Text(
-                              "$_jurusanPelamar",
-                              style: GoogleFonts.poppins(fontSize: 15),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                              'Politeknik Negeri Jember',
+                              textAlign: TextAlign.start,
+                            )),
+                      ],
+                    ),
                   ),
-
-                  Row(
-                    children: <Widget>[
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: Row(
-                          children: <Widget>[
-                            Padding(padding: EdgeInsets.only(left: 10)),
-                            Text(
-                              'Prodi'.tr,
-                              style: GoogleFonts.poppins(
-                                  fontSize: 15, fontWeight: FontWeight.bold),
-                            ),
-                          ],
+                  Container(
+                    padding: EdgeInsets.only(left: 10, right: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          'jurusan'.tr,
+                          style: GoogleFonts.poppins(
+                              fontSize: 15, fontWeight: FontWeight.bold),
                         ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                          Padding(padding: EdgeInsets.only(left: 10)),
-                          Align(
-                            alignment: Alignment.centerLeft,
+                        Container(
+                            width: MediaQuery.of(context).size.width / 2.2,
                             child: Text(
-                              "$_prodiPelamar",
-                              style: GoogleFonts.poppins(fontSize: 15),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                              'Teknologi Informasi',
+                              textAlign: TextAlign.start,
+                            )),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 10, right: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          'prodi'.tr,
+                          style: GoogleFonts.poppins(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                        Container(
+                            width: MediaQuery.of(context).size.width / 2.2,
+                            child: Text(
+                              'Teknik Informatika',
+                              textAlign: TextAlign.start,
+                            )),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 10, right: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          'tahun'.tr,
+                          style: GoogleFonts.poppins(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                        Container(
+                            width: MediaQuery.of(context).size.width / 2.2,
+                            child: Text(
+                              '2022',
+                              textAlign: TextAlign.start,
+                            )),
+                      ],
+                    ),
+                  ),
+                  Padding(padding: EdgeInsets.only(top: 20)),
+                  RichText(
+                    text: TextSpan(children: [
+                      WidgetSpan(
+                          child: GestureDetector(
+                        child: Text(
+                          'editpendidikan'.tr,
+                          style: GoogleFonts.poppins(
+                              fontSize: 15, color: primarycolor),
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => EditPendidikan()),
+                          );
+                        },
+                      ))
+                    ]),
                   ),
                 ],
               ),
             ),
             Container(
-              height: 150,
+              constraints: BoxConstraints(maxHeight: double.infinity),
               width: double.infinity,
               decoration:
                   BoxDecoration(border: Border.all(color: primarycolor)),
@@ -326,10 +384,10 @@ class _ViewProfilState extends State<ViewProfil> {
                         child: Row(
                           children: <Widget>[
                             Padding(padding: EdgeInsets.only(left: 10)),
-                            Icon(Icons.emoji_objects),
+                            Icon(Icons.business_center),
                             Padding(padding: EdgeInsets.only(left: 10)),
                             Text(
-                              'keterampilan'.tr,
+                              "pengalaman".tr,
                               style: GoogleFonts.poppins(fontSize: 20),
                             ),
                           ],
@@ -337,9 +395,135 @@ class _ViewProfilState extends State<ViewProfil> {
                       ),
                     ],
                   ),
+                  Padding(padding: EdgeInsets.only(top: 10)),
+                  Container(
+                    margin: EdgeInsets.only(left: 10, right: 10),
+                    child: Text(
+                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                      softWrap: true,
+                      textAlign: TextAlign.start,
+                      style: GoogleFonts.poppins(
+                          fontSize: 15),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 10, right: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          'posisi'.tr,
+                          style: GoogleFonts.poppins(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                        Container(
+                            width: MediaQuery.of(context).size.width / 2.2,
+                            child: Text(
+                              'Manager',
+                              textAlign: TextAlign.start,
+                            )),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 10, right: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          'perusahaan'.tr,
+                          style: GoogleFonts.poppins(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                        Container(
+                            width: MediaQuery.of(context).size.width / 2.2,
+                            child: Text(
+                              'PT Alfamart',
+                              textAlign: TextAlign.start,
+                            )),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 10, right: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          'spesialis'.tr,
+                          style: GoogleFonts.poppins(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                        Container(
+                            width: MediaQuery.of(context).size.width / 2.2,
+                            child: Text(
+                              '-',
+                              textAlign: TextAlign.start,
+                            )),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 10, right: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          'lokasi'.tr,
+                          style: GoogleFonts.poppins(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                        Container(
+                            width: MediaQuery.of(context).size.width / 2.2,
+                            child: Text(
+                              'Jakarta',
+                              textAlign: TextAlign.start,
+                            )),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 10, right: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          'gaji'.tr,
+                          style: GoogleFonts.poppins(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                        Container(
+                            width: MediaQuery.of(context).size.width / 2.2,
+                            child: Text(
+                              'Rp. 1.000.000',
+                              textAlign: TextAlign.start,
+                            )),
+                      ],
+                    ),
+                  ),
+                  Padding(padding: EdgeInsets.only(top: 20)),
+                  RichText(
+                    text: TextSpan(children: [
+                      WidgetSpan(
+                          child: GestureDetector(
+                        child: Text(
+                          'tambahpengalaman'.tr,
+                          style: GoogleFonts.poppins(
+                              fontSize: 15, color: primarycolor),
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Pengalaman()),
+                          );
+                        },
+                      ))
+                    ]),
+                  ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
