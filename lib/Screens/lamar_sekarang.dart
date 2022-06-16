@@ -4,6 +4,8 @@ import 'package:mobile_go_job/Screens/profil_perusahaan.dart';
 import 'package:mobile_go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:mobile_go_job/models/lowongan_model.dart';
 
 class LamarSekarang extends StatefulWidget {
   const LamarSekarang({Key? key}) : super(key: key);
@@ -15,6 +17,30 @@ class LamarSekarang extends StatefulWidget {
 class _LamarSekarangState extends State<LamarSekarang> {
   final _formKey = GlobalKey<FormState>();
   double nilaiSlider = 1;
+
+  String _namaPerusahaan = "",
+      _namaLowongan = "",
+      _alamatPerusahaan = "",
+      _gaji = "";
+
+  // final _imgBaseUrl = Url.imageBaseUrl;
+
+  _getSessionLowongan() async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    setState(() {
+      _namaPerusahaan = pref.getString("namaperusahaan").toString();
+      _namaLowongan = pref.getString("namalowongan").toString();
+      _alamatPerusahaan = pref.getString("alamatperusahaan").toString();
+      _gaji = pref.getString("gajipekerjaan").toString();
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _getSessionLowongan();
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +95,8 @@ class _LamarSekarangState extends State<LamarSekarang> {
                             padding: EdgeInsets.all(2),
                           ),
                           Text(
-                            "Web Development Staff",
+                            // "Web Development Staff",
+                            _namaLowongan.toString(),
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
@@ -86,7 +113,8 @@ class _LamarSekarangState extends State<LamarSekarang> {
                                   child: Column(
                                     children: <Widget>[
                                       Text(
-                                        "PT Patma Tirta Jaya",
+                                        // "PT Patma Tirta Jaya",
+                                        _namaPerusahaan.toString(),
                                         style: TextStyle(
                                             fontSize: 15, color: primarycolor),
                                       ),
@@ -137,7 +165,10 @@ class _LamarSekarangState extends State<LamarSekarang> {
                                       MediaQuery.of(context).size.width / 2.2,
                                   child: Column(
                                     children: <Widget>[
-                                      Text("Surabaya, Jawa Timur"),
+                                      Text(
+                                        // "Surabaya, Jawa Timur"
+                                        _alamatPerusahaan.toString(),
+                                      ),
                                     ],
                                   )),
                               Container(
@@ -146,7 +177,10 @@ class _LamarSekarangState extends State<LamarSekarang> {
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: <Widget>[
-                                      Text("5 Hari Yang Lalu"),
+                                      Text(
+                                        // "5 Hari Yang Lalu"
+                                        _gaji.toString(),
+                                      ),
                                     ],
                                   )),
                             ],
