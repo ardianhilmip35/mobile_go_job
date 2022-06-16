@@ -89,22 +89,30 @@ class Profil {
         "message": message,
         "id": id,
         "nama_pelamar": namaPelamar,
+        "email": email,
+        
+        //biodata
         "tanggal_lahir": "${tanggalLahir!.year.toString().padLeft(4, '0')}-${tanggalLahir!.month.toString().padLeft(2, '0')}-${tanggalLahir?.day.toString().padLeft(2, '0')}",
         "telp_pelamar": telpPelamar,
         "jenis_kelamin": jenisKelamin,
         "agama": agama,
         "alamat_pelamar": alamatPelamar,
+
+        //gk usah ditampilno
         "cv_pelamar": cvPelamar,
+
+        //pendidikan
         "universitas": universitas,
         "jurusan": jurusan,
         "prodi": prodi,
+        "tahun": tahun,
+        
+        //pengalaman
         "pengalaman": pengalaman,
         "posisi": posisi,
         "perusahaan": perusahaan,
-        "tahun": tahun,
         "spesialis": spesialis,
         "lokasi": lokasi,
         "gaji": gaji,
-        "email": email,
     };
 }
