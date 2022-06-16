@@ -32,7 +32,7 @@ class _DashboardState extends State<Dashboard> {
   List<Lowongan> _lowongan = [];
 
   _getData() async {
-    _lowongan = await AuthServices.geLowongan();
+    _lowongan = await AuthServices.getLowongan();
     if (mounted) {
       setState(() {});
     }

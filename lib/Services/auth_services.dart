@@ -20,7 +20,6 @@ class AuthServices {
   
   //register
   static Future<http.Response> register(
-
     String nama_pelamar, String email, String password) async {
     Map data = {
       "nama_pelamar": nama_pelamar,
@@ -38,9 +37,8 @@ class AuthServices {
     return response;
   }
 
-  //login
+  //login - logout
   static Future<Login> login (String _email, String password) async {
-
     Map data = {
       "email": _email,
       "password": password,
@@ -57,10 +55,25 @@ class AuthServices {
     } else {
       throw Exception("Failed to login User");
     }
-    // print(response.body);
-    // return response;
-  }
-  
+  } 
+
+  // logout() async {
+  //   var fullUrl = Uri.parse(loginURL + logoutURL);
+  //   await () async {
+  //     SharedPreferences pref = await SharedPreferences.getInstance();
+  //     token = jsonDecode("accessToken")['access_token'];
+  //   }();
+  //   return await http.get(
+  //     fullUrl,
+  //     headers: _setHeaders(),
+  //   );
+  // }
+
+  // _setHeaders() => {
+  //       'Content-type': 'application/json',
+  //       'Accept': 'application/json',
+  //       'Authorization': 'Bearer $token',
+  //     };
   // Future<dynamic> profil() async {
   //   SharedPreferences prefs = await SharedPreferences.getInstance();
   //   var id = prefs.getInt('id');
@@ -106,7 +119,7 @@ class AuthServices {
     // return request;
   }
   
-  static Future<List<Lowongan>> geLowongan() async {    
+  static Future<List<Lowongan>> getLowongan() async {    
     
     var response = await http.get(Uri.parse("$lowonganURL"));
     var responseData = jsonDecode(response.body);
