@@ -1,15 +1,15 @@
 // To parse this JSON data, do
 //
-//     final lowongan = lowonganFromJson(jsonString);
+//     final register = registerFromJson(jsonString);
 
 import 'dart:convert';
 
-Lowongan lowonganFromJson(String str) => Lowongan.fromJson(json.decode(str));
+Register registerFromJson(String str) => Register.fromJson(json.decode(str));
 
-String lowonganToJson(Lowongan data) => json.encode(data.toJson());
+String registerToJson(Register data) => json.encode(data.toJson());
 
-class Lowongan {
-    Lowongan({
+class Register {
+    Register({
       required this.data,
       required this.accessToken,
       required this.tokenType,
@@ -21,7 +21,7 @@ class Lowongan {
     String tokenType;
     String pesan;
 
-    factory Lowongan.fromJson(Map<String, dynamic> json) => Lowongan(
+    factory Register.fromJson(Map<String, dynamic> json) => Register(
         data: Data.fromJson(json["data"]),
         accessToken: json["access_token"],
         tokenType: json["token_type"],

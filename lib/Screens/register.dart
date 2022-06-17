@@ -8,6 +8,7 @@ import 'package:mobile_go_job/Services/globals.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_go_job/shared/shared.dart';
 import 'package:get/get.dart';
+import '../Notifikasi/toast.dart';
 import '../rounded_button.dart';
 import 'dashboard.dart';
 import 'login.dart';
@@ -21,30 +22,58 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
-  String _email = '';
-  String _password = '';
-  String _namaPelamar = '';
+  // String _email = '';
+  // String _password = '';
+  // String _namaPelamar = '';
 
-  createAccountPressed() async {
-    bool emailValid = RegExp(
-            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-        .hasMatch(_email);
-    if (emailValid) {
-      http.Response response =
-          await AuthServices.register(_namaPelamar, _email, _password);
-      Map responseMap = jsonDecode(response.body);
-      if (response.statusCode == 200) {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (BuildContext context) => const Login(),
-            ));
-      } else {
-        errorSnackBar(context, responseMap.values.first[0]);
-      }
-    } else {
-      errorSnackBar(context, 'email not valid');
-    }
+  // createAccountPressed() async {
+  //   bool emailValid = RegExp(
+  //           r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+  //       .hasMatch(_email);
+  //   if (emailValid) {
+  //     http.Response response =
+  //         await AuthServices.register(_namaPelamar, _email, _password);
+  //     Map responseMap = jsonDecode(response.body);
+  //     if (response.statusCode == 200) {
+  //       Navigator.push(
+  //           context,
+  //           MaterialPageRoute(
+  //             builder: (BuildContext context) => const Login(),
+  //           ));
+  //     } else {
+  //       errorSnackBar(context, responseMap.values.first[0]);
+  //     }
+  //   } else {
+  //     errorSnackBar(context, 'email not valid');
+  //   }
+  // }
+  final _formKey = GlobalKey<FormState>();
+  final _toast = ShowToast();
+
+  final _namaController = TextEditingController();
+  // final _jenisKelController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _konfirmPasswordController = TextEditingController();
+
+  void _addUser() async {
+    AuthServices.register(
+      _namaController.text.trim().toLowerCase(),
+      _emailController.text.trim().toLowerCase(),
+      _passwordController.text.trim(),
+    ).then((value) {
+      setState(() {
+        if (value.pesan == 201) {
+          _toast.showToast(value.pesan);
+          Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Login()));
+        } else {
+          _toast.showToast(value.pesan);
+        }
+      });
+    });
   }
 
   @override
@@ -60,7 +89,7 @@ class _RegisterState extends State<Register> {
       ),
       body: SingleChildScrollView(
         child: Form(
-          // key: _formKey,
+          key: _formKey,
           child: Container(
             padding: EdgeInsets.all(20.0),
             child: Column(
@@ -78,7 +107,7 @@ class _RegisterState extends State<Register> {
                   padding:
                       const EdgeInsets.only(top: 30.8, left: 8.8, right: 8.8),
                   child: TextFormField(
-                    // controller: namaPelamar,
+                    controller: _namaController,
                     //untuk input email
                     decoration: new InputDecoration(
                       labelText: "nama".tr,
@@ -88,9 +117,9 @@ class _RegisterState extends State<Register> {
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(0)),
                     ),
-                    onChanged: (value) {
-                      _namaPelamar = value;
-                    },
+                    // onChanged: (value) {
+                    //   _namaPelamar = value;
+                    // },
                     // validator: (value) {
                     //   if (value!.isEmpty) {
                     //     return 'namakosong'.tr;
@@ -104,7 +133,7 @@ class _RegisterState extends State<Register> {
                   padding:
                       const EdgeInsets.only(top: 25, left: 8.8, right: 8.8),
                   child: TextFormField(
-                    // controller: email,
+                    controller: _emailController,
                     //untuk input email
                     decoration: new InputDecoration(
                       labelText: "Email",
@@ -112,9 +141,9 @@ class _RegisterState extends State<Register> {
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(0)),
                     ),
-                    onChanged: (value) {
-                      _email = value;
-                    },
+                    // onChanged: (value) {
+                    //   _email = value;
+                    // },
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'emailkosong'.tr;
@@ -128,7 +157,7 @@ class _RegisterState extends State<Register> {
                   padding:
                       const EdgeInsets.only(top: 25, left: 8.8, right: 8.8),
                   child: TextFormField(
-                    // controller: password,
+                    controller: _passwordController,
                     //untuk textfield password
                     obscureText: true,
                     decoration: new InputDecoration(
@@ -137,9 +166,9 @@ class _RegisterState extends State<Register> {
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(0)),
                     ),
-                    onChanged: (value) {
-                      _password = value;
-                    },
+                    // onChanged: (value) {
+                    //   _password = value;
+                    // },
                     // validator: (value) {
                     //   if (value!.isEmpty) {
                     //     return 'sandikosong'.tr;
@@ -154,6 +183,7 @@ class _RegisterState extends State<Register> {
                       const EdgeInsets.only(top: 25, left: 8.8, right: 8.8),
                   child: TextFormField(
                     //untuk textfield password
+                    controller: _konfirmPasswordController,
                     obscureText: true,
                     decoration: new InputDecoration(
                       labelText: "konfirsandi".tr,
@@ -182,7 +212,12 @@ class _RegisterState extends State<Register> {
                     style: ElevatedButton.styleFrom(
                       primary: primarycolor,
                     ),
-                    onPressed: () => createAccountPressed(),
+                    // onPressed: () => createAccountPressed(),
+                    onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              _addUser();
+                            }
+                          },
                     child: Text(
                       'daftar'.tr,
                       style: TextStyle(fontWeight: FontWeight.bold),

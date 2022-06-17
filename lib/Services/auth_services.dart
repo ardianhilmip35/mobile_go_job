@@ -7,6 +7,7 @@ import 'package:mobile_go_job/models/lowongan_model.dart';
 
 import '../models/login_model.dart';
 import '../models/profil_model.dart';
+import '../models/register_model.dart';
 
 
 class AuthServices {
@@ -19,25 +20,41 @@ class AuthServices {
   
   
   //register
-  static Future<http.Response> register(
-    String nama_pelamar, String email, String password) async {
-    Map data = {
-      "nama_pelamar": nama_pelamar,
-      "email": email,
-      "password": password,
-    };
-    var body = json.encode(data);
-    var url = Uri.parse(baseURL);
-    http.Response response = await http.post(
-      url,
-      headers: headers,
-      body: body,
+  static Future<Register> register(
+    String namaPelamar, String email, String password) async {
+    // Uri _apiURL = Uri.parse("${Url.baseURL}register.php");
+    final Uri registerURL =  Uri.parse("$baseURL");
+    var response = await http.post(
+      registerURL,
+      body: {
+        "nama_pelamar": namaPelamar,
+        "email": email,
+        "password": password,
+      },
     );
-    print(response.body);
-    return response;
-  }
 
-  //login - logout
+    if (response.statusCode == 200) {
+      return Register.fromJson(json.decode(response.body));
+    } else {
+      throw Exception("Failed to create User");
+    }
+  }
+    // Map data = {
+    //   "nama_pelamar": nama_pelamar,
+    //   "email": email,
+    //   "password": password,
+    // };
+    // var body = json.encode(data);
+    // var url = Uri.parse(baseURL);
+    // http.Response response = await http.post(
+    //   url,
+    //   headers: headers,
+    //   body: body,
+    // );
+    // print(response.body);
+    // return response;
+
+  //login 
   static Future<Login> login (String _email, String password) async {
     Map data = {
       "email": _email,
