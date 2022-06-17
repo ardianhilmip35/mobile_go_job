@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:mobile_go_job/Screens/dashboard.dart';
 import 'package:mobile_go_job/Screens/edit_profil.dart';
+import 'package:mobile_go_job/Screens/lamar_sekarang.dart';
 import 'package:mobile_go_job/Screens/localestring.dart';
 import 'package:mobile_go_job/Screens/login.dart';
 import 'package:mobile_go_job/Screens/lowongan_pekerjaan.dart';

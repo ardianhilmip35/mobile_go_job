@@ -239,7 +239,7 @@ class _LamarSekarangState extends State<LamarSekarang> {
                                     "$_namaPelamar",
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 20,
+                                        fontSize: 15,
                                         color: primarycolor),
                                   )),
                               Container(

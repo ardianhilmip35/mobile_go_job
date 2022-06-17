@@ -180,14 +180,14 @@ bool _isObscure = true;
                     // onChanged: (value) {
                     //   _password = value;
                     // },
-                    // validator: (value) {
-                    //  confirmPass = value;
-                    //   if (value!.isEmpty) {
-                    //     return 'sandikosong'.tr;
-                    //   }
-                    //   // password = passwordValue;
-                    //   // return null;
-                    // },
+                    validator: (value) {
+                     confirmPass = value;
+                      if (value!.isEmpty) {
+                        return 'sandikosong'.tr;
+                      }
+                       // password = passwordValue;
+                       return null;
+                     },
                   ),
                 ),
                 Padding(
