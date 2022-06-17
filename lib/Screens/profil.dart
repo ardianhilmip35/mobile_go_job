@@ -47,8 +47,6 @@ class _ProfilState extends State<Profil> {
       setState(() {
         _namaPelamar = value.namaPelamar.toString();
         _email = value.email.toString();
-        print(idUser);
-        print(_namaPelamar);
       });
     });
   }
