@@ -74,6 +74,16 @@ class _ViewProfilState extends State<ViewProfil> {
     });
   }
 
+  _userSession() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.setString("nama_pelamar", _namaPelamar.toString());
+    pref.setString("alamat_pelamar", _alamat.toString());
+    pref.setString("agama", _agama.toString());
+    pref.setString("telp_pelamar", _noHp.toString());
+    pref.setString("jenis_kelamin", _kelamin.toString());
+    pref.setString("tanggal_lahir", _tanggalLahir.toString());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -101,7 +111,8 @@ class _ViewProfilState extends State<ViewProfil> {
               child: IconButton(
                 alignment: Alignment.topRight,
                 onPressed: () {
-                  Navigator.push(context,
+                  _userSession();
+                  Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => EditProfil()));
                 },
                 icon: Icon(Icons.edit),

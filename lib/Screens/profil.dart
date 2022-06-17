@@ -51,17 +51,17 @@ class _ProfilState extends State<Profil> {
     });
   }
 
-  Future<void> sessionPelamar() async {
-    final SharedPreferences pref = await SharedPreferences.getInstance();
-    setState(() {
-    //   pref.setString("id", _lowongan[_index].id.toString());
-    //   // pref.setString("logo", _lowongan[_index].logo.toString());
-    //   pref.setString("namalowongan", _lowongan[_index].namalowongan.toString());
-    //   pref.setString("namaperusahaan", _lowongan[_index].namaperusahaan.toString());
-    //   pref.setString("alamatperusahaan", _lowongan[_index].alamatperusahaan.toString());
-    //   pref.setString("gajipekerjaan", _lowongan[_index].gajipekerjaan.toString());
-    });
-  }
+  // Future<void> sessionPelamar() async {
+  //   final SharedPreferences pref = await SharedPreferences.getInstance();
+  //   setState(() {
+  //   //   pref.setString("id", _lowongan[_index].id.toString());
+  //   //   // pref.setString("logo", _lowongan[_index].logo.toString());
+  //   //   pref.setString("namalowongan", _lowongan[_index].namalowongan.toString());
+  //   //   pref.setString("namaperusahaan", _lowongan[_index].namaperusahaan.toString());
+  //   //   pref.setString("alamatperusahaan", _lowongan[_index].alamatperusahaan.toString());
+  //   //   pref.setString("gajipekerjaan", _lowongan[_index].gajipekerjaan.toString());
+  //   });
+  // }
 
   final Email email = Email(
     body: 'Hello,',

@@ -151,5 +151,35 @@ class AuthServices {
       // print(json.decode(response.body));
       // return json.decode(response.body);
   }
-  
+
+  static Future<Profil> updatePelamar(
+    String idUser,
+    namaPelamar,
+    alamatPelamar,
+    agama,
+    noHp,
+    kelamin,
+    tglLahir,) async {
+    
+    Uri _apiURL = Uri.parse("$updateURL");
+
+    var response = await http.post(
+      _apiURL,
+      body: {
+        "id": idUser,
+        "nama_pelamar": namaPelamar,
+        "alamat_pelamar": alamatPelamar,
+        "agama": agama,
+        "telp_pelamar": noHp,
+        "jenis_kelamin": kelamin,
+        "tanggal_lahir": tglLahir,
+      },
+    );
+
+    if (response.statusCode == 200) {
+      return Profil.fromJson(json.decode(response.body));
+    } else {
+      throw Exception("Failed to update User");
+    }
+  }
 }
