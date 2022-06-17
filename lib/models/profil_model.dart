@@ -92,7 +92,7 @@ class Profil {
         "email": email,
         
         //biodata
-        "tanggal_lahir": "${tanggalLahir?.year.toString().padLeft(4)}-${tanggalLahir?.month.toString().padLeft(2, '0')}-${tanggalLahir?.day.toString().padLeft(2, '0')}",
+        "tanggal_lahir": "${tanggalLahir.year.toString().padLeft(4)}-${tanggalLahir.month.toString().padLeft(2, '0')}-${tanggalLahir.day.toString().padLeft(2, '0')}",
         "telp_pelamar": telpPelamar,
         "jenis_kelamin": jenisKelamin,
         "agama": agama,
