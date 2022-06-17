@@ -147,43 +147,14 @@ class _ProfilPerusahaanState extends State<ProfilPerusahaan> {
                 color: Colors.grey,
               ),
               child: Text(
-                'tentangperusahaan'.tr,
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
                     color: primarycolor),
               ),
             ),
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              Container(
-                width: 150,
-                child: RaisedButton(
-                  textColor: Colors.white,
-                  color: primarycolor,
-                  child: Text(
-                    'simpan'.tr,
-                    style: TextStyle(fontSize: 18, color: Colors.white),
-                  ),
-                  onPressed: () {},
-                  shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(5.0),
-                  ),
-                ),
-              ),
-              Padding(padding: EdgeInsets.only(top: 80, left: 20)),
-              RaisedButton(
-                textColor: Colors.white,
-                color: primarycolor,
-                child: Text(
-                  "lamar".tr,
-                  style: TextStyle(fontSize: 18, color: Colors.white),
-                ),
-                onPressed: () {},
-                shape: new RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(5.0),
-                ),
-              ),
-            ])
+           
           ],
         ),
       ),

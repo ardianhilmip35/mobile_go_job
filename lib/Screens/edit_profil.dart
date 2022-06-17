@@ -125,7 +125,9 @@ class _EditProfilState extends State<EditProfil> {
                         "batal".tr,
                         style: TextStyle(fontSize: 18, color: Colors.white),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
                       shape: new RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(5.0),
                       ),

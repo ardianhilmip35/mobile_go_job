@@ -17,7 +17,6 @@ import 'dashboard.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
-  
 
   @override
   _LoginState createState() => _LoginState();
@@ -86,11 +85,11 @@ class _LoginState extends State<Login> {
   //     errorSnackBar(context, 'enter all required fields');
   //   }
   // }
-
+  bool _isObscure = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
+      appBar: AppBar(
         title: Text(
           "Login",
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
@@ -99,7 +98,7 @@ class _LoginState extends State<Login> {
         centerTitle: true,
         backgroundColor: primarycolor,
       ),
-        body: SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Form(
           key: _formKey,
           child: Container(
@@ -148,12 +147,22 @@ class _LoginState extends State<Login> {
                     //untuk textfield password
                     controller: _passwordController,
                     // onSaved: (value) => requestModel.password = value,
-                    obscureText: true,
+                    obscureText: _isObscure,
                     decoration: new InputDecoration(
                       labelText: "sandi".tr,
                       icon: Icon(Icons.lock),
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(0)),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _isObscure ? Icons.visibility : Icons.visibility_off,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _isObscure = !_isObscure;
+                          });
+                        },
+                      ),
                     ),
                     // onChanged: (value) {
                     //   _password = value;
@@ -182,16 +191,16 @@ class _LoginState extends State<Login> {
                     ),
                     // onPressed: () => loginPressed(),
                     onPressed: () {
-                                  if (_formKey.currentState!.validate()) {
-                                    _login();
-                                  }
-                                },
-                      // if (_formKey.currentState!.validate()) {
-                      //   _login();
-                      // }
-                      // if(_formKey.currentState.validate()) {
-                      //   _login();
-                      // }
+                      if (_formKey.currentState!.validate()) {
+                        _login();
+                      }
+                    },
+                    // if (_formKey.currentState!.validate()) {
+                    //   _login();
+                    // }
+                    // if(_formKey.currentState.validate()) {
+                    //   _login();
+                    // }
                     // },
                     // setState(() {
                     //   visible = true;
@@ -199,7 +208,6 @@ class _LoginState extends State<Login> {
                     // signIn(emailController.text, passwordController.text);
 
                     // },
-                    
                   ),
                 ),
                 Padding(

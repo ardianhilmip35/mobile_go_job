@@ -27,7 +27,7 @@ class _DashboardState extends State<Dashboard> {
   String? _namaPelamar;
   final _alert = ShowAlert();
   final _toast = ShowToast();
-  
+
   int _index = 0;
   List<Lowongan> _lowongan = [];
 
@@ -150,66 +150,6 @@ class _DashboardState extends State<Dashboard> {
                           ]),
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 10),
-                      padding: EdgeInsets.all(10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            "caripekerjaan".tr,
-                            style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                                color: Colors.black),
-                          ),
-                          Container(
-                            child: Row(
-                              children: <Widget>[
-                                Container(
-                                  width:
-                                      MediaQuery.of(context).size.width / 2.2,
-                                  height: 300,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                Padding(padding: EdgeInsets.only(left: 5)),
-                                Container(
-                                  width:
-                                      MediaQuery.of(context).size.width / 2.3,
-                                  height: 300,
-                                  child: Column(
-                                    children: <Widget>[
-                                      Container(
-                                        width:
-                                            MediaQuery.of(context).size.width /
-                                                2.3,
-                                        height: 145,
-                                        decoration: BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                      Padding(
-                                          padding: EdgeInsets.only(top: 10)),
-                                      Container(
-                                        width:
-                                            MediaQuery.of(context).size.width /
-                                                2.2,
-                                        height: 145,
-                                        decoration: BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    Container(
                       width: double.infinity,
                       padding: EdgeInsets.all(10),
                       child: Row(
@@ -222,152 +162,181 @@ class _DashboardState extends State<Dashboard> {
                                 fontSize: 20,
                                 color: Colors.black),
                           ),
-                          Text(
-                            "lihat".tr,
-                            textAlign: TextAlign.end,
-                            style: GoogleFonts.poppins(
-                                fontSize: 15, color: Colors.grey),
+                          RichText(
+                            text: TextSpan(children: [
+                              WidgetSpan(
+                                  child: GestureDetector(
+                                child: Text(
+                                  'lihat'.tr,
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 15, color: Colors.grey),
+                                ),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            LowonganPekerjaan()),
+                                  );
+                                },
+                              ))
+                            ]),
                           ),
                         ],
                       ),
                     ),
                     GridView.builder(
-                      shrinkWrap: true,
-                      padding: EdgeInsets.only(top: 15.0),
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 1,
-                      ),
-                      itemCount: _lowongan.length,
-                      itemBuilder: (context, index) {
-                        return InkWell(
-                        child:  Column(
-                          children: <Widget>[
-                            Container(
-                              width: double.infinity,
-                              margin: EdgeInsets.only(left: 10, right: 10),
-                              padding: EdgeInsets.only(left: 10, right: 10, top: 5),
-                              height: 120,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                              ),
-                              child: Container(
-                                child: Column(
-                                  children: <Widget>[
-                                    Container(
-                                      child: Row(
-                                        children: <Widget>[
-                                          Container(
-                                            width: 55,
-                                            height: 55,
-                                            decoration: BoxDecoration(
-                                              color: Colors.grey,
-                                              border: Border.all(
-                                                  color: Colors.white, width: 4),
-                                              shape: BoxShape.circle,
+                        shrinkWrap: true,
+                        padding: EdgeInsets.only(top: 15.0),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 1,
+                        ),
+                        itemCount: _lowongan.length,
+                        itemBuilder: (context, index) {
+                          return InkWell(
+                              child: Column(
+                            children: <Widget>[
+                              Container(
+                                width: double.infinity,
+                                margin: EdgeInsets.only(left: 10, right: 10),
+                                padding: EdgeInsets.only(
+                                    left: 10, right: 10, top: 5),
+                                height: 120,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                ),
+                                child: Container(
+                                  child: Column(
+                                    children: <Widget>[
+                                      Container(
+                                        child: Row(
+                                          children: <Widget>[
+                                            Container(
+                                              width: 55,
+                                              height: 55,
+                                              decoration: BoxDecoration(
+                                                color: Colors.grey,
+                                                border: Border.all(
+                                                    color: Colors.white,
+                                                    width: 4),
+                                                shape: BoxShape.circle,
+                                              ),
+                                              child: Icon(
+                                                Icons.business_center,
+                                                color: Colors.black,
+                                                size: 40,
+                                              ),
                                             ),
-                                            child: Icon(
-                                              Icons.business_center,
-                                              color: Colors.black,
-                                              size: 40,
+                                            SizedBox(
+                                              width: 15,
                                             ),
-                                          ),
-                                          SizedBox(
-                                            width: 15,
-                                          ),
-                                          Container(
-                                            width:
-                                                MediaQuery.of(context).size.width /
-                                                    1.44,
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceBetween,
-                                              children: <Widget>[
-                                                Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: <Widget>[
-                                                    Text(
-                                                      // "Web Developer",
-                                                      _lowongan[index].namalowongan.toString(),
-                                                      style: GoogleFonts.poppins(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontSize: 20,
-                                                          color: Colors.black),
-                                                    ),
-                                                    Text(
-                                                      // "Surabaya",
-                                                      _lowongan[index].alamatperusahaan.toString(),
-                                                      style: GoogleFonts.poppins(
-                                                          fontSize: 15,
-                                                          color: Colors.black),
-                                                    ),
-                                                  ],
-                                                ),
-                                                IconButton(
-                                                    iconSize: 45,
-                                                    color: _iconColor,
-                                                    onPressed: () {
-                                                      setState(() {
-                                                        if (_iconColor ==
-                                                            Colors.grey) {
-                                                          _iconColor = primarycolor;
-                                                        } else {
-                                                          _iconColor = Colors.grey;
-                                                        }
-                                                      });
-                                                    },
-                                                    icon: Icon(Icons.bookmark)),
-                                              ],
+                                            Container(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  1.44,
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: <Widget>[
+                                                  Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: <Widget>[
+                                                      Text(
+                                                        // "Web Developer",
+                                                        _lowongan[index]
+                                                            .namalowongan
+                                                            .toString(),
+                                                        style:
+                                                            GoogleFonts.poppins(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontSize: 20,
+                                                                color: Colors
+                                                                    .black),
+                                                      ),
+                                                      Text(
+                                                        // "Surabaya",
+                                                        _lowongan[index]
+                                                            .alamatperusahaan
+                                                            .toString(),
+                                                        style:
+                                                            GoogleFonts.poppins(
+                                                                fontSize: 15,
+                                                                color: Colors
+                                                                    .black),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  IconButton(
+                                                      iconSize: 45,
+                                                      color: _iconColor,
+                                                      onPressed: () {
+                                                        setState(() {
+                                                          if (_iconColor ==
+                                                              Colors.grey) {
+                                                            _iconColor =
+                                                                primarycolor;
+                                                          } else {
+                                                            _iconColor =
+                                                                Colors.grey;
+                                                          }
+                                                        });
+                                                      },
+                                                      icon:
+                                                          Icon(Icons.bookmark)),
+                                                ],
+                                              ),
                                             ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                    Container(
-                                      child: Row(
-                                        children: <Widget>[
-                                          ElevatedButton(
-                                            onPressed: () {
-                                              Route route = MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      DetailLowongan());
-                                              Navigator.push(context, route);
-                                            },
-                                            child: Text('buka'.tr),
-                                            style: ElevatedButton.styleFrom(
-                                                primary: primarycolor,
-                                                shape: StadiumBorder()),
-                                          ),
-                                          SizedBox(
-                                            width: 10,
-                                          ),
-                                          ElevatedButton(
-                                            onPressed: () {
-                                              Route route = MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      LamarSekarang());
-                                              Navigator.push(context, route);
-                                            },
-                                            child: Text('lamar'.tr),
-                                            style: ElevatedButton.styleFrom(
-                                                primary: primarycolor,
-                                                shape: StadiumBorder()),
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  ],
+                                      Container(
+                                        child: Row(
+                                          children: <Widget>[
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                Route route = MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        DetailLowongan());
+                                                Navigator.push(context, route);
+                                              },
+                                              child: Text('buka'.tr),
+                                              style: ElevatedButton.styleFrom(
+                                                  primary: primarycolor,
+                                                  shape: StadiumBorder()),
+                                            ),
+                                            SizedBox(
+                                              width: 10,
+                                            ),
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                Route route = MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        LamarSekarang());
+                                                Navigator.push(context, route);
+                                              },
+                                              child: Text('lamar'.tr),
+                                              style: ElevatedButton.styleFrom(
+                                                  primary: primarycolor,
+                                                  shape: StadiumBorder()),
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
-                        )
-                        );
-                      
-                      }
-                    ),
-                    
+                              Padding(padding: EdgeInsets.only(bottom: 10)),
+                            ],
+                          ));
+                        }),
                   ],
                 ),
               ),

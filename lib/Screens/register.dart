@@ -22,6 +22,7 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+  var confirmPass;
   // String _email = '';
   // String _password = '';
   // String _namaPelamar = '';
@@ -75,7 +76,7 @@ class _RegisterState extends State<Register> {
       });
     });
   }
-
+bool _isObscure = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -159,17 +160,28 @@ class _RegisterState extends State<Register> {
                   child: TextFormField(
                     controller: _passwordController,
                     //untuk textfield password
-                    obscureText: true,
+                    obscureText: _isObscure,
                     decoration: new InputDecoration(
                       labelText: "sandi".tr,
                       icon: Icon(Icons.lock),
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(0)),
+                    suffixIcon: IconButton(
+                        icon: Icon(
+                          _isObscure ? Icons.visibility : Icons.visibility_off,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _isObscure = !_isObscure;
+                          });
+                        },
+                      ),
                     ),
                     // onChanged: (value) {
                     //   _password = value;
                     // },
                     // validator: (value) {
+                    //  confirmPass = value;
                     //   if (value!.isEmpty) {
                     //     return 'sandikosong'.tr;
                     //   }
@@ -184,16 +196,29 @@ class _RegisterState extends State<Register> {
                   child: TextFormField(
                     //untuk textfield password
                     controller: _konfirmPasswordController,
-                    obscureText: true,
+                    obscureText: _isObscure,
                     decoration: new InputDecoration(
                       labelText: "konfirsandi".tr,
                       icon: Icon(Icons.security),
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(0)),
+                    suffixIcon: IconButton(
+                        icon: Icon(
+                          _isObscure ? Icons.visibility : Icons.visibility_off,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _isObscure = !_isObscure;
+                          });
+                        },
+                      ),
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'konfirkosong'.tr;
+                      }
+                        else if (value != confirmPass) {
+                        return "passwordbeda".tr;
                       }
                       return null;
                     },

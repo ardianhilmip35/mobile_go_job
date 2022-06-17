@@ -46,6 +46,7 @@ dependencies:
   http: ^0.13.4
   plugin_platform_interface: ^2.1.2
   cool_alert: ^1.1.0
+  file_picker:
 
 dev_dependencies:
   flutter_test:

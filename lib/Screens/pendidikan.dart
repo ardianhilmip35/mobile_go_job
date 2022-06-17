@@ -3,20 +3,20 @@ import 'package:mobile_go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 
-class Pengalaman extends StatefulWidget {
-  const Pengalaman({Key? key}) : super(key: key);
+class EditPendidikan extends StatefulWidget {
+  const EditPendidikan({Key? key}) : super(key: key);
 
   @override
-  State<Pengalaman> createState() => _PengalamanState();
+  State<EditPendidikan> createState() => _EditPendidikanState();
 }
 
-class _PengalamanState extends State<Pengalaman> {
+class _EditPendidikanState extends State<EditPendidikan> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "pengalaman".tr,
+          "editpendidikan".tr,
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
@@ -40,67 +40,43 @@ class _PengalamanState extends State<Pengalaman> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                "pengalamankerja".tr,
-                style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
-              ),
-              TextFormField(
-                maxLines: 5,
-                style: Theme.of(context).textTheme.bodyText1,
-                decoration: InputDecoration(
-                    hintText: "",
-                    border: OutlineInputBorder(),
-                    focusColor: Colors.grey,
-                    labelStyle:
-                        TextStyle(fontWeight: FontWeight.normal, fontSize: 14)),
-              ),
-               Text(
-                "posisi".tr,
+                "universitas".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: "manajer",
+                  hintText: "Politeknik Negeri Jember",
                 ),
               ),
-               Text(
-                "perusahaan".tr,
+              Text(
+                "jurusan".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: "alfamart",
+                  hintText: "Teknologi Informasi",
                 ),
               ),
-               Text(
-                "spesialis".tr,
+              Text(
+                "prodi".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: "-",
+                  hintText: "Teknik Informatika",
                 ),
               ),
-               Text(
-                "lokasi".tr,
+              Text(
+                "tahun".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: "Jakarta",
-                ),
-              ),
-               Text(
-                "gaji".tr,
-                style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
-              ),
-              TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: "Rp. 1.000.000",
+                  hintText: "2022",
                 ),
               ),
               Padding(padding: EdgeInsets.only(bottom: 10)),
@@ -131,6 +107,7 @@ class _PengalamanState extends State<Pengalaman> {
                       ),
                       onPressed: () {
                         Navigator.pop(context);
+                      
                       },
                       shape: new RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(5.0),

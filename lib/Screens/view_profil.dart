@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_go_job/Screens/pendidikan.dart';
 import 'package:mobile_go_job/controller/logincontroller.dart';
 import 'package:mobile_go_job/Screens/edit_profil.dart';
 import 'package:mobile_go_job/Screens/pengalaman.dart';
@@ -399,7 +400,7 @@ class _ViewProfilState extends State<ViewProfil> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => EditProfil()),
+                                builder: (context) => EditPendidikan()),
                           );
                         },
                       ))
