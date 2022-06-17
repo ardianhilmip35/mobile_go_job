@@ -154,8 +154,10 @@ class _ViewProfilState extends State<ViewProfil> {
                               style: GoogleFonts.poppins(
                                   fontSize: 15, color: Colors.grey),
                             ),
+                            
                           ],
-                        )
+                        ),
+                        Padding(padding: EdgeInsets.only(bottom: 10)),
                       ],
                     ),
                   ),
@@ -180,7 +182,7 @@ class _ViewProfilState extends State<ViewProfil> {
                             Icon(Icons.person_add),
                             Padding(padding: EdgeInsets.only(left: 10)),
                             Text(
-                              "Biodata".tr,
+                              "biodata".tr,
                               style: GoogleFonts.poppins(fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                           ],
@@ -195,7 +197,7 @@ class _ViewProfilState extends State<ViewProfil> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Text(
-                          'Tanggal Lahir'.tr,
+                          'tanggallahir'.tr,
                           style: GoogleFonts.poppins(
                               fontSize: 15, fontWeight: FontWeight.bold),
                         ),
@@ -203,7 +205,7 @@ class _ViewProfilState extends State<ViewProfil> {
                         Container(
                             width: MediaQuery.of(context).size.width / 2.2,
                             child: Text(
-                              'Alamat'.tr,
+                              'alamat'.tr,
                               style: GoogleFonts.poppins(
                               fontSize: 15, fontWeight: FontWeight.bold),
                           )
@@ -238,14 +240,14 @@ class _ViewProfilState extends State<ViewProfil> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Text(
-                          'Agama'.tr,
+                          'agama'.tr,
                           style: GoogleFonts.poppins(
                               fontSize: 15, fontWeight: FontWeight.bold),
                         ),
                         Container(
                             width: MediaQuery.of(context).size.width / 2.2,
                             child: Text(
-                              'Jenis Kelamin'.tr,
+                              'jeniskelamin'.tr,
                               style: GoogleFonts.poppins(
                               fontSize: 15, fontWeight: FontWeight.bold),
                           )
@@ -294,7 +296,7 @@ class _ViewProfilState extends State<ViewProfil> {
                             Icon(Icons.school),
                             Padding(padding: EdgeInsets.only(left: 10)),
                             Text(
-                              "Pendidikan".tr,
+                              "pendidikan".tr,
                               style: GoogleFonts.poppins(fontSize: 20,
                               fontWeight: FontWeight.bold),
                             ),
@@ -317,7 +319,7 @@ class _ViewProfilState extends State<ViewProfil> {
                         Container(
                             width: MediaQuery.of(context).size.width / 2.2,
                             child: Text(
-                              'Jurusan'.tr,
+                              'jurusan'.tr,
                               style: GoogleFonts.poppins(
                               fontSize: 15, fontWeight: FontWeight.bold),
                           )
@@ -351,14 +353,14 @@ class _ViewProfilState extends State<ViewProfil> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Text(
-                          'Prodi'.tr,
+                          'prodi'.tr,
                           style: GoogleFonts.poppins(
                               fontSize: 15, fontWeight: FontWeight.bold),
                         ),
                         Container(
                             width: MediaQuery.of(context).size.width / 2.2,
                             child: Text(
-                          'Tahun Lulus'.tr,
+                          'tahun'.tr,
                           style: GoogleFonts.poppins(
                           fontSize: 15, fontWeight: FontWeight.bold),
                           )
@@ -392,7 +394,7 @@ class _ViewProfilState extends State<ViewProfil> {
                       WidgetSpan(
                           child: GestureDetector(
                         child: Text(
-                          'Edit Pendidikan'.tr,
+                          'editpendidikan'.tr,
                           style: GoogleFonts.poppins(
                               fontSize: 15, color: primarycolor),
                         ),
@@ -406,6 +408,7 @@ class _ViewProfilState extends State<ViewProfil> {
                       ))
                     ]),
                   ),
+                  Padding(padding: EdgeInsets.only(bottom: 10)),
                 ],
               ),
             ),
@@ -427,8 +430,8 @@ class _ViewProfilState extends State<ViewProfil> {
                             Icon(Icons.business_center),
                             Padding(padding: EdgeInsets.only(left: 10)),
                             Text(
-                              "Pengalaman".tr,
-                              style: GoogleFonts.poppins(fontSize: 20),
+                              "pengalaman".tr,
+                              style: GoogleFonts.poppins(fontSize: 20,fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -451,14 +454,14 @@ class _ViewProfilState extends State<ViewProfil> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Text(
-                          'Posisi Sebelumnya'.tr,
+                          'posisi'.tr,
                           style: GoogleFonts.poppins(
                               fontSize: 15, fontWeight: FontWeight.bold),
                         ),
                         Container(
                             width: MediaQuery.of(context).size.width / 2.2,
                             child: Text(
-                              'Pernah Bekerja di'.tr,
+                              'pernahbekerja'.tr,
                               style: GoogleFonts.poppins(
                               fontSize: 15, fontWeight: FontWeight.bold),
                           )
@@ -491,14 +494,14 @@ class _ViewProfilState extends State<ViewProfil> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Text(
-                          'Spesialis'.tr,
+                          'spesialis'.tr,
                           style: GoogleFonts.poppins(
                           fontSize: 15, fontWeight: FontWeight.bold),
                         ),
                         Container(
                             width: MediaQuery.of(context).size.width / 2.2,
                             child: Text(
-                              'Lokasi Kerja'.tr,
+                              'lokasi'.tr,
                               style: GoogleFonts.poppins(
                               fontSize: 15, fontWeight: FontWeight.bold),
                           )
@@ -532,7 +535,7 @@ class _ViewProfilState extends State<ViewProfil> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Text(
-                          'Gaji Yang Diinginkan'.tr,
+                          'gaji'.tr,
                           style: GoogleFonts.poppins(
                               fontSize: 15, fontWeight: FontWeight.bold),
                         ),
@@ -571,6 +574,7 @@ class _ViewProfilState extends State<ViewProfil> {
                       ))
                     ]),
                   ),
+                   Padding(padding: EdgeInsets.only(bottom: 10)),
                 ],
               ),
             ),

@@ -70,12 +70,13 @@ class LocaleString extends Translations {
           'universitas' : 'University',
           'jurusan' : 'Major',
           'prodi' : "Study Program",
-          'tahun' : 'Year',
-          'posisi' : 'Position',
+          'tahun' : 'Graduation Year',
+          'posisi' : 'Previous Position',
           'spesialis': 'Specialist',
-          'lokasi' : 'Location',
-          'gaji' : 'Salary',
+          'lokasi' : 'Work Location',
+          'gaji' : 'Desired Salary',
           'passwordbeda' : 'Password must be same as above',
+          'pernahbekerja' : 'Have worked at',
           
           
         },
@@ -145,12 +146,13 @@ class LocaleString extends Translations {
           'universitas' : 'Universitas',
           'jurusan' : 'Jurusan',
           'prodi' : "Program Studi",
-          'tahun' : 'Tahun',
-          'posisi' : 'Posisi',
+          'tahun' : 'Tahun Lulus',
+          'posisi' : 'Posisi Sebelumnya',
           'spesialis': 'Spesialis',
-          'lokasi' : 'Lokasi',
-          'gaji' : 'Gaji',
+          'lokasi' : 'Lokasi Kerja',
+          'gaji' : 'Gaji yang diinginkan',
           'passwordbeda' : 'Kata Sandi harus cocok',
+          'pernahbekerja': 'Pernah bekerja di',
         }
       };
 }
