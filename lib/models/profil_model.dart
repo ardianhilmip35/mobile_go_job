@@ -14,50 +14,50 @@ String profilToJson(Profil data) => json.encode(data.toJson());
 
 class Profil {
     Profil({
-        this.success,
-        this.message,
-        this.id,
-        this.namaPelamar,
-        this.tanggalLahir,
-        this.telpPelamar,
-        this.jenisKelamin,
-        this.agama,
-        this.alamatPelamar,
-        this.cvPelamar,
-        this.universitas,
-        this.jurusan,
-        this.prodi,
-        this.pengalaman,
-        this.posisi,
-        this.perusahaan,
-        this.tahun,
-        this.spesialis,
-        this.lokasi,
-        this.gaji,
-        this.email,
+      required  this.success,
+      required  this.message,
+      required  this.id,
+      required  this.namaPelamar,
+      required  this.tanggalLahir,
+      required  this.telpPelamar,
+      required  this.jenisKelamin,
+      required  this.agama,
+      required  this.alamatPelamar,
+      required  this.cvPelamar,
+      required  this.universitas,
+      required  this.jurusan,
+      required  this.prodi,
+      required  this.pengalaman,
+      required  this.posisi,
+      required  this.perusahaan,
+      required  this.tahun,
+      required  this.spesialis,
+      required  this.lokasi,
+      required  this.gaji,
+      required  this.email,
     });
 
-    bool? success;
-    String? message;
-    int? id;
-    String? namaPelamar;
-    DateTime? tanggalLahir;
-    String? telpPelamar;
-    String? jenisKelamin;
-    String? agama;
-    String? alamatPelamar;
-    String? cvPelamar;
-    String? universitas;
-    String? jurusan;
-    String? prodi;
-    String? pengalaman;
-    String? posisi;
-    String? perusahaan;
-    String? tahun;
-    String? spesialis;
-    String? lokasi;
-    String? gaji;
-    String? email;
+    bool success;
+    String message;
+    int id;
+    String namaPelamar;
+    DateTime tanggalLahir;
+    String telpPelamar;
+    String jenisKelamin;
+    String agama;
+    String alamatPelamar;
+    String cvPelamar;
+    String universitas;
+    String jurusan;
+    String prodi;
+    String pengalaman;
+    String posisi;
+    String perusahaan;
+    String tahun;
+    String spesialis;
+    String lokasi;
+    String gaji;
+    String email;
 
     factory Profil.fromJson(Map<String, dynamic> json) => Profil(
         success: json["success"],

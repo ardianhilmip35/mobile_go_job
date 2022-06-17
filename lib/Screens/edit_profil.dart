@@ -80,13 +80,13 @@ class _EditProfilState extends State<EditProfil> {
                 ),
               ),
               Text(
-                "email".tr,
+                "Jenis Kelamin".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: "example@email.com",
+                  hintText: "Laki - Laki",
                 ),
               ),
               Text(

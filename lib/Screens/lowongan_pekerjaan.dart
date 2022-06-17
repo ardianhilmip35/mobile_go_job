@@ -61,6 +61,7 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
           "Lowongan",
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
+        automaticallyImplyLeading: false,
         centerTitle: true,
         backgroundColor: primarycolor,
         leading: IconButton(

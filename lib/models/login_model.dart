@@ -1,3 +1,6 @@
+import 'package:flutter/cupertino.dart';
+
+import 'dart:core';
 // To parse this JSON data, do
 //
 //     final login = loginFromJson(jsonString);
@@ -16,10 +19,10 @@ class Login {
         required this.id,
     });
 
-    String? message;
-    String? accessToken;
-    String? tokenType;
-    int? id;
+    String message;
+    String accessToken;
+    String tokenType;
+    int id;
 
     factory Login.fromJson(Map<String, dynamic> json) => Login(
         message: json["message"],

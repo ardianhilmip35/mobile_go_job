@@ -64,7 +64,7 @@ class _RegisterState extends State<Register> {
       _passwordController.text.trim(),
     ).then((value) {
       setState(() {
-        if (value.pesan == 201) {
+        if (value.pesan == 'Registrasi Berhasil') {
           _toast.showToast(value.pesan);
           Navigator.pushReplacement(
           context,
@@ -85,6 +85,7 @@ bool _isObscure = true;
           "Register",
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
+        automaticallyImplyLeading: false,
         centerTitle: true,
         backgroundColor: primarycolor,
       ),
