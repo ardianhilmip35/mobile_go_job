@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:mobile_go_job/Services/globals.dart';
 import 'package:http/http.dart' as http;
+import 'package:mobile_go_job/models/update_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mobile_go_job/models/lowongan_model.dart';
 
@@ -152,7 +153,7 @@ class AuthServices {
       // return json.decode(response.body);
   }
 
-  static Future<Profil> updatePelamar(
+  static Future<Update> updatePelamar(
     String idUser,
     namaPelamar,
     alamatPelamar,
@@ -177,7 +178,7 @@ class AuthServices {
     );
 
     if (response.statusCode == 200) {
-      return Profil.fromJson(json.decode(response.body));
+      return Update.fromJson(json.decode(response.body));
     } else {
       throw Exception("Failed to update User");
     }

@@ -54,11 +54,11 @@ class _EditProfilState extends State<EditProfil> {
     _alamatController.text, _agamaController.text, _noHpController.text, _jnsKelaminController.text, _tglLahirController.text)
     .then((value) {
       setState(() {
-        if (value.message == 'success') {
-          _alert.coolAlertSucces(value.message, context, "OK");
+        if (value.kode == 200) {
+          _alert.coolAlertSucces(value.pesan, context, "OK");
           _logOut();
         } else {
-          _alert.coolAlertFail(value.message, context, "OK");
+          _alert.coolAlertFail(value.pesan, context, "OK");
         }
       });
     });

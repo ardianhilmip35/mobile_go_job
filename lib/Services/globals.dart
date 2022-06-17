@@ -6,6 +6,8 @@ const String loginURL = "https://ws-tif.com/kel24/api/login"; //emulator localho
 const String lowonganURL = "https://ws-tif.com/kel24/api/lowongan/lihat"; //emulator localhost
 final String logoURL = "https://ws-tif.com/kel24/uploads/logo/";
 final String updateURL = "https://ws-tif.com/kel24/api/profile/update-profile";
+final String updatependidikanURL = "https://ws-tif.com/kel24/api/profile/update-profile";
+final String lamaranURL = "https://ws-tif.com/kel24/api/lowongan/lamar";
 // final String logoutURL = "https://ws-tif.com/kel24/logout"; //emulator localhost
  //emulator localhost
 
