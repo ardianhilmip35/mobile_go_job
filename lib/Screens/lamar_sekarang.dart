@@ -46,7 +46,7 @@ class _LamarSekarangState extends State<LamarSekarang> {
     });
   }
 
-  getUser() async {
+  _getUser() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String idUser = prefs.getString("id") ?? "";
     AuthServices.getUser(idUser).then((value) {
@@ -61,7 +61,7 @@ class _LamarSekarangState extends State<LamarSekarang> {
   void initState() {
     super.initState();
     _getSessionLowongan();
-    getUser();
+    _getUser();
   }
 
   @override

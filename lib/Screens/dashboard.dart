@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_go_job/Screens/detail_lowongan.dart';
 import 'package:mobile_go_job/Screens/lamar_sekarang.dart';
+import 'package:mobile_go_job/Screens/login.dart';
 import 'package:mobile_go_job/Screens/lowongan_pekerjaan.dart';
 import 'package:mobile_go_job/Screens/profil.dart';
 import 'package:mobile_go_job/Screens/simpan_lowongan.dart';
@@ -43,6 +44,25 @@ class _DashboardState extends State<Dashboard> {
     super.initState();
     getUser();
     _getData();
+  }
+
+  _cekLogin() async {
+    String idUser;
+    bool isLogin;
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    isLogin = pref.getBool("is_login") ?? false;
+    idUser = pref.getString("id_user") ?? "";
+    setState(() {
+      if (isLogin == false) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) {
+            return const Login();
+          }),
+        );
+      } else {
+        Navigator.of(context);
+      }
+    });
   }
 
   getUser() async {

@@ -45,10 +45,10 @@ class _ViewProfilState extends State<ViewProfil> {
   @override
   void initState() {
     super.initState();
-    getUser();
+    _getUser();
   }
 
-  getUser() async {
+  _getUser() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     String idUser = pref.getString("id") ?? "";
     AuthServices.getUser(idUser).then((value) {
