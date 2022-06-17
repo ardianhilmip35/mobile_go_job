@@ -21,7 +21,23 @@ class ViewProfil extends StatefulWidget {
 
 class _ViewProfilState extends State<ViewProfil> {
   final controller = Get.put(LoginController());
-  String? _namaPelamar, _email, _noHp, _alamat, _kelamin, _agama, _tanggalLahir, _universitas, _jurusan, _prodi, _tahun, _pengalaman, _posisi, _perusahaan, _spesialis, _lokasi, _gaji;
+  String? _namaPelamar,
+      _email,
+      _noHp,
+      _alamat,
+      _kelamin,
+      _agama,
+      _tanggalLahir,
+      _universitas,
+      _jurusan,
+      _prodi,
+      _tahun,
+      _pengalaman,
+      _posisi,
+      _perusahaan,
+      _spesialis,
+      _lokasi,
+      _gaji;
   final _alert = ShowAlert();
   final _toast = ShowToast();
   bool _isLoading = true;
@@ -154,7 +170,6 @@ class _ViewProfilState extends State<ViewProfil> {
                               style: GoogleFonts.poppins(
                                   fontSize: 15, color: Colors.grey),
                             ),
-                            
                           ],
                         ),
                         Padding(padding: EdgeInsets.only(bottom: 10)),
@@ -183,7 +198,8 @@ class _ViewProfilState extends State<ViewProfil> {
                             Padding(padding: EdgeInsets.only(left: 10)),
                             Text(
                               "biodata".tr,
-                              style: GoogleFonts.poppins(fontSize: 20, fontWeight: FontWeight.bold),
+                              style: GoogleFonts.poppins(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -201,27 +217,25 @@ class _ViewProfilState extends State<ViewProfil> {
                           style: GoogleFonts.poppins(
                               fontSize: 15, fontWeight: FontWeight.bold),
                         ),
-                        
                         Container(
                             width: MediaQuery.of(context).size.width / 2.2,
                             child: Text(
                               'alamat'.tr,
                               style: GoogleFonts.poppins(
-                              fontSize: 15, fontWeight: FontWeight.bold),
-                          )
-                        ),
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            )),
                       ],
                     ),
                   ),
-                  
                   Container(
-                    padding: EdgeInsets.only(left: 10, right: 10, top: 3, bottom: 10),
+                    padding: EdgeInsets.only(
+                        left: 10, right: 10, top: 3, bottom: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Text(
-                              '$_tanggalLahir',
-                              style: GoogleFonts.poppins(fontSize: 15),
+                          '$_tanggalLahir',
+                          style: GoogleFonts.poppins(fontSize: 15),
                         ),
                         Container(
                             width: MediaQuery.of(context).size.width / 2.2,
@@ -229,8 +243,7 @@ class _ViewProfilState extends State<ViewProfil> {
                               '$_alamat',
                               style: GoogleFonts.poppins(fontSize: 15),
                               textAlign: TextAlign.start,
-                          )
-                        ),
+                            )),
                       ],
                     ),
                   ),
@@ -249,14 +262,14 @@ class _ViewProfilState extends State<ViewProfil> {
                             child: Text(
                               'jeniskelamin'.tr,
                               style: GoogleFonts.poppins(
-                              fontSize: 15, fontWeight: FontWeight.bold),
-                          )
-                        ),
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            )),
                       ],
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 10, right: 10, top: 3, bottom: 10),
+                    padding: EdgeInsets.only(
+                        left: 10, right: 10, top: 3, bottom: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
@@ -267,11 +280,10 @@ class _ViewProfilState extends State<ViewProfil> {
                         Container(
                             width: MediaQuery.of(context).size.width / 2.2,
                             child: Text(
-                            '$_kelamin',
-                            style: GoogleFonts.poppins(fontSize: 15),
-                            textAlign: TextAlign.start,
-                          )
-                        ),
+                              '$_kelamin',
+                              style: GoogleFonts.poppins(fontSize: 15),
+                              textAlign: TextAlign.start,
+                            )),
                       ],
                     ),
                   ),
@@ -297,8 +309,8 @@ class _ViewProfilState extends State<ViewProfil> {
                             Padding(padding: EdgeInsets.only(left: 10)),
                             Text(
                               "pendidikan".tr,
-                              style: GoogleFonts.poppins(fontSize: 20,
-                              fontWeight: FontWeight.bold),
+                              style: GoogleFonts.poppins(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -321,14 +333,14 @@ class _ViewProfilState extends State<ViewProfil> {
                             child: Text(
                               'jurusan'.tr,
                               style: GoogleFonts.poppins(
-                              fontSize: 15, fontWeight: FontWeight.bold),
-                          )
-                        ),
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            )),
                       ],
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 10, right: 10, top: 3, bottom: 10),
+                    padding: EdgeInsets.only(
+                        left: 10, right: 10, top: 3, bottom: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
@@ -342,8 +354,7 @@ class _ViewProfilState extends State<ViewProfil> {
                               '$_jurusan',
                               style: GoogleFonts.poppins(fontSize: 15),
                               textAlign: TextAlign.start,
-                          )
-                        ),
+                            )),
                       ],
                     ),
                   ),
@@ -360,16 +371,16 @@ class _ViewProfilState extends State<ViewProfil> {
                         Container(
                             width: MediaQuery.of(context).size.width / 2.2,
                             child: Text(
-                          'tahun'.tr,
-                          style: GoogleFonts.poppins(
-                          fontSize: 15, fontWeight: FontWeight.bold),
-                          )
-                        ),
+                              'tahun'.tr,
+                              style: GoogleFonts.poppins(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            )),
                       ],
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 10, right: 10, top: 3, bottom: 10),
+                    padding: EdgeInsets.only(
+                        left: 10, right: 10, top: 3, bottom: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
@@ -383,8 +394,7 @@ class _ViewProfilState extends State<ViewProfil> {
                               '$_tahun',
                               style: GoogleFonts.poppins(fontSize: 15),
                               textAlign: TextAlign.start,
-                          )
-                        ),
+                            )),
                       ],
                     ),
                   ),
@@ -431,7 +441,8 @@ class _ViewProfilState extends State<ViewProfil> {
                             Padding(padding: EdgeInsets.only(left: 10)),
                             Text(
                               "pengalaman".tr,
-                              style: GoogleFonts.poppins(fontSize: 20,fontWeight: FontWeight.bold),
+                              style: GoogleFonts.poppins(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -439,13 +450,13 @@ class _ViewProfilState extends State<ViewProfil> {
                     ],
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 10, right: 10, top:10, bottom: 10),
+                    margin: EdgeInsets.only(
+                        left: 10, right: 10, top: 10, bottom: 10),
                     child: Text(
-                      '$_pengalaman', 
+                      '$_pengalaman',
                       softWrap: true,
                       textAlign: TextAlign.start,
-                      style: GoogleFonts.poppins(
-                          fontSize: 15),
+                      style: GoogleFonts.poppins(fontSize: 15),
                     ),
                   ),
                   Container(
@@ -463,9 +474,8 @@ class _ViewProfilState extends State<ViewProfil> {
                             child: Text(
                               'pernahbekerja'.tr,
                               style: GoogleFonts.poppins(
-                              fontSize: 15, fontWeight: FontWeight.bold),
-                          )
-                        ),
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            )),
                       ],
                     ),
                   ),
@@ -496,21 +506,21 @@ class _ViewProfilState extends State<ViewProfil> {
                         Text(
                           'spesialis'.tr,
                           style: GoogleFonts.poppins(
-                          fontSize: 15, fontWeight: FontWeight.bold),
+                              fontSize: 15, fontWeight: FontWeight.bold),
                         ),
                         Container(
                             width: MediaQuery.of(context).size.width / 2.2,
                             child: Text(
                               'lokasi'.tr,
                               style: GoogleFonts.poppins(
-                              fontSize: 15, fontWeight: FontWeight.bold),
-                          )
-                        ),
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            )),
                       ],
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 10, right: 10, top: 3, bottom: 10),
+                    padding: EdgeInsets.only(
+                        left: 10, right: 10, top: 3, bottom: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
@@ -524,8 +534,7 @@ class _ViewProfilState extends State<ViewProfil> {
                               '$_lokasi',
                               style: GoogleFonts.poppins(fontSize: 15),
                               textAlign: TextAlign.start,
-                          )
-                        ),
+                            )),
                       ],
                     ),
                   ),
@@ -543,7 +552,8 @@ class _ViewProfilState extends State<ViewProfil> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 10, right: 10, top: 3, bottom: 10),
+                    padding: EdgeInsets.only(
+                        left: 10, right: 10, top: 3, bottom: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
@@ -574,7 +584,7 @@ class _ViewProfilState extends State<ViewProfil> {
                       ))
                     ]),
                   ),
-                   Padding(padding: EdgeInsets.only(bottom: 10)),
+                  Padding(padding: EdgeInsets.only(bottom: 10)),
                 ],
               ),
             ),
