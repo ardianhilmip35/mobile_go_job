@@ -24,15 +24,15 @@ class Update {
       required this.pesan,
     });
 
-    String id;
-    String namaPelamar;
-    String alamatPelamar;
-    String agama;
-    String telpPelamar;
+    String? id;
+    String? namaPelamar;
+    String? alamatPelamar;
+    String? agama;
+    String? telpPelamar;
     String jenisKelamin;
-    DateTime tanggalLahir;
-    int kode;
-    String pesan;
+    DateTime? tanggalLahir;
+    int? kode;
+    String? pesan;
 
     factory Update.fromJson(Map<String, dynamic> json) => Update(
         id: json["id"],
@@ -50,7 +50,7 @@ class Update {
         "id": id,
         "nama_pelamar": namaPelamar,
         "telp_pelamar": telpPelamar,
-        "tanggal_lahir": "${tanggalLahir.year.toString().padLeft(4, '0')}-${tanggalLahir.month.toString().padLeft(2, '0')}-${tanggalLahir.day.toString().padLeft(2, '0')}",
+        "tanggal_lahir": "${tanggalLahir?.year.toString().padLeft(4, '0')}-${tanggalLahir?.month.toString().padLeft(2, '0')}-${tanggalLahir?.day.toString().padLeft(2, '0')}",
         "jenis_kelamin": jenisKelamin,
         "agama": agama,
         "alamat_pelamar": alamatPelamar,

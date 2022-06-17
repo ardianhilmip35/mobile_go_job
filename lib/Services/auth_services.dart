@@ -153,19 +153,10 @@ class AuthServices {
       // return json.decode(response.body);
   }
 
-  static Future<Update> updatePelamar(
-    String idUser,
-    namaPelamar,
-    alamatPelamar,
-    agama,
-    noHp,
-    kelamin,
-    tglLahir,) async {
-    
-    Uri _apiURL = Uri.parse("$updateURL");
-
+  static Future<Update> updatePelamar(String idUser, namaPelamar, alamatPelamar, agama, noHp, kelamin,tglLahir) async {
+    final Uri updateURL =  Uri.parse("https://ws-tif.com/kel24/api/profile/update-profile");
     var response = await http.post(
-      _apiURL,
+      updateURL,
       body: {
         "id": idUser,
         "nama_pelamar": namaPelamar,

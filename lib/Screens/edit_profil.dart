@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_go_job/Screens/login.dart';
+import 'package:mobile_go_job/Screens/profil.dart';
 import 'package:mobile_go_job/Services/auth_services.dart';
 import 'package:mobile_go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -33,12 +35,12 @@ class _EditProfilState extends State<EditProfil> {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
       _idUser = prefs.getString('id').toString();
-      String _namaPelamar = prefs.getString('nama_pelamar').toString();
-      String _alamat = prefs.getString('alamat_pelamar').toString();
-      String _agama = prefs.getString('agama').toString();
-      String _noHp = prefs.getString('telp_pelamar').toString();
-      String _kelamin = prefs.getString('jenis_kelamin').toString();
-      _tglLahir = prefs.getString('tgl_lahir').toString();
+      String? _namaPelamar = prefs.getString('nama_pelamar').toString();
+      String? _alamat = prefs.getString('alamat_pelamar').toString();
+      String? _agama = prefs.getString('agama').toString();
+      String? _noHp = prefs.getString('telp_pelamar').toString();
+      String? _kelamin = prefs.getString('jenis_kelamin').toString();
+      _tglLahir = prefs.getString('tanggal_lahir').toString();
 
       _namaController = TextEditingController(text: _namaPelamar);
       _alamatController = TextEditingController(text: _alamat);
@@ -54,9 +56,9 @@ class _EditProfilState extends State<EditProfil> {
     _alamatController.text, _agamaController.text, _noHpController.text, _jnsKelaminController.text, _tglLahirController.text)
     .then((value) {
       setState(() {
-        if (value.kode == 200) {
+        if (value.kode == 1) {
           _alert.coolAlertSucces(value.pesan, context, "OK");
-          _logOut();
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Profil()));
         } else {
           _alert.coolAlertFail(value.pesan, context, "OK");
         }
@@ -81,32 +83,32 @@ class _EditProfilState extends State<EditProfil> {
   }
 
 
-  _showDialog() {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text("Konfirmasi"),
-          content: const Text("Apakah anda yakin ingin mengubah profil?"),
-          actions: <Widget>[
-            TextButton(
-              child: const Text("Tidak"),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            TextButton(
-              child: const Text("Ya"),
-              onPressed: () {
-                _updateUser();
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
+  // _showDialog() {
+  //   showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return AlertDialog(
+  //         title: const Text("Konfirmasi"),
+  //         content: const Text("Apakah anda yakin ingin mengubah profil?"),
+  //         actions: <Widget>[
+  //           TextButton(
+  //             child: const Text("Tidak"),
+  //             onPressed: () {
+  //               Navigator.of(context).pop();
+  //             },
+  //           ),
+  //           TextButton(
+  //             child: const Text("Ya"),
+  //             onPressed: () {
+  //               _updateUser();
+  //               Navigator.of(context).pop();
+  //             },
+  //           ),
+  //         ],
+  //       );
+  //     },
+  //   );
+  // }
 
   @override
   void initState() {
@@ -220,9 +222,10 @@ class _EditProfilState extends State<EditProfil> {
                         style: TextStyle(fontSize: 18, color: Colors.white),
                       ),
                       onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          _showDialog();
-                        }
+                        // if (_formKey.currentState!.validate()) {
+                          _updateUser();
+                        // }
+
                       },
                       shape: new RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(5.0),

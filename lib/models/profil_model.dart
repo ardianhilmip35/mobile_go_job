@@ -37,27 +37,27 @@ class Profil {
       required  this.email,
     });
 
-    bool success;
-    String message;
-    int id;
-    String namaPelamar;
-    DateTime tanggalLahir;
-    String telpPelamar;
-    String jenisKelamin;
-    String agama;
-    String alamatPelamar;
-    String cvPelamar;
-    String universitas;
-    String jurusan;
-    String prodi;
-    String pengalaman;
-    String posisi;
-    String perusahaan;
-    String tahun;
-    String spesialis;
-    String lokasi;
-    String gaji;
-    String email;
+    bool? success;
+    String? message;
+    int? id;
+    String? namaPelamar;
+    DateTime? tanggalLahir;
+    String? telpPelamar;
+    String? jenisKelamin;
+    String? agama;
+    String? alamatPelamar;
+    String? cvPelamar;
+    String? universitas;
+    String? jurusan;
+    String? prodi;
+    String? pengalaman;
+    String? posisi;
+    String? perusahaan;
+    String? tahun;
+    String? spesialis;
+    String? lokasi;
+    String? gaji;
+    String? email;
 
     factory Profil.fromJson(Map<String, dynamic> json) => Profil(
         success: json["success"],
@@ -92,7 +92,7 @@ class Profil {
         "email": email,
         
         //biodata
-        "tanggal_lahir": "${tanggalLahir.year.toString().padLeft(4)}-${tanggalLahir.month.toString().padLeft(2, '0')}-${tanggalLahir.day.toString().padLeft(2, '0')}",
+        "tanggal_lahir": "${tanggalLahir?.year.toString().padLeft(4)}-${tanggalLahir?.month.toString().padLeft(2, '0')}-${tanggalLahir?.day.toString().padLeft(2, '0')}",
         "telp_pelamar": telpPelamar,
         "jenis_kelamin": jenisKelamin,
         "agama": agama,
