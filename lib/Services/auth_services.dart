@@ -180,7 +180,7 @@ class AuthServices {
   }
 
   static Future<Lamaran> lamar(
-    String pelamarId, String lowonganId, String deskripsiLamaran, String portofolioPelamar, String idLamaran) async {
+    String pelamarId, String lowonganId, String deskripsiLamaran,  String idLamaran) async {
     // Uri _apiURL = Uri.parse("${Url.baseURL}register.php");
     final Uri registerURL =  Uri.parse("$lamaranURL");
     var response = await http.post(
@@ -189,7 +189,6 @@ class AuthServices {
         "pelamar_id": pelamarId,
         "lowongan_id": lowonganId,
         "deskripsi_lamaran": deskripsiLamaran,
-        "portofolio_pelamar": portofolioPelamar,
         "id": idLamaran,
       },
     );
