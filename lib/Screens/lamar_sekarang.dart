@@ -46,22 +46,22 @@ class _LamarSekarangState extends State<LamarSekarang> {
     });
   }
 
-  _getUser() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String idUser = prefs.getString("id") ?? "";
-    AuthServices.getUser(idUser).then((value) {
-      setState(() {
-        _namaPelamar = value.namaPelamar.toString();
-        _email = value.email.toString();
-      });
-    });
-  }
+  // _getUser() async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   String idUser = prefs.getString("id") ?? "";
+  //   AuthServices.getUser(idUser).then((value) {
+  //     setState(() {
+  //       _namaPelamar = value.namaPelamar;
+  //       _email = value.email;
+  //     });
+  //   });
+  // }
 
   @override
   void initState() {
     super.initState();
     _getSessionLowongan();
-    _getUser();
+    // _getUser();
   }
 
   @override
@@ -219,80 +219,80 @@ class _LamarSekarangState extends State<LamarSekarang> {
                 padding: EdgeInsets.only(top: 15.0, bottom: 5.0),
                 child: Column(
                   children: <Widget>[
-                    Container(
-                      padding: EdgeInsets.only(left: 5),
-                      height: 75,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 219, 217, 217)),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget>[
-                              Container(
-                                  width:
-                                      MediaQuery.of(context).size.width / 2.2,
-                                  child: Text(
-                                    // "Tanti Wulansari",
-                                    "$_namaPelamar",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15,
-                                        color: primarycolor),
-                                  )),
-                              Container(
-                                  alignment: Alignment.centerRight,
-                                  width:
-                                      MediaQuery.of(context).size.width / 2.2,
-                                  child: MaterialButton(
-                                    textColor: primarycolor,
-                                    child: Text(
-                                      'lihat'.tr,
-                                      style: TextStyle(
-                                        fontSize: 15.0,
-                                      ),
-                                    ),
-                                    onPressed: () {
-                                      Route route = MaterialPageRoute(
-                                          builder: (context) => Profil());
-                                      Navigator.push(context, route);
-                                      // if (_formKey.currentState!.validate()) {}
-                                    },
-                                    splashColor: Colors.transparent,
-                                  )),
-                            ],
-                          ),
-                          // Padding (padding: EdgeInsets.all(3),),
-                          // Text(
-                          //   "Tanti Wulansari",
-                          //   style: TextStyle(
-                          //     fontWeight: FontWeight.bold,
-                          //     fontSize: 20,
-                          //     color: primarycolor),
-                          // ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget>[
-                              Container(
-                                  alignment: Alignment.centerLeft,
-                                  width:
-                                      MediaQuery.of(context).size.width / 2.2,
-                                  child: Text("087784666329")),
-                              Container(
-                                  alignment: Alignment.centerRight,
-                                  width:
-                                      MediaQuery.of(context).size.width / 2.2,
-                                  child: Text(
-                                    // "tantiwulansari@gmail.com"
-                                    "$_email",
-                                  )),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
+                    // Container(
+                    //   padding: EdgeInsets.only(left: 5),
+                    //   height: 75,
+                    //   width: double.infinity,
+                    //   decoration: BoxDecoration(
+                    //       color: Color.fromARGB(255, 219, 217, 217)),
+                    //   child: Column(
+                    //     crossAxisAlignment: CrossAxisAlignment.start,
+                    //     children: <Widget>[
+                    //       Row(
+                    //         mainAxisAlignment: MainAxisAlignment.start,
+                    //         children: <Widget>[
+                    //           Container(
+                    //               width:
+                    //                   MediaQuery.of(context).size.width / 2.2,
+                    //               child: Text(
+                    //                 // "Tanti Wulansari",
+                    //                 "$_namaPelamar",
+                    //                 style: TextStyle(
+                    //                     fontWeight: FontWeight.bold,
+                    //                     fontSize: 15,
+                    //                     color: primarycolor),
+                    //               )),
+                    //           Container(
+                    //               alignment: Alignment.centerRight,
+                    //               width:
+                    //                   MediaQuery.of(context).size.width / 2.2,
+                    //               child: MaterialButton(
+                    //                 textColor: primarycolor,
+                    //                 child: Text(
+                    //                   'lihat'.tr,
+                    //                   style: TextStyle(
+                    //                     fontSize: 15.0,
+                    //                   ),
+                    //                 ),
+                    //                 onPressed: () {
+                    //                   Route route = MaterialPageRoute(
+                    //                       builder: (context) => Profil());
+                    //                   Navigator.push(context, route);
+                    //                   // if (_formKey.currentState!.validate()) {}
+                    //                 },
+                    //                 splashColor: Colors.transparent,
+                    //               )),
+                    //         ],
+                    //       ),
+                    //       // Padding (padding: EdgeInsets.all(3),),
+                    //       // Text(
+                    //       //   "Tanti Wulansari",
+                    //       //   style: TextStyle(
+                    //       //     fontWeight: FontWeight.bold,
+                    //       //     fontSize: 20,
+                    //       //     color: primarycolor),
+                    //       // ),
+                    //       Row(
+                    //         mainAxisAlignment: MainAxisAlignment.start,
+                    //         children: <Widget>[
+                    //           Container(
+                    //               alignment: Alignment.centerLeft,
+                    //               width:
+                    //                   MediaQuery.of(context).size.width / 2.2,
+                    //               child: Text("087784666329")),
+                    //           Container(
+                    //               alignment: Alignment.centerRight,
+                    //               width:
+                    //                   MediaQuery.of(context).size.width / 2.2,
+                    //               child: Text(
+                    //                 // "tantiwulansari@gmail.com"
+                    //                 "$_email",
+                    //               )),
+                    //         ],
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
