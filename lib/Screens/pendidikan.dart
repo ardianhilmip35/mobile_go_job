@@ -52,9 +52,8 @@ class _EditPendidikanState extends State<EditPendidikan> {
         .then((value) {
       setState(() {
         if (value.kode == 1) {
-          _alert.coolAlertSucces(value.pesan, context, "OK");
-          // Navigator.pushReplacement(
-          //     context, MaterialPageRoute(builder: (context) => ViewProfil()));
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => ViewProfil()));
         } else {
           _alert.coolAlertFail(value.pesan, context, "OK");
         }
