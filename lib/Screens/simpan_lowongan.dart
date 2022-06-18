@@ -34,7 +34,7 @@ class _SimpanLowonganState extends State<SimpanLowongan> {
                 children: <Widget>[
                   Container(
                     padding: EdgeInsets.all(5),
-                    height: 315,
+                    constraints: BoxConstraints(maxHeight: double.infinity),
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: primarycolor,
@@ -61,22 +61,24 @@ class _SimpanLowonganState extends State<SimpanLowongan> {
                               color: Colors.white),
                         ),
                         Container(
+                          padding: EdgeInsets.all(5),
                           margin: EdgeInsets.only(
                             top: 10,
                           ),
                           width: double.infinity,
-                          height: 185,
+                          constraints:
+                              BoxConstraints(maxHeight: double.infinity),
                           decoration: BoxDecoration(
                             color: Colors.white,
                             border: Border.all(color: Colors.white, width: 2),
                           ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Container(
-                                padding: EdgeInsets.all(10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
                                     Text(
                                       "Web Developtment Staff",
@@ -85,64 +87,67 @@ class _SimpanLowonganState extends State<SimpanLowongan> {
                                           fontSize: 20,
                                           color: primarycolor),
                                     ),
-                                    Padding(padding: EdgeInsets.only(top: 20)),
-                                    Text(
-                                      "Surabaya, Jawa Timur",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20,
-                                          color: primarycolor),
-                                    ),
-                                    Padding(padding: EdgeInsets.only(top: 70)),
+                                    IconButton(
+                                        iconSize: 45,
+                                        color: _iconColor,
+                                        onPressed: () {
+                                          setState(() {
+                                            if (_iconColor ==
+                                                Colors.grey) {
+                                              _iconColor = primarycolor;
+                                            } else {
+                                              _iconColor = Colors.grey;
+                                            }
+                                          });
+                                        },
+                                        icon: Icon(Icons.bookmark)),
+                                  ],
+                                ),
+                              ),
+                              Padding(padding: EdgeInsets.only(top: 20)),
+                              Text(
+                                "Surabaya, Jawa Timur",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                    color: primarycolor),
+                              ),
+                              Padding(padding: EdgeInsets.only(top: 70)),
+                              Container(
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
                                     Text(
                                       "5 Hari yang lalu",
                                       style: TextStyle(
-                                          fontSize: 20, color: primarycolor),
+                                          fontSize: 15,
+                                          color: primarycolor),
+                                    ),
+                                    RaisedButton(
+                                      textColor: Colors.white,
+                                      color: primarycolor,
+                                      child: Text(
+                                        'lamar'.tr,
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            color: Colors.white),
+                                      ),
+                                      onPressed: () {
+                                        Route route = MaterialPageRoute(
+                                            builder: (context) =>
+                                                LamarSekarang());
+                                        Navigator.push(context, route);
+                                      },
+                                      shape: new RoundedRectangleBorder(
+                                        borderRadius:
+                                            new BorderRadius.circular(
+                                                12.0),
+                                      ),
                                     ),
                                   ],
                                 ),
                               ),
-                              Container(
-                                  child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: <Widget>[
-                                  IconButton(
-                                      alignment: Alignment.topRight,
-                                      iconSize: 45,
-                                      color: _iconColor,
-                                      onPressed: () {
-                                        setState(() {
-                                          if (_iconColor == Colors.grey) {
-                                            _iconColor = primarycolor;
-                                          } else {
-                                            _iconColor = Colors.grey;
-                                          }
-                                        });
-                                      },
-                                      icon: Icon(Icons.bookmark)),
-                                  Padding(
-                                    padding: EdgeInsets.only(top: 70),
-                                  ),
-                                  RaisedButton(
-                                    textColor: Colors.white,
-                                    color: primarycolor,
-                                    child: Text(
-                                      'lamar'.tr,
-                                      style: TextStyle(
-                                          fontSize: 20, color: Colors.white),
-                                    ),
-                                    onPressed: () {
-                                      Route route =
-                                          MaterialPageRoute(builder: (context) => LamarSekarang());
-                                      Navigator.push(context, route);
-                                    },
-                                    shape: new RoundedRectangleBorder(
-                                      borderRadius:
-                                          new BorderRadius.circular(12.0),
-                                    ),
-                                  ),
-                                ],
-                              )),
                             ],
                           ),
                         ),

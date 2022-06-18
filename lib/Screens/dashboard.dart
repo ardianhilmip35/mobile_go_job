@@ -47,11 +47,16 @@ class _DashboardState extends State<Dashboard> {
       pref.setString("id", _lowongan[_index].id.toString());
       // pref.setString("logo", _lowongan[_index].logo.toString());
       pref.setString("namalowongan", _lowongan[_index].namalowongan.toString());
-      pref.setString("namaperusahaan", _lowongan[_index].namaperusahaan.toString());
-      pref.setString("alamatperusahaan", _lowongan[_index].alamatperusahaan.toString());
-      pref.setString("gajipekerjaan", _lowongan[_index].gajipekerjaan.toString());
-      pref.setString("deskripsiperusahaan", _lowongan[_index].deskripsiperusahaan.toString());
-      pref.setString("deskripsipekerjaan", _lowongan[_index].deskripsipekerjaan);
+      pref.setString(
+          "namaperusahaan", _lowongan[_index].namaperusahaan.toString());
+      pref.setString(
+          "alamatperusahaan", _lowongan[_index].alamatperusahaan.toString());
+      pref.setString(
+          "gajipekerjaan", _lowongan[_index].gajipekerjaan.toString());
+      pref.setString("deskripsiperusahaan",
+          _lowongan[_index].deskripsiperusahaan.toString());
+      pref.setString(
+          "deskripsipekerjaan", _lowongan[_index].deskripsipekerjaan);
     });
   }
 
@@ -238,7 +243,8 @@ class _DashboardState extends State<Dashboard> {
                                 margin: EdgeInsets.only(left: 10, right: 10),
                                 padding: EdgeInsets.only(
                                     left: 10, right: 10, top: 5),
-                                height: 120,
+                                constraints:
+                                    BoxConstraints(maxHeight: double.infinity),
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                 ),
@@ -277,37 +283,43 @@ class _DashboardState extends State<Dashboard> {
                                                     MainAxisAlignment
                                                         .spaceBetween,
                                                 children: <Widget>[
-                                                  Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: <Widget>[
-                                                      Text(
-                                                        // "Web Developer",
-                                                        _lowongan[index]
-                                                            .namalowongan
-                                                            .toString(),
-                                                        style:
-                                                            GoogleFonts.poppins(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                fontSize: 20,
-                                                                color: Colors
-                                                                    .black),
-                                                      ),
-                                                      Text(
-                                                        // "Surabaya",
-                                                        _lowongan[index]
-                                                            .alamatperusahaan
-                                                            .toString(),
-                                                        style:
-                                                            GoogleFonts.poppins(
-                                                                fontSize: 15,
-                                                                color: Colors
-                                                                    .black),
-                                                      ),
-                                                    ],
+                                                  Expanded(
+                                                    child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: <Widget>[
+                                                        Text(
+                                                          // "Web Developer",
+                                                          _lowongan[index]
+                                                              .namalowongan
+                                                              .toString(),
+                                                          style: GoogleFonts
+                                                              .poppins(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontSize: 16,
+                                                                  color: Colors
+                                                                      .black),
+                                                          overflow: TextOverflow
+                                                              .ellipsis,
+                                                        ),
+                                                        Text(
+                                                          // "Surabaya",
+                                                          _lowongan[index]
+                                                              .alamatperusahaan
+                                                              .toString(),
+                                                          style: GoogleFonts
+                                                              .poppins(
+                                                                  fontSize: 15,
+                                                                  color: Colors
+                                                                      .black),
+                                                          overflow: TextOverflow
+                                                              .ellipsis,
+                                                        ),
+                                                      ],
+                                                    ),
                                                   ),
                                                   IconButton(
                                                       iconSize: 45,
@@ -352,8 +364,8 @@ class _DashboardState extends State<Dashboard> {
                                             ),
                                             ElevatedButton(
                                               onPressed: () {
-                                              sessionDetailLowongan();
-                                              _index = index;
+                                                sessionDetailLowongan();
+                                                _index = index;
                                                 Route route = MaterialPageRoute(
                                                     builder: (context) =>
                                                         LamarSekarang());
