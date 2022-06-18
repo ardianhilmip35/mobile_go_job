@@ -19,7 +19,6 @@ class LamarSekarang extends StatefulWidget {
 }
 
 class _LamarSekarangState extends State<LamarSekarang> {
-  
   String? _fileName;
   List<PlatformFile>? _paths;
   String? _directoryPath;
@@ -37,27 +36,23 @@ class _LamarSekarangState extends State<LamarSekarang> {
       _gaji = "",
       //lowongan
       _idLowongan = "",
-        _namaLowongan = "",
-        _deskripsiLamaran = "",
-      //lamaran
-        _idLamaran = "",
+      _namaLowongan = "",
+      _deskripsiLamaran = "",
       //user
-      _idUser = "",
-      _namaPelamar = "";
-  final _pengalamanController = TextEditingController();
+      _idUser = "";
 
+  final _pengalamanController = TextEditingController();
+  final _portofolioController = TextEditingController();
 
   // final _imgBaseUrl = Url.imageBaseUrl;
 
   _getSessionLamaran() async {
     final SharedPreferences pref = await SharedPreferences.getInstance();
     setState(() {
-      // pref.getString("pelamar_id").toString();
-      // pref.getString("lowongan_id").toString();
+      pref.getString("pelamar_id").toString();
+      pref.getString("lowongan_id").toString();
       pref.getString("deskripsi_lamaran").toString();
       pref.getString("portofolio_pelamar").toString();
-      pref.getString("created_at").toString();
-      pref.getString("id").toString();
     });
   }
 
@@ -74,7 +69,6 @@ class _LamarSekarangState extends State<LamarSekarang> {
   _getUser() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String idUser = prefs.getString("id") ?? "";
-    // String idLowongan = prefs.getString("id") ?? "";
     AuthServices.getUser(idUser).then((value) {
       if (mounted) {
         setState(() {
@@ -86,27 +80,26 @@ class _LamarSekarangState extends State<LamarSekarang> {
     });
   }
 
-  // _lamaran() {
-  //   final String _createdAt = (DateTime.now().toString());
-  //   AuthServices.lamar(_idUser, _idLowongan, 
-  //   _pengalamanController.text.trim().toLowerCase(),
-  //    _deskripsiLamaran, _createdAt)
-  //       .then((value) {
-  //     setState(() {
-  //       if (value.kode == 201) {
-  //         _idLamaran = value.pesan;
-  //         _getSessionLamaran();
-  //         Navigator.of(context).pushReplacement(
-  //           MaterialPageRoute(
-  //             builder: (context) => Profil(),
-  //           ),
-  //         );
-  //       } else {
-  //         _toast.showToast(value.pesan);
-  //       }
-  //     });
-  //   });
-  // }
+  _lamaran() {
+    AuthServices.lamar(
+            _idUser,
+            _idLowongan,
+            _pengalamanController.text.trim().toLowerCase(),
+            _deskripsiLamaran,
+            _portofolioController.text.trim().toLowerCase()
+            )
+        .then((value) {
+      setState(() {
+        if (value.kode == 201) {
+          Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => Profil()));
+        } else {
+          _toast.showToast(value.pesan);
+        }
+      });
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -385,6 +378,7 @@ class _LamarSekarangState extends State<LamarSekarang> {
                                   child: Text(
                                     "Curiculum Vitae",
                                     style: TextStyle(
+                                        
                                         fontWeight: FontWeight.bold,
                                         fontSize: 20,
                                         color: primarycolor),
@@ -408,8 +402,7 @@ class _LamarSekarangState extends State<LamarSekarang> {
                                               fontSize: 15.0,
                                             ),
                                           ),
-                                          Icon(Icons
-                                              .drive_folder_upload_outlined),
+                                          Icon(Icons.drive_folder_upload_outlined),
                                           SizedBox(width: 12),
                                         ]),
                                     onPressed: () => _openFileExplorer(),
@@ -430,6 +423,7 @@ class _LamarSekarangState extends State<LamarSekarang> {
                                       )
                                     : _paths != null
                                         ? Container(
+                                        
                                             padding: const EdgeInsets.only(
                                                 bottom: 10.0),
                                             height: MediaQuery.of(context)
@@ -443,6 +437,7 @@ class _LamarSekarangState extends State<LamarSekarang> {
                                                   ? _paths!.length
                                                   : 1,
                                               itemBuilder:
+                                          
                                                   (BuildContext context,
                                                       int index) {
                                                 final bool isMultiPath =
@@ -493,8 +488,7 @@ class _LamarSekarangState extends State<LamarSekarang> {
                         ),
                       ),
                       onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                        }
+                        _lamaran();
                       },
                       splashColor: Colors.transparent,
                     ),
@@ -515,6 +509,7 @@ class _LamarSekarangState extends State<LamarSekarang> {
       _paths = (await FilePicker.platform.pickFiles(
         type: FileType.custom,
         allowedExtensions: ['pdf'],
+        
       ))
           ?.files;
     } on PlatformException catch (e) {
