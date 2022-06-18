@@ -43,6 +43,8 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
       pref.setString("namaperusahaan", _lowongan[_index].namaperusahaan.toString());
       pref.setString("alamatperusahaan", _lowongan[_index].alamatperusahaan.toString());
       pref.setString("gajipekerjaan", _lowongan[_index].gajipekerjaan.toString());
+      pref.setString("deskripsiperusahaan", _lowongan[_index].deskripsiperusahaan.toString());
+      pref.setString("deskripsipekerjaan", _lowongan[_index].deskripsipekerjaan);
     });
   }
 

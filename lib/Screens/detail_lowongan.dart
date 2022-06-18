@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_go_job/Screens/profil_perusahaan.dart';
+import 'package:mobile_go_job/models/lowongan_model.dart';
 import 'package:mobile_go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../Services/auth_services.dart';
 
 class DetailLowongan extends StatefulWidget {
   const DetailLowongan({Key? key}) : super(key: key);
@@ -12,6 +16,38 @@ class DetailLowongan extends StatefulWidget {
 }
 
 class _DetailLowonganState extends State<DetailLowongan> {
+
+  int _index = 0;
+  List<Lowongan> _lowongan = [];
+
+  _getData() async {
+    _lowongan = await AuthServices.getLowongan();
+    if (mounted) {
+      setState(() {
+        _lowongan;
+      });
+    }
+  }
+
+  Future<void> sessionDetailLowongan() async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    setState(() {
+      pref.setString("id", _lowongan[_index].id.toString());
+      // pref.setString("logo", _lowongan[_index].logo.toString());
+      // pref.setString("namalowongan", _lowongan[_index].namalowongan.toString());
+      pref.setString("namaperusahaan", _lowongan[_index].namaperusahaan.toString());
+      pref.setString("alamatperusahaan", _lowongan[_index].alamatperusahaan.toString());
+      pref.setString("deskripsiperusahaan", _lowongan[_index].deskripsiperusahaan.toString());
+      // pref.setString("gajipekerjaan", _lowongan[_index].gajipekerjaan.toString());
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _getData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

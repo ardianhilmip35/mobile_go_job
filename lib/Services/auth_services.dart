@@ -140,7 +140,6 @@ class AuthServices {
 
     if(response.statusCode == 200) {
       List<dynamic> listLowongan = (responseData as Map<String, dynamic>)['data'];
-
       List<Lowongan> lowongans = [];
       for (int i = 0; i < listLowongan.length; i++) {
         lowongans.add(Lowongan.fromJson(listLowongan[i]));

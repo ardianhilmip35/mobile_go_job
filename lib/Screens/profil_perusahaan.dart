@@ -1,9 +1,14 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_go_job/Screens/detail_lowongan.dart';
 import 'package:mobile_go_job/Screens/profil.dart';
+import 'package:mobile_go_job/Services/auth_services.dart';
 import 'package:mobile_go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../models/lowongan_model.dart';
 
 class ProfilPerusahaan extends StatefulWidget {
   const ProfilPerusahaan({Key? key}) : super(key: key);
@@ -13,6 +18,68 @@ class ProfilPerusahaan extends StatefulWidget {
 }
 
 class _ProfilPerusahaanState extends State<ProfilPerusahaan> {
+
+  // int _index = 0;
+  // List<Lowongan> _lowongan = [];
+
+  // _getData() async {
+  //   _lowongan = await AuthServices.getLowongan();
+  //   if (mounted) {
+  //     setState(() {
+  //       _lowongan;
+  //     });
+  //   }
+  // }
+
+  // Future<void> sessionDetailLowongan() async {
+  //   final SharedPreferences pref = await SharedPreferences.getInstance();
+  //   setState(() {
+  //     pref.setString("id", _lowongan[_index].id.toString());
+  //     // pref.setString("logo", _lowongan[_index].logo.toString());
+  //     // pref.setString("namalowongan", _lowongan[_index].namalowongan.toString());
+  //     pref.setString("namaperusahaan", _lowongan[_index].namaperusahaan.toString());
+  //     pref.setString("alamatperusahaan", _lowongan[_index].alamatperusahaan.toString());
+  //     pref.setString("deskripsiperusahaan", _lowongan[_index].deskripsiperusahaan.toString());
+  //     // pref.setString("gajipekerjaan", _lowongan[_index].gajipekerjaan.toString());
+  //   });
+  // }
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _getData();
+  // }
+
+  String? _fileName;
+  List<PlatformFile>? _paths;
+  String? _directoryPath;
+  String? _extension;
+  bool _loadingPath = false;
+  bool _multiPick = false;
+  final _formKey = GlobalKey<FormState>();
+  double nilaiSlider = 1;
+
+  String _namaPerusahaan = "",
+      _alamatPerusahaan = "",
+      _deskripsiPerusahaan = "";
+
+  // final _imgBaseUrl = Url.imageBaseUrl;
+
+  _getSessionLowongan() async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    setState(() {
+      _namaPerusahaan = pref.getString("namaperusahaan").toString();
+      _alamatPerusahaan = pref.getString("alamatperusahaan").toString();
+      _deskripsiPerusahaan = pref.getString("deskripsiperusahaan").toString();
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _getSessionLowongan();
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -114,7 +181,8 @@ class _ProfilPerusahaanState extends State<ProfilPerusahaan> {
                   ),
                 ),
                 Text(
-                  "PT Patma Tirta Jaya",
+                  // "PT Patma Tirta Jaya",
+                  _namaPerusahaan.toString(),
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
@@ -127,7 +195,8 @@ class _ProfilPerusahaanState extends State<ProfilPerusahaan> {
                         children: <Widget>[
                           Padding(padding: EdgeInsets.only(top: 50)),
                           Text(
-                            "Surabaya, Jawa Timur",
+                            // "Surabaya, Jawa Timur",
+                            _alamatPerusahaan.toString(),
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15,
@@ -147,7 +216,8 @@ class _ProfilPerusahaanState extends State<ProfilPerusahaan> {
                 color: Colors.grey,
               ),
               child: Text(
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                // 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                _deskripsiPerusahaan.toString(),
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
