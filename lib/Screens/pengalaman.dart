@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_go_job/Screens/view_profil.dart';
+import 'package:mobile_go_job/Services/auth_services.dart';
 import 'package:mobile_go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../Notifikasi/alert.dart';
 
 class Pengalaman extends StatefulWidget {
   const Pengalaman({Key? key}) : super(key: key);
@@ -11,12 +16,72 @@ class Pengalaman extends StatefulWidget {
 }
 
 class _PengalamanState extends State<Pengalaman> {
+  String? _idUser;
+
+  final _formKey = GlobalKey<FormState>();
+  final _alert = ShowAlert();
+
+  var _pengalamanController = TextEditingController();
+  var _posisiController = TextEditingController();
+  var _perusahaanController = TextEditingController();
+  var _spesialisController = TextEditingController();
+  var _lokasiController = TextEditingController();
+  var _gajiController = TextEditingController();
+
+  _getPengalamanSession() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _idUser = prefs.getString('id').toString();
+      String? _pengalaman = prefs.getString('pengalaman').toString();
+      String? _posisi = prefs.getString('posisi').toString();
+      String? _perusahaan = prefs.getString('perusahaan').toString();
+      String? _spesialis = prefs.getString('spesialis').toString();
+      String? _lokasi = prefs.getString('lokasi').toString();
+      String? _gaji = prefs.getString('gaji').toString();
+
+      _pengalamanController = TextEditingController(text: _pengalaman);
+      _posisiController = TextEditingController(text: _posisi);
+      _perusahaanController = TextEditingController(text: _perusahaan);
+      _spesialisController = TextEditingController(text: _spesialis);
+      _lokasiController = TextEditingController(text: _lokasi);
+      _gajiController = TextEditingController(text: _gaji);
+    });
+  }
+
+  _updatePengalaman() {
+    AuthServices.updatePengalaman(
+            _idUser.toString(),
+            _pengalamanController.text,
+            _posisiController.text,
+            _perusahaanController.text,
+            _spesialisController.text,
+            _lokasiController.text,
+            _gajiController.text)
+        .then((value) {
+      setState(() {
+        if (value.kode == 1) {
+          _alert.coolAlertSucces(value.pesan, context, "OK");
+          // Navigator.pushReplacement(
+          // context, MaterialPageRoute(builder: (context) => ViewProfil()));
+        } else {
+          _alert.coolAlertFail(value.pesan, context, "OK");
+        }
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    _getPengalamanSession();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "pengalaman".tr,
+          "Pengalaman".tr,
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
@@ -40,64 +105,70 @@ class _PengalamanState extends State<Pengalaman> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                "pengalamankerja".tr,
+                "Pengalaman Kerja".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextFormField(
                 maxLines: 5,
+                controller: _pengalamanController,
                 style: Theme.of(context).textTheme.bodyText1,
                 decoration: InputDecoration(
-                    hintText: "",
+                    hintText: "Pengalaman",
                     border: OutlineInputBorder(),
                     focusColor: Colors.grey,
                     labelStyle:
                         TextStyle(fontWeight: FontWeight.normal, fontSize: 14)),
               ),
-               Text(
-                "posisi".tr,
+              Text(
+                "Posisi Sebelumnya".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
+                controller: _posisiController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "manajer",
                 ),
               ),
-               Text(
-                "perusahaan".tr,
+              Text(
+                "Pernah Bekerja di".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
+                controller: _perusahaanController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "alfamart",
                 ),
               ),
-               Text(
-                "spesialis".tr,
+              Text(
+                "Spesialis".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
+                controller: _spesialisController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "-",
                 ),
               ),
-               Text(
-                "lokasi".tr,
+              Text(
+                "Lokasi Kerja Sebelumnya".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
+                controller: _lokasiController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "Jakarta",
                 ),
               ),
-               Text(
-                "gaji".tr,
+              Text(
+                "Gaji".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
+                controller: _gajiController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "Rp. 1.000.000",
@@ -111,10 +182,12 @@ class _PengalamanState extends State<Pengalaman> {
                       textColor: Colors.white,
                       color: primarycolor,
                       child: Text(
-                        "simpan".tr,
+                        "Simpan".tr,
                         style: TextStyle(fontSize: 18, color: Colors.white),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        _updatePengalaman();
+                      },
                       shape: new RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(5.0),
                       ),
@@ -126,7 +199,7 @@ class _PengalamanState extends State<Pengalaman> {
                       textColor: Colors.white,
                       color: Colors.red,
                       child: Text(
-                        "batal".tr,
+                        "Batal".tr,
                         style: TextStyle(fontSize: 18, color: Colors.white),
                       ),
                       onPressed: () {

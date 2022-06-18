@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_go_job/Screens/login.dart';
 import 'package:mobile_go_job/Screens/profil.dart';
+import 'package:mobile_go_job/Screens/view_profil.dart';
 import 'package:mobile_go_job/Services/auth_services.dart';
 import 'package:mobile_go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,7 +19,6 @@ class EditProfil extends StatefulWidget {
 }
 
 class _EditProfilState extends State<EditProfil> {
-
   String? _idUser, _tglLahir;
 
   final _formKey = GlobalKey<FormState>();
@@ -52,13 +52,20 @@ class _EditProfilState extends State<EditProfil> {
   }
 
   _updateUser() {
-    AuthServices.updatePelamar(_idUser.toString(), _namaController.text,
-    _alamatController.text, _agamaController.text, _noHpController.text, _jnsKelaminController.text, _tglLahirController.text)
-    .then((value) {
+    AuthServices.updatePelamar(
+            _idUser.toString(),
+            _namaController.text,
+            _alamatController.text,
+            _agamaController.text,
+            _noHpController.text,
+            _jnsKelaminController.text,
+            _tglLahirController.text)
+        .then((value) {
       setState(() {
         if (value.kode == 1) {
           _alert.coolAlertSucces(value.pesan, context, "OK");
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Profil()));
+          // Navigator.pushReplacement(
+          //     context, MaterialPageRoute(builder: (context) => ViewProfil()));
         } else {
           _alert.coolAlertFail(value.pesan, context, "OK");
         }
@@ -66,49 +73,6 @@ class _EditProfilState extends State<EditProfil> {
     });
   }
 
-  _logOut() async {
-    final SharedPreferences pref = await SharedPreferences.getInstance();
-    setState(() {
-      pref.remove("is_login");
-      pref.clear();
-    });
-    await Future.delayed(const Duration(seconds: 3));
-    Navigator.pushAndRemoveUntil(
-      context,
-      MaterialPageRoute(
-        builder: (BuildContext context) => const Login(),
-      ),
-      (route) => false,
-    );
-  }
-
-
-  // _showDialog() {
-  //   showDialog(
-  //     context: context,
-  //     builder: (BuildContext context) {
-  //       return AlertDialog(
-  //         title: const Text("Konfirmasi"),
-  //         content: const Text("Apakah anda yakin ingin mengubah profil?"),
-  //         actions: <Widget>[
-  //           TextButton(
-  //             child: const Text("Tidak"),
-  //             onPressed: () {
-  //               Navigator.of(context).pop();
-  //             },
-  //           ),
-  //           TextButton(
-  //             child: const Text("Ya"),
-  //             onPressed: () {
-  //               _updateUser();
-  //               Navigator.of(context).pop();
-  //             },
-  //           ),
-  //         ],
-  //       );
-  //     },
-  //   );
-  // }
 
   @override
   void initState() {
@@ -121,7 +85,7 @@ class _EditProfilState extends State<EditProfil> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "editprofil".tr,
+          "Edit Profil".tr,
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
@@ -145,18 +109,18 @@ class _EditProfilState extends State<EditProfil> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                "nama".tr,
+                "Nama".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
                 controller: _namaController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: "$_namaController",
+                  hintText: "Anisa",
                 ),
               ),
               Text(
-                "alamat".tr,
+                "Alamat Lengkap".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
@@ -167,7 +131,7 @@ class _EditProfilState extends State<EditProfil> {
                 ),
               ),
               Text(
-                "agama".tr,
+                "Agama".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
@@ -178,14 +142,14 @@ class _EditProfilState extends State<EditProfil> {
                 ),
               ),
               Text(
-                "nohp".tr,
+                "Nomor Telepon".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
                 controller: _noHpController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: "08972736134",
+                  hintText: "085236815716",
                 ),
               ),
               Text(
@@ -196,18 +160,18 @@ class _EditProfilState extends State<EditProfil> {
                 controller: _jnsKelaminController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: "Laki - Laki",
+                  hintText: "Laki - Laki / Perempuan",
                 ),
               ),
               Text(
-                "tanggallahir".tr,
+                "Tanggal Lahir".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
                 controller: _tglLahirController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: "01/01/2020",
+                  hintText: "2001-01-01",
                 ),
               ),
               Padding(padding: EdgeInsets.only(bottom: 10)),
@@ -218,14 +182,11 @@ class _EditProfilState extends State<EditProfil> {
                       textColor: Colors.white,
                       color: primarycolor,
                       child: Text(
-                        "simpan".tr,
+                        "Simpan".tr,
                         style: TextStyle(fontSize: 18, color: Colors.white),
                       ),
                       onPressed: () {
-                        // if (_formKey.currentState!.validate()) {
-                          _updateUser();
-                        // }
-
+                        _updateUser();
                       },
                       shape: new RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(5.0),
@@ -238,7 +199,7 @@ class _EditProfilState extends State<EditProfil> {
                       textColor: Colors.white,
                       color: Colors.red,
                       child: Text(
-                        "batal".tr,
+                        "Batal".tr,
                         style: TextStyle(fontSize: 18, color: Colors.white),
                       ),
                       onPressed: () {

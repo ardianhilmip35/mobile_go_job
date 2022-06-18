@@ -154,6 +154,7 @@ class AuthServices {
       // return json.decode(response.body);
   }
 
+  //Update Biodata
   static Future<Update> updatePelamar(String idUser, namaPelamar, alamatPelamar, agama, noHp, kelamin,tglLahir) async {
     final Uri updateURL =  Uri.parse("https://ws-tif.com/kel24/api/profile/update-profile");
     var response = await http.post(

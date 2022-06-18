@@ -82,6 +82,16 @@ class _ViewProfilState extends State<ViewProfil> {
     pref.setString("telp_pelamar", _noHp.toString());
     pref.setString("jenis_kelamin", _kelamin.toString());
     pref.setString("tanggal_lahir", _tanggalLahir.toString());
+    pref.setString("universitas", _universitas.toString());
+    pref.setString("jurusan", _jurusan.toString());
+    pref.setString("prodi", _prodi.toString());
+    pref.setString("tahun", _tahun.toString());
+    pref.setString("pengalaman", _pengalaman.toString());
+    pref.setString("posisi", _posisi.toString());
+    pref.setString("perusahaan", _perusahaan.toString());
+    pref.setString("spesialis", _spesialis.toString());
+    pref.setString("lokasi", _lokasi.toString());
+    pref.setString("gaji", _gaji.toString());
   }
 
   @override
@@ -420,6 +430,7 @@ class _ViewProfilState extends State<ViewProfil> {
                               fontSize: 15, color: primarycolor),
                         ),
                         onTap: () {
+                          _userSession();
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -586,6 +597,7 @@ class _ViewProfilState extends State<ViewProfil> {
                               fontSize: 15, color: primarycolor),
                         ),
                         onTap: () {
+                          _userSession();
                           Navigator.push(
                             context,
                             MaterialPageRoute(
