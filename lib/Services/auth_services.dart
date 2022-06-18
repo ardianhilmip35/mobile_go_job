@@ -4,6 +4,8 @@ import 'package:mobile_go_job/Screens/lamar_sekarang.dart';
 import 'package:mobile_go_job/Services/globals.dart';
 import 'package:http/http.dart' as http;
 import 'package:mobile_go_job/models/lamaran_model.dart';
+import 'package:mobile_go_job/models/updatePendidikan_model.dart';
+import 'package:mobile_go_job/models/updatePengalaman.dart';
 import 'package:mobile_go_job/models/update_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mobile_go_job/models/lowongan_model.dart';
