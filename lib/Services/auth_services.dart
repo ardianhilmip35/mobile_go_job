@@ -152,8 +152,6 @@ class AuthServices {
     } else {
       throw Exception("Failed to load lowongan");
     }
-      // print(json.decode(response.body));
-      // return json.decode(response.body);
   }
 
   //Update Biodata
