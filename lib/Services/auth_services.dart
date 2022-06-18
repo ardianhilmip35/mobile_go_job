@@ -152,6 +152,7 @@ class AuthServices {
       // return json.decode(response.body);
   }
 
+  //Update Biodata
   static Future<Update> updatePelamar(String idUser, namaPelamar, alamatPelamar, agama, noHp, kelamin,tglLahir) async {
     final Uri updateURL =  Uri.parse("https://ws-tif.com/kel24/api/profile/update-profile");
     var response = await http.post(
@@ -171,6 +172,50 @@ class AuthServices {
       return Update.fromJson(json.decode(response.body));
     } else {
       throw Exception("Failed to update User");
+    }
+  }
+
+  //Update Pendidikan
+  static Future<Update> updatePendidikan(String idUser, universitas, jurusan, prodi, tahun) async {
+    final Uri updateURL =  Uri.parse("https://ws-tif.com/kel24/api/profile/update-profile");
+    var response = await http.post(
+      updateURL,
+      body: {
+        "id": idUser,
+        "universitas": universitas,
+        "jurusan": jurusan,
+        "prodi": prodi,
+        "tahun": tahun
+      },
+    );
+
+    if (response.statusCode == 200) {
+      return Update.fromJson(json.decode(response.body));
+    } else {
+      throw Exception("Failed to update Pendidikan");
+    }
+  }
+
+  //Update Pengalaman
+  static Future<Update> updatePengalaman(String idUser, pengalaman, posisi, perusahaan, spesialis, lokasi, gaji) async {
+    final Uri updateURL =  Uri.parse("https://ws-tif.com/kel24/api/profile/update-pengalaman");
+    var response = await http.post(
+      updateURL,
+      body: {
+        "id": idUser,
+        "pengalaman": pengalaman,
+        "posisi":  posisi,
+        "perusahaan":  perusahaan,
+        "spesialis": spesialis,
+        "lokasi": lokasi,
+        "gaji": gaji
+      },
+    );
+
+    if (response.statusCode == 200) {
+      return Update.fromJson(json.decode(response.body));
+    } else {
+      throw Exception("Failed to update Pengalaman");
     }
   }
 }

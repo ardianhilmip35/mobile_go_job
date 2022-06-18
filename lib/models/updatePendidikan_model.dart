@@ -10,74 +10,40 @@ String updatePendidikanToJson(UpdatePendidikan data) => json.encode(data.toJson(
 
 class UpdatePendidikan {
     UpdatePendidikan({
+      required this.id,
+      required this.universitas,
+      required this.jurusan,
+      required this.prodi,
+      required this.tahun,
       required this.kode,
       required this.pesan,
-      required this.data,
     });
 
-    int kode;
-    String pesan;
-    Data data;
+    String? id;
+    String? universitas;
+    String? jurusan;
+    String? prodi;
+    String? tahun;
+    int? kode;
+    String? pesan;
 
     factory UpdatePendidikan.fromJson(Map<String, dynamic> json) => UpdatePendidikan(
+        id: json["id"],
+        universitas: json["universitas"],
+        jurusan: json["jurusan"],
+        prodi: json["prodi"],
+        tahun: json["tahun"],
         kode: json["kode"],
         pesan: json["pesan"],
-        data: Data.fromJson(json["data"]),
     );
 
     Map<String, dynamic> toJson() => {
+        "id": id,
+        "universitas": universitas,
+        "jurusan": jurusan,
+        "prodi": prodi,
+        "tahun": tahun,
         "kode": kode,
         "pesan": pesan,
-        "data": data.toJson(),
-    };
-}
-
-class Data {
-    Data({
-      required this.pelamarId,
-      required this.lowonganId,
-      required this.deskripsiLamaran,
-      required this.portofolioPelamar,
-      required this.updatedAt,
-      required this.createdAt,
-      required this.id,
-    });
-
-    String pelamarId;
-    String lowonganId;
-    String deskripsiLamaran;
-    PortofolioPelamar portofolioPelamar;
-    DateTime updatedAt;
-    DateTime createdAt;
-    int id;
-
-    factory Data.fromJson(Map<String, dynamic> json) => Data(
-        pelamarId: json["pelamar_id"],
-        lowonganId: json["lowongan_id"],
-        deskripsiLamaran: json["deskripsi_lamaran"],
-        portofolioPelamar: PortofolioPelamar.fromJson(json["portofolio_pelamar"]),
-        updatedAt: DateTime.parse(json["updated_at"]),
-        createdAt: DateTime.parse(json["created_at"]),
-        id: json["id"],
-    );
-
-    Map<String, dynamic> toJson() => {
-        "pelamar_id": pelamarId,
-        "lowongan_id": lowonganId,
-        "deskripsi_lamaran": deskripsiLamaran,
-        "portofolio_pelamar": portofolioPelamar.toJson(),
-        "updated_at": updatedAt.toIso8601String(),
-        "created_at": createdAt.toIso8601String(),
-        "id": id,
-    };
-}
-
-class PortofolioPelamar {
-    PortofolioPelamar();
-
-    factory PortofolioPelamar.fromJson(Map<String, dynamic> json) => PortofolioPelamar(
-    );
-
-    Map<String, dynamic> toJson() => {
     };
 }
