@@ -1,4 +1,4 @@
-import 'package:file_picker/file_picker.dart';
+
 import 'package:flutter/material.dart';
 import 'package:mobile_go_job/Notifikasi/toast.dart';
 import 'package:mobile_go_job/Screens/profil.dart';
@@ -19,13 +19,6 @@ class LamarSekarang extends StatefulWidget {
 }
 
 class _LamarSekarangState extends State<LamarSekarang> {
-  String? _fileName;
-  List<PlatformFile>? _paths;
-  String? _directoryPath;
-  String? _extension;
-  bool _loadingPath = false;
-  bool _multiPick = false;
-  TextEditingController _controller = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   double nilaiSlider = 1;
   final _toast = ShowToast();
@@ -405,73 +398,12 @@ class _LamarSekarangState extends State<LamarSekarang> {
                                           Icon(Icons.drive_folder_upload_outlined),
                                           SizedBox(width: 12),
                                         ]),
-                                    onPressed: () => _openFileExplorer(),
+                                    onPressed: (){},
                                     splashColor: Colors.transparent,
                                   )),
                             ],
                           ),
-                          Builder(
-                            builder: (BuildContext context) => _loadingPath
-                                ? Padding(
-                                    padding: const EdgeInsets.only(top: 10),
-                                    child: const CircularProgressIndicator(),
-                                  )
-                                : _directoryPath != null
-                                    ? ListTile(
-                                        title: const Text('Directory path'),
-                                        subtitle: Text(_directoryPath!),
-                                      )
-                                    : _paths != null
-                                        ? Container(
-                                        
-                                            padding: const EdgeInsets.only(
-                                                bottom: 10.0),
-                                            height: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.10,
-                                            child: Scrollbar(
-                                                child: ListView.separated(
-                                              itemCount: _paths != null &&
-                                                      _paths!.isNotEmpty
-                                                  ? _paths!.length
-                                                  : 1,
-                                              itemBuilder:
-                                          
-                                                  (BuildContext context,
-                                                      int index) {
-                                                final bool isMultiPath =
-                                                    _paths != null &&
-                                                        _paths!.isNotEmpty;
-                                                final String name =
-                                                    'File $index: ' +
-                                                        (isMultiPath
-                                                            ? _paths!
-                                                                .map((e) =>
-                                                                    e.name)
-                                                                .toList()[index]
-                                                            : _fileName ??
-                                                                '...');
-                                                final path = _paths!
-                                                    .map((e) => e.path)
-                                                    .toList()[index]
-                                                    .toString();
-
-                                                return ListTile(
-                                                  title: Text(
-                                                    name,
-                                                  ),
-                                                  subtitle: Text(path),
-                                                );
-                                              },
-                                              separatorBuilder:
-                                                  (BuildContext context,
-                                                          int index) =>
-                                                      const Divider(),
-                                            )),
-                                          )
-                                        : const SizedBox(),
-                          ),
+                          
                         ],
                       ),
                     ),
@@ -500,29 +432,5 @@ class _LamarSekarangState extends State<LamarSekarang> {
         ),
       ),
     );
-  }
-
-  void _openFileExplorer() async {
-    setState(() => _loadingPath = true);
-    try {
-      _directoryPath = null;
-      _paths = (await FilePicker.platform.pickFiles(
-        type: FileType.custom,
-        allowedExtensions: ['pdf'],
-        
-      ))
-          ?.files;
-    } on PlatformException catch (e) {
-      print("Unsupported operation" + e.toString());
-    } catch (ex) {
-      print(ex);
-    }
-    if (!mounted) return;
-    setState(() {
-      _loadingPath = false;
-      print(_paths!.first.extension);
-      _fileName =
-          _paths != null ? _paths!.map((e) => e.name).toString() : '...';
-    });
   }
 }
