@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:mobile_go_job/Services/globals.dart';
 import 'package:http/http.dart' as http;
+import 'package:mobile_go_job/models/updatePendidikan_model.dart';
+import 'package:mobile_go_job/models/updatePengalaman.dart';
 import 'package:mobile_go_job/models/update_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mobile_go_job/models/lowongan_model.dart';
@@ -176,7 +178,7 @@ class AuthServices {
   }
 
   //Update Pendidikan
-  static Future<Update> updatePendidikan(String idUser, universitas, jurusan, prodi, tahun) async {
+  static Future<UpdatePendidikan> updatePendidikan(String idUser, universitas, jurusan, prodi, tahun) async {
     final Uri updateURL =  Uri.parse("https://ws-tif.com/kel24/api/profile/update-profile");
     var response = await http.post(
       updateURL,
@@ -185,19 +187,19 @@ class AuthServices {
         "universitas": universitas,
         "jurusan": jurusan,
         "prodi": prodi,
-        "tahun": tahun
+        "tahun": tahun,
       },
     );
 
     if (response.statusCode == 200) {
-      return Update.fromJson(json.decode(response.body));
+      return UpdatePendidikan.fromJson(json.decode(response.body));
     } else {
       throw Exception("Failed to update Pendidikan");
     }
   }
 
   //Update Pengalaman
-  static Future<Update> updatePengalaman(String idUser, pengalaman, posisi, perusahaan, spesialis, lokasi, gaji) async {
+  static Future<UpdatePengalaman> updatePengalaman(String idUser, pengalaman, posisi, perusahaan, spesialis, lokasi, gaji) async {
     final Uri updateURL =  Uri.parse("https://ws-tif.com/kel24/api/profile/update-pengalaman");
     var response = await http.post(
       updateURL,
@@ -213,7 +215,7 @@ class AuthServices {
     );
 
     if (response.statusCode == 200) {
-      return Update.fromJson(json.decode(response.body));
+      return UpdatePengalaman.fromJson(json.decode(response.body));
     } else {
       throw Exception("Failed to update Pengalaman");
     }
