@@ -179,17 +179,18 @@ class AuthServices {
     }
   }
 
+  //lamaran
   static Future<Lamaran> lamar(
-    String pelamarId, String lowonganId, String deskripsiLamaran,  String idLamaran) async {
+    String pelamarId, String lowonganId, String pengalaman) async {
     // Uri _apiURL = Uri.parse("${Url.baseURL}register.php");
-    final Uri registerURL =  Uri.parse("$lamaranURL");
+    final Uri lamarURL =  Uri.parse("$lamaranURL");
     var response = await http.post(
-      registerURL,
+      lamarURL,
       body: {
         "pelamar_id": pelamarId,
         "lowongan_id": lowonganId,
-        "deskripsi_lamaran": deskripsiLamaran,
-        "id": idLamaran,
+        "deskripsi_lamaran": pengalaman,
+        // "id": idLamaran,
       },
     );
 
@@ -199,6 +200,7 @@ class AuthServices {
       throw Exception("Failed to create Lamaran");
     }
   }
+
   //Update Pendidikan
   static Future<UpdatePendidikan> updatePendidikan(String idUser, universitas, jurusan, prodi, tahun) async {
     final Uri updateURL =  Uri.parse("https://ws-tif.com/kel24/api/profile/update-profile");

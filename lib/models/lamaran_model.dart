@@ -37,7 +37,6 @@ class Data {
       required this.pelamarId,
       required this.lowonganId,
       required this.deskripsiLamaran,
-      required this.portofolioPelamar,
       required this.updatedAt,
       required this.createdAt,
       required this.id,
@@ -46,7 +45,6 @@ class Data {
     String pelamarId;
     String lowonganId;
     String deskripsiLamaran;
-    PortofolioPelamar portofolioPelamar;
     DateTime updatedAt;
     DateTime createdAt;
     int id;
@@ -55,7 +53,6 @@ class Data {
         pelamarId: json["pelamar_id"],
         lowonganId: json["lowongan_id"],
         deskripsiLamaran: json["deskripsi_lamaran"],
-        portofolioPelamar: PortofolioPelamar.fromJson(json["portofolio_pelamar"]),
         updatedAt: DateTime.parse(json["updated_at"]),
         createdAt: DateTime.parse(json["created_at"]),
         id: json["id"],
@@ -65,19 +62,8 @@ class Data {
         "pelamar_id": pelamarId,
         "lowongan_id": lowonganId,
         "deskripsi_lamaran": deskripsiLamaran,
-        "portofolio_pelamar": portofolioPelamar.toJson(),
         "updated_at": updatedAt.toIso8601String(),
         "created_at": createdAt.toIso8601String(),
         "id": id,
-    };
-}
-
-class PortofolioPelamar {
-    PortofolioPelamar();
-
-    factory PortofolioPelamar.fromJson(Map<String, dynamic> json) => PortofolioPelamar(
-    );
-
-    Map<String, dynamic> toJson() => {
     };
 }
