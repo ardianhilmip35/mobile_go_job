@@ -148,7 +148,7 @@ class _LamarSekarangState extends State<LamarSekarang> {
                     children: <Widget>[
                       Container(
                         padding: EdgeInsets.all(3),
-                        height: 125,
+                        constraints: BoxConstraints(maxHeight: double.infinity),
                         width: double.infinity,
                         decoration: BoxDecoration(
                             color: Color.fromARGB(255, 219, 217, 217)),
