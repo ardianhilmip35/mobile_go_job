@@ -22,6 +22,7 @@ class LowonganPekerjaan extends StatefulWidget {
 }
 
 class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
+  Color _iconColor = Colors.grey;
   int _index = 0;
   List<Lowongan> _lowongan = [];
 
@@ -40,11 +41,16 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
       // pref.setString("id", _lowongan[_index].id.toString());
       // pref.setString("logo", _lowongan[_index].logo.toString());
       pref.setString("namalowongan", _lowongan[_index].namalowongan.toString());
-      pref.setString("namaperusahaan", _lowongan[_index].namaperusahaan.toString());
-      pref.setString("alamatperusahaan", _lowongan[_index].alamatperusahaan.toString());
-      pref.setString("gajipekerjaan", _lowongan[_index].gajipekerjaan.toString());
-      pref.setString("deskripsiperusahaan", _lowongan[_index].deskripsiperusahaan.toString());
-      pref.setString("deskripsipekerjaan", _lowongan[_index].deskripsipekerjaan);
+      pref.setString(
+          "namaperusahaan", _lowongan[_index].namaperusahaan.toString());
+      pref.setString(
+          "alamatperusahaan", _lowongan[_index].alamatperusahaan.toString());
+      pref.setString(
+          "gajipekerjaan", _lowongan[_index].gajipekerjaan.toString());
+      pref.setString("deskripsiperusahaan",
+          _lowongan[_index].deskripsiperusahaan.toString());
+      pref.setString(
+          "deskripsipekerjaan", _lowongan[_index].deskripsipekerjaan);
     });
   }
 
@@ -96,142 +102,167 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
               shrinkWrap: true,
               padding: EdgeInsets.only(top: 15.0),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 1,
-                  ),
+                crossAxisCount: 1,
+              ),
               itemCount: _lowongan.length,
               itemBuilder: (context, index) {
                 return InkWell(
-                child: Column(
-                children: <Widget>[
-                  Container(
-                    padding: EdgeInsets.all(1),
-                    height: 315,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: primarycolor,
-                      border: Border.all(color: primarycolor, width: 4),
-                    ),
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          //Container Foto Profil
-                          margin: EdgeInsets.only(top: 10, bottom: 10),
-                          width: 50,
-                          height: 50,
-                          decoration: BoxDecoration(
-                            color: Colors.grey,
-                            border: Border.all(color: Colors.grey, width: 4),
-                            shape: BoxShape.circle,
-                          ),
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                        padding: EdgeInsets.all(1),
+                        constraints: BoxConstraints(maxHeight: double.infinity),
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: primarycolor,
+                          border: Border.all(color: primarycolor, width: 4),
                         ),
-                        Text(
-                          _lowongan[index].namaperusahaan.toString(),
-                          // "PT Patma Tirta Jaya",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 25,
-                              color: Colors.white),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(
-                            top: 10,
-                          ),
-                          width: double.infinity,
-                          height: 185,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(color: Colors.white, width: 2),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget>[
-                              Container(
-                                padding: EdgeInsets.all(10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
-                                      // "Web Developtment Staff",
-                                      _lowongan[index].namalowongan.toString(),
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20,
-                                          color: primarycolor),
-                                    ),
-                                    Padding(padding: EdgeInsets.only(top: 20)),
-                                    Text(
-                                      // "Surabaya, Jawa Timur",
-                                      _lowongan[index].alamatperusahaan.toString(),
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20,
-                                          color: primarycolor),
-                                    ),
-                                    Padding(padding: EdgeInsets.only(top: 70)),
-                                    Text(
-                                      // "5 Hari yang lalu",
-                                      _lowongan[index].gajipekerjaan.toString(),
-                                      style: TextStyle(
-                                          fontSize: 20, color: primarycolor),
-                                    ),
-                                  ],
-                                ),
+                        child: Column(
+                          children: <Widget>[
+                            Container(
+                              //Container Foto Profil
+                              margin: EdgeInsets.only(top: 10, bottom: 10),
+                              width: 50,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                color: Colors.grey,
+                                border:
+                                    Border.all(color: Colors.grey, width: 4),
+                                shape: BoxShape.circle,
                               ),
-                              Container(
-                                padding: EdgeInsets.only(left: 10),
-                                  child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
+                            ),
+                            Text(
+                              _lowongan[index].namaperusahaan.toString(),
+                              // "PT Patma Tirta Jaya",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 25,
+                                  color: Colors.white),
+                            ),
+                            Container(
+                              padding: EdgeInsets.all(5),
+                              margin: EdgeInsets.only(
+                                top: 10,
+                              ),
+                              width: double.infinity,
+                              constraints:
+                                  BoxConstraints(maxHeight: double.infinity),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                border:
+                                    Border.all(color: Colors.white, width: 2),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: <Widget>[
-                                  IconButton(
-                                      alignment: Alignment.topRight,
-                                      iconSize: 45,
-                                      // color: _iconColor,
-                                      onPressed: () {
-                                        setState(() {
-                                          // if (_iconColor == Colors.grey) {
-                                          //   _iconColor = primarycolor;
-                                          // } else {
-                                          //   _iconColor = Colors.grey;
-                                          // }
-                                        });
-                                      },
-                                      icon: Icon(Icons.bookmark)),
-                                  Padding(
-                                    padding: EdgeInsets.only(top: 70),
-                                  ),
-                                  RaisedButton(
-                                    textColor: Colors.white,
-                                    color: primarycolor,
-                                    child: Text(
-                                      'lamarsekarang'.tr,
-                                      style: TextStyle(
-                                          fontSize: 20, color: Colors.white),
-                                    ),
-                                    onPressed: () {
-                                      sessionDetailLowongan();
-                                      _index = index;
-                                      Route route =
-                                          MaterialPageRoute(builder: (context) => LamarSekarang());
-                                      Navigator.push(context, route);
-                                    },
-                                    shape: new RoundedRectangleBorder(
-                                      borderRadius:
-                                          new BorderRadius.circular(12.0),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Container(
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                // "Web Developtment Staff",
+                                                _lowongan[index]
+                                                    .namalowongan
+                                                    .toString(),
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 20,
+                                                    color: primarycolor),
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                              IconButton(
+                                                  iconSize: 45,
+                                                   color: _iconColor,
+                                                  onPressed: () {
+                                                    setState(() {
+                                                       if (_iconColor == Colors.grey) {
+                                                         _iconColor = primarycolor;
+                                                       } else {
+                                                         _iconColor = Colors.grey;
+                                                      }
+                                                    });
+                                                  },
+                                                  icon: Icon(Icons.bookmark)),
+                                            ],
+                                          ),
+                                        ),
+                                        Padding(
+                                            padding: EdgeInsets.only(top: 20)),
+                                        Text(
+                                          // "Surabaya, Jawa Timur",
+                                          _lowongan[index]
+                                              .alamatperusahaan
+                                              .toString(),
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 20,
+                                              color: primarycolor),
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                        Padding(
+                                            padding: EdgeInsets.only(top: 70)),
+                                        Container(
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: <Widget>[
+                                              Text(
+                                                // "5 Hari yang lalu",
+                                                _lowongan[index]
+                                                    .gajipekerjaan
+                                                    .toString(),
+                                                style: TextStyle(
+                                                    fontSize: 20,
+                                                    color: primarycolor),
+                                              ),
+                                              RaisedButton(
+                                                textColor: Colors.white,
+                                                color: primarycolor,
+                                                child: Text(
+                                                  'lamarsekarang'.tr,
+                                                  style: TextStyle(
+                                                      fontSize: 20,
+                                                      color: Colors.white),
+                                                ),
+                                                onPressed: () {
+                                                  sessionDetailLowongan();
+                                                  _index = index;
+                                                  Route route =
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              LamarSekarang());
+                                                  Navigator.push(
+                                                      context, route);
+                                                },
+                                                shape:
+                                                    new RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      new BorderRadius.circular(
+                                                          12.0),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ],
-                              )
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                      Padding(padding: EdgeInsets.only(bottom: 10)),
+                    ],
                   ),
-                  Padding(padding: EdgeInsets.only(bottom: 10)),
-                ],
-              ),
-              );
+                );
               },
             ),
           ],

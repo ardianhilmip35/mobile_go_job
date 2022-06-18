@@ -22,20 +22,17 @@ class _LamarSekarangState extends State<LamarSekarang> {
   final _toast = ShowToast();
   // String? _namaPelamar, _email;
 
-  String _namaPerusahaan = "",
-      _alamatPerusahaan = "",
-      _gaji = "";
+  String _namaPerusahaan = "", _alamatPerusahaan = "", _gaji = "";
 
-      //lowongan
-  String _idLowongan = "",
-      _namaLowongan = "";
+  //lowongan
+  String _idLowongan = "", _namaLowongan = "";
 
   String _pengalaman = "";
-     
-      //user
+
+  //user
   String _idUser = "";
 
-      // var _idLamaran;
+  // var _idLamaran;
 
   final _pengalamanController = TextEditingController();
   // final _portofolioController = TextEditingController();
@@ -149,7 +146,7 @@ class _LamarSekarangState extends State<LamarSekarang> {
                   children: <Widget>[
                     Container(
                       padding: EdgeInsets.all(3),
-                      height: 125,
+                      constraints: BoxConstraints(maxHeight: double.infinity),
                       width: double.infinity,
                       decoration: BoxDecoration(
                           color: Color.fromARGB(255, 219, 217, 217)),
@@ -427,8 +424,8 @@ class _LamarSekarangState extends State<LamarSekarang> {
                       onPressed: () {
                         // _lamaran();
                         if (_formKey.currentState!.validate()) {
-                              _lamaran();
-                            }
+                          _lamaran();
+                        }
                       },
                       splashColor: Colors.transparent,
                     ),
