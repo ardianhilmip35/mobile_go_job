@@ -1,4 +1,3 @@
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_go_job/Notifikasi/toast.dart';
 import 'package:mobile_go_job/Screens/profil.dart';
@@ -9,7 +8,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mobile_go_job/models/lowongan_model.dart';
-import 'package:flutter/services.dart';
 
 class LamarSekarang extends StatefulWidget {
   const LamarSekarang({Key? key}) : super(key: key);
@@ -75,13 +73,11 @@ class _LamarSekarangState extends State<LamarSekarang> {
 
   _lamaran() {
     AuthServices.lamar(
-            _idUser,
-            _idLowongan,
-            _pengalamanController.text.trim().toLowerCase(),
-            _deskripsiLamaran,
-            _portofolioController.text.trim().toLowerCase(),
-            )
-        .then((value) {
+      _idUser,
+      _idLowongan,
+      _pengalamanController.text.trim().toLowerCase(),
+      _deskripsiLamaran,
+    ).then((value) {
       setState(() {
         if (value.kode == 201) {
           Navigator.of(context).pushReplacement(
@@ -371,7 +367,6 @@ class _LamarSekarangState extends State<LamarSekarang> {
                                   child: Text(
                                     "Curiculum Vitae",
                                     style: TextStyle(
-                                        
                                         fontWeight: FontWeight.bold,
                                         fontSize: 20,
                                         color: primarycolor),
@@ -395,7 +390,8 @@ class _LamarSekarangState extends State<LamarSekarang> {
                                               fontSize: 15.0,
                                             ),
                                           ),
-                                          Icon(Icons.drive_folder_upload_outlined),
+                                          Icon(Icons
+                                              .drive_folder_upload_outlined),
                                           SizedBox(width: 12),
                                         ]),
                                     onPressed: () {},
@@ -403,7 +399,6 @@ class _LamarSekarangState extends State<LamarSekarang> {
                                   )),
                             ],
                           ),
-                          
                         ],
                       ),
                     ),
@@ -433,5 +428,4 @@ class _LamarSekarangState extends State<LamarSekarang> {
       ),
     );
   }
-
 }
