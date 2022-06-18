@@ -9,7 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mobile_go_job/models/lowongan_model.dart';
-import 'package:flutter/services.dart';
+
 
 class LamarSekarang extends StatefulWidget {
   const LamarSekarang({Key? key}) : super(key: key);
