@@ -35,8 +35,24 @@ class _DashboardState extends State<Dashboard> {
   _getData() async {
     _lowongan = await AuthServices.getLowongan();
     if (mounted) {
-      setState(() {});
+      setState(() {
+        _lowongan;
+      });
     }
+  }
+
+  Future<void> sessionDetailLowongan() async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    setState(() {
+      pref.setString("id", _lowongan[_index].id.toString());
+      // pref.setString("logo", _lowongan[_index].logo.toString());
+      pref.setString("namalowongan", _lowongan[_index].namalowongan.toString());
+      pref.setString("namaperusahaan", _lowongan[_index].namaperusahaan.toString());
+      pref.setString("alamatperusahaan", _lowongan[_index].alamatperusahaan.toString());
+      pref.setString("gajipekerjaan", _lowongan[_index].gajipekerjaan.toString());
+      pref.setString("deskripsiperusahaan", _lowongan[_index].deskripsiperusahaan.toString());
+      pref.setString("deskripsipekerjaan", _lowongan[_index].deskripsipekerjaan);
+    });
   }
 
   @override
@@ -336,6 +352,8 @@ class _DashboardState extends State<Dashboard> {
                                             ),
                                             ElevatedButton(
                                               onPressed: () {
+                                              sessionDetailLowongan();
+                                              _index = index;
                                                 Route route = MaterialPageRoute(
                                                     builder: (context) =>
                                                         LamarSekarang());

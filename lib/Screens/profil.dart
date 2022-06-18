@@ -44,11 +44,19 @@ class _ProfilState extends State<Profil> {
     SharedPreferences pref = await SharedPreferences.getInstance();
     String idUser = pref.getString("id") ?? "";
     AuthServices.getUser(idUser).then((value) {
-      setState(() {
-        _namaPelamar = value.namaPelamar.toString();
-        _email = value.email.toString();
+      if (mounted) {
+        setState(() {
+        _namaPelamar = value.namaPelamar;
+        _email = value.email;
       });
+      }
     });
+  }
+
+   _userSession() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.setString("nama_pelamar", _namaPelamar.toString());
+    pref.setString("email", _email.toString());
   }
 
   // Future<void> sessionPelamar() async {

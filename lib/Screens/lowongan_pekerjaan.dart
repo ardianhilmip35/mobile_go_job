@@ -37,7 +37,7 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
   Future<void> sessionDetailLowongan() async {
     final SharedPreferences pref = await SharedPreferences.getInstance();
     setState(() {
-      pref.setString("id", _lowongan[_index].id.toString());
+      // pref.setString("id", _lowongan[_index].id.toString());
       // pref.setString("logo", _lowongan[_index].logo.toString());
       pref.setString("namalowongan", _lowongan[_index].namalowongan.toString());
       pref.setString("namaperusahaan", _lowongan[_index].namaperusahaan.toString());

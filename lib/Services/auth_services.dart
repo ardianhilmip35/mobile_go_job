@@ -1,7 +1,9 @@
 import 'dart:convert';
 
+import 'package:mobile_go_job/Screens/lamar_sekarang.dart';
 import 'package:mobile_go_job/Services/globals.dart';
 import 'package:http/http.dart' as http;
+import 'package:mobile_go_job/models/lamaran_model.dart';
 import 'package:mobile_go_job/models/update_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mobile_go_job/models/lowongan_model.dart';
@@ -146,7 +148,7 @@ class AuthServices {
       } 
       return lowongans;
     } else {
-      throw Exception("Failed to load wisata");
+      throw Exception("Failed to load lowongan");
     }
       // print(json.decode(response.body));
       // return json.decode(response.body);
@@ -173,4 +175,28 @@ class AuthServices {
       throw Exception("Failed to update User");
     }
   }
+
+  static Future<Lamaran> lamar(
+    String pelamarId, String lowonganId, String deskripsiLamaran, String portofolioPelamar, String Time, String idLamaran) async {
+    // Uri _apiURL = Uri.parse("${Url.baseURL}register.php");
+    final Uri registerURL =  Uri.parse("$lamaranURL");
+    var response = await http.post(
+      registerURL,
+      body: {
+        "pelamar_id": pelamarId,
+        "lowongan_id": lowonganId,
+        "deskripsi_lamaran": deskripsiLamaran,
+        "portofolio_pelamar": portofolioPelamar,
+        "created_at": Time,
+        "id": idLamaran,
+      },
+    );
+
+    if (response.statusCode == 200) {
+      return Lamaran.fromJson(json.decode(response.body));
+    } else {
+      throw Exception("Failed to create Lamaran");
+    }
+  }
+
 }

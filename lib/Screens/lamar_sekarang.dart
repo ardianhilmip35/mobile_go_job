@@ -1,5 +1,6 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile_go_job/Notifikasi/toast.dart';
 import 'package:mobile_go_job/Screens/profil.dart';
 import 'package:mobile_go_job/Screens/profil_perusahaan.dart';
 import 'package:mobile_go_job/Services/auth_services.dart';
@@ -18,6 +19,7 @@ class LamarSekarang extends StatefulWidget {
 }
 
 class _LamarSekarangState extends State<LamarSekarang> {
+  
   String? _fileName;
   List<PlatformFile>? _paths;
   String? _directoryPath;
@@ -27,14 +29,37 @@ class _LamarSekarangState extends State<LamarSekarang> {
   TextEditingController _controller = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   double nilaiSlider = 1;
-  String? _namaPelamar, _email;
+  final _toast = ShowToast();
+  // String? _namaPelamar, _email;
 
   String _namaPerusahaan = "",
-      _namaLowongan = "",
       _alamatPerusahaan = "",
-      _gaji = "";
+      _gaji = "",
+      //lowongan
+      _idLowongan = "",
+        _namaLowongan = "",
+        _deskripsiLamaran = "",
+      //lamaran
+        _idLamaran = "",
+      //user
+      _idUser = "",
+      _namaPelamar = "";
+  final _pengalamanController = TextEditingController();
+
 
   // final _imgBaseUrl = Url.imageBaseUrl;
+
+  _getSessionLamaran() async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    setState(() {
+      // pref.getString("pelamar_id").toString();
+      // pref.getString("lowongan_id").toString();
+      pref.getString("deskripsi_lamaran").toString();
+      pref.getString("portofolio_pelamar").toString();
+      pref.getString("created_at").toString();
+      pref.getString("id").toString();
+    });
+  }
 
   _getSessionLowongan() async {
     final SharedPreferences pref = await SharedPreferences.getInstance();
@@ -46,22 +71,47 @@ class _LamarSekarangState extends State<LamarSekarang> {
     });
   }
 
-  // _getUser() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   String idUser = prefs.getString("id") ?? "";
-  //   AuthServices.getUser(idUser).then((value) {
+  _getUser() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String idUser = prefs.getString("id") ?? "";
+    // String idLowongan = prefs.getString("id") ?? "";
+    AuthServices.getUser(idUser).then((value) {
+      if (mounted) {
+        setState(() {
+          idUser = idUser;
+          // _idLowongan = idLowongan;
+          // _namaPelamar = value.namaPelamar;
+        });
+      }
+    });
+  }
+
+  // _lamaran() {
+  //   final String _createdAt = (DateTime.now().toString());
+  //   AuthServices.lamar(_idUser, _idLowongan, 
+  //   _pengalamanController.text.trim().toLowerCase(),
+  //    _deskripsiLamaran, _createdAt)
+  //       .then((value) {
   //     setState(() {
-  //       _namaPelamar = value.namaPelamar;
-  //       _email = value.email;
+  //       if (value.kode == 201) {
+  //         _idLamaran = value.pesan;
+  //         _getSessionLamaran();
+  //         Navigator.of(context).pushReplacement(
+  //           MaterialPageRoute(
+  //             builder: (context) => Profil(),
+  //           ),
+  //         );
+  //       } else {
+  //         _toast.showToast(value.pesan);
+  //       }
   //     });
   //   });
   // }
-
   @override
   void initState() {
     super.initState();
     _getSessionLowongan();
-    // _getUser();
+    _getUser();
   }
 
   @override
@@ -119,7 +169,8 @@ class _LamarSekarangState extends State<LamarSekarang> {
                           ),
                           Text(
                             // "Web Development Staff",
-                            _namaLowongan.toString(),
+                            // _namaLowongan.toString(),
+                            "$_namaLowongan",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
@@ -137,7 +188,8 @@ class _LamarSekarangState extends State<LamarSekarang> {
                                     children: <Widget>[
                                       Text(
                                         // "PT Patma Tirta Jaya",
-                                        _namaPerusahaan.toString(),
+                                        // _namaPerusahaan.toString(),
+                                        "$_namaPerusahaan",
                                         style: TextStyle(
                                             fontSize: 15, color: primarycolor),
                                       ),
@@ -300,6 +352,7 @@ class _LamarSekarangState extends State<LamarSekarang> {
                 padding: EdgeInsets.all(8),
               ),
               TextFormField(
+                controller: _pengalamanController,
                 maxLines: 5,
                 style: Theme.of(context).textTheme.bodyText1,
                 decoration: InputDecoration(
@@ -440,7 +493,8 @@ class _LamarSekarangState extends State<LamarSekarang> {
                         ),
                       ),
                       onPressed: () {
-                        if (_formKey.currentState!.validate()) {}
+                        if (_formKey.currentState!.validate()) {
+                        }
                       },
                       splashColor: Colors.transparent,
                     ),
