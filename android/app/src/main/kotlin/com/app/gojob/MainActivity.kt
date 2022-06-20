@@ -1,4 +1,4 @@
-package com.example.mobile_go_job
+package com.app.gojob
 
 import io.flutter.embedding.android.FlutterActivity
 
