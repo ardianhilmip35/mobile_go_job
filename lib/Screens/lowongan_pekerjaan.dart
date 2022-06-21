@@ -72,14 +72,7 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
         automaticallyImplyLeading: false,
         centerTitle: true,
         backgroundColor: primarycolor,
-        leading: IconButton(
-          //untuk back button
-          iconSize: 30,
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+      
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.fromLTRB(10.0, 8.0, 8.0, 8.0),
@@ -178,13 +171,16 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                                               ),
                                               IconButton(
                                                   iconSize: 45,
-                                                   color: _iconColor,
+                                                  color: _iconColor,
                                                   onPressed: () {
                                                     setState(() {
-                                                       if (_iconColor == Colors.grey) {
-                                                         _iconColor = primarycolor;
-                                                       } else {
-                                                         _iconColor = Colors.grey;
+                                                      if (_iconColor ==
+                                                          Colors.grey) {
+                                                        _iconColor =
+                                                            primarycolor;
+                                                      } else {
+                                                        _iconColor =
+                                                            Colors.grey;
                                                       }
                                                     });
                                                   },
@@ -194,16 +190,25 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                                         ),
                                         Padding(
                                             padding: EdgeInsets.only(top: 20)),
-                                        Text(
-                                          // "Surabaya, Jawa Timur",
-                                          _lowongan[index]
-                                              .alamatperusahaan
-                                              .toString(),
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 20,
-                                              color: primarycolor),
-                                          overflow: TextOverflow.ellipsis,
+                                        Container(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              2.2,
+                                            
+                                       
+                                          child: Text(
+                                            // "Surabaya, Jawa Timur",
+                                            _lowongan[index]
+                                                .alamatperusahaan
+                                                .toString(),
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 15,
+                                                color: primarycolor),
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 2,
+                                          ),
                                         ),
                                         Padding(
                                             padding: EdgeInsets.only(top: 70)),

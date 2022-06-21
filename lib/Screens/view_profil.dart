@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_go_job/Screens/pendidikan.dart';
+import 'package:mobile_go_job/Screens/profil.dart';
 import 'package:mobile_go_job/controller/logincontroller.dart';
 import 'package:mobile_go_job/Screens/edit_profil.dart';
 import 'package:mobile_go_job/Screens/pengalaman.dart';
+import 'package:mobile_go_job/main.dart';
 import 'package:mobile_go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
@@ -109,7 +111,8 @@ class _ViewProfilState extends State<ViewProfil> {
           iconSize: 30,
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => MyBottomBar()));
           },
         ),
       ),

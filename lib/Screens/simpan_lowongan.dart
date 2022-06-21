@@ -18,6 +18,7 @@ class _SimpanLowonganState extends State<SimpanLowongan> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text(
           'lowongantersimpan'.tr,
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),

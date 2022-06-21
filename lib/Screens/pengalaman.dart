@@ -80,20 +80,14 @@ class _PengalamanState extends State<Pengalaman> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text(
           "Pengalaman".tr,
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
         backgroundColor: primarycolor,
-        leading: IconButton(
-          //untuk back button
-          iconSize: 30,
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+      
       ),
       body: SingleChildScrollView(
         child: Container(

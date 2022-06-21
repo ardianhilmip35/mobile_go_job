@@ -71,20 +71,14 @@ class _EditPendidikanState extends State<EditPendidikan> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text(
           "Edit Pendidikan".tr,
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
         backgroundColor: primarycolor,
-        leading: IconButton(
-          //untuk back button
-          iconSize: 30,
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+      
       ),
       body: SingleChildScrollView(
         child: Container(

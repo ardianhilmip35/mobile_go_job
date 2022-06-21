@@ -174,6 +174,7 @@ class _ProfilState extends State<Profil> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text(
           'profil'.tr,
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
