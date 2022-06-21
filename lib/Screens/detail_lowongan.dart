@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_go_job/Screens/profil_perusahaan.dart';
 import 'package:mobile_go_job/models/lowongan_model.dart';
+import 'package:mobile_go_job/shared/buttom_navigation.dart';
 import 'package:mobile_go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
@@ -16,7 +17,6 @@ class DetailLowongan extends StatefulWidget {
 }
 
 class _DetailLowonganState extends State<DetailLowongan> {
-
   String _namaPerusahaan = "",
       _namaPekerjaan = "",
       _alamatPerusahaan = "",
@@ -55,7 +55,8 @@ class _DetailLowonganState extends State<DetailLowongan> {
           iconSize: 30,
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => MyBottomBar()));
           },
         ),
       ),
@@ -100,8 +101,8 @@ class _DetailLowonganState extends State<DetailLowongan> {
                                   TextStyle(fontSize: 20, color: primarycolor),
                             ),
                             onPressed: () {
-                              Route route =
-                                  MaterialPageRoute(builder: (context) => DetailLowongan());
+                              Route route = MaterialPageRoute(
+                                  builder: (context) => DetailLowongan());
                               Navigator.push(context, route);
                             },
                           ),
@@ -116,8 +117,8 @@ class _DetailLowonganState extends State<DetailLowongan> {
                                   TextStyle(fontSize: 20, color: primarycolor),
                             ),
                             onPressed: () {
-                              Route route =
-                                  MaterialPageRoute(builder: (context) => ProfilPerusahaan());
+                              Route route = MaterialPageRoute(
+                                  builder: (context) => ProfilPerusahaan());
                               Navigator.push(context, route);
                             },
                           ),
@@ -201,7 +202,6 @@ class _DetailLowonganState extends State<DetailLowongan> {
                     color: primarycolor),
               ),
             ),
-            
           ],
         ),
       ),

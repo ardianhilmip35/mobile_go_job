@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile_go_job/Screens/detail_lowongan.dart';
 import 'package:mobile_go_job/Screens/profil.dart';
 import 'package:mobile_go_job/Services/auth_services.dart';
+import 'package:mobile_go_job/shared/buttom_navigation.dart';
 import 'package:mobile_go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
@@ -18,7 +19,6 @@ class ProfilPerusahaan extends StatefulWidget {
 }
 
 class _ProfilPerusahaanState extends State<ProfilPerusahaan> {
-
   // int _index = 0;
   // List<Lowongan> _lowongan = [];
 
@@ -79,7 +79,7 @@ class _ProfilPerusahaanState extends State<ProfilPerusahaan> {
     super.initState();
     _getSessionLowongan();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,7 +95,8 @@ class _ProfilPerusahaanState extends State<ProfilPerusahaan> {
           iconSize: 30,
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => MyBottomBar()));
           },
         ),
       ),
@@ -140,8 +141,8 @@ class _ProfilPerusahaanState extends State<ProfilPerusahaan> {
                                   TextStyle(fontSize: 20, color: primarycolor),
                             ),
                             onPressed: () {
-                              Route route =
-                                  MaterialPageRoute(builder: (context) => DetailLowongan());
+                              Route route = MaterialPageRoute(
+                                  builder: (context) => DetailLowongan());
                               Navigator.push(context, route);
                             },
                           ),
@@ -156,8 +157,8 @@ class _ProfilPerusahaanState extends State<ProfilPerusahaan> {
                                   TextStyle(fontSize: 20, color: primarycolor),
                             ),
                             onPressed: () {
-                              Route route =
-                                  MaterialPageRoute(builder: (context) => ProfilPerusahaan());
+                              Route route = MaterialPageRoute(
+                                  builder: (context) => ProfilPerusahaan());
                               Navigator.push(context, route);
                             },
                           ),
@@ -224,7 +225,6 @@ class _ProfilPerusahaanState extends State<ProfilPerusahaan> {
                     color: primarycolor),
               ),
             ),
-           
           ],
         ),
       ),
