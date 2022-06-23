@@ -67,16 +67,15 @@ class _RegisterState extends State<Register> {
         if (value.pesan == 'Registrasi Berhasil') {
           _toast.showToast(value.pesan);
           Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => Login()));
+              context, MaterialPageRoute(builder: (context) => Login()));
         } else {
           _toast.showToast(value.pesan);
         }
       });
     });
   }
-bool _isObscure = true;
+
+  bool _isObscure = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -167,7 +166,7 @@ bool _isObscure = true;
                       icon: Icon(Icons.lock),
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(0)),
-                    suffixIcon: IconButton(
+                      suffixIcon: IconButton(
                         icon: Icon(
                           _isObscure ? Icons.visibility : Icons.visibility_off,
                         ),
@@ -182,13 +181,13 @@ bool _isObscure = true;
                     //   _password = value;
                     // },
                     validator: (value) {
-                     confirmPass = value;
+                      confirmPass = value;
                       if (value!.isEmpty) {
                         return 'sandikosong'.tr;
                       }
-                       // password = passwordValue;
-                       return null;
-                     },
+                      // password = passwordValue;
+                      return null;
+                    },
                   ),
                 ),
                 Padding(
@@ -203,7 +202,7 @@ bool _isObscure = true;
                       icon: Icon(Icons.security),
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(0)),
-                    suffixIcon: IconButton(
+                      suffixIcon: IconButton(
                         icon: Icon(
                           _isObscure ? Icons.visibility : Icons.visibility_off,
                         ),
@@ -217,8 +216,7 @@ bool _isObscure = true;
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'konfirkosong'.tr;
-                      }
-                        else if (value != confirmPass) {
+                      } else if (value != confirmPass) {
                         return "passwordbeda".tr;
                       }
                       return null;
@@ -240,55 +238,55 @@ bool _isObscure = true;
                     ),
                     // onPressed: () => createAccountPressed(),
                     onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              _addUser();
-                            }
-                          },
+                      if (_formKey.currentState!.validate()) {
+                        _addUser();
+                      }
+                    },
                     child: Text(
                       'daftar'.tr,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
-                      // if (_formKey.currentState!.validate()) {
-                      //   _register();
-                      // },
-                    
-                    // child: Text(
-                    //   'daftar'.tr,
-                    //   style: TextStyle(fontWeight: FontWeight.bold),
-                    // ),
+                  // if (_formKey.currentState!.validate()) {
+                  //   _register();
+                  // },
+
+                  // child: Text(
+                  //   'daftar'.tr,
+                  //   style: TextStyle(fontWeight: FontWeight.bold),
+                  // ),
                   // ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-                  child: new Text(
-                    //untuk text or
-                    "atau".tr,
-                    style: TextStyle(
-                      fontSize: 15.0,
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: 210,
-                  child: ElevatedButton.icon(
-                    style: ElevatedButton.styleFrom(
-                      primary: primarycolor,
-                    ),
-                    onPressed: () {
-                      // controller.login();
-                    },
-                    icon: Icon(
-                      // <-- Icon
-                      Icons.login,
-                      size: 24.0,
-                    ),
-                    label: Text(
-                      'daftargoogle'.tr,
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ),
+                //  Padding(
+                //    padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                //   child: new Text(
+                //untuk text or
+                //   "atau".tr,
+                //    style: TextStyle(
+                //      fontSize: 15.0,
+                //    ),
+                //   ),
+                //   ),
+                //  SizedBox(
+                //   width: 210,
+                //   child: ElevatedButton.icon(
+                //     style: ElevatedButton.styleFrom(
+                //       primary: primarycolor,
+                //     ),
+                //    onPressed: () {
+                // controller.login();
+                //    },
+                //  icon: Icon(
+                // <-- Icon
+                //  Icons.login,
+                //size: 24.0,
+                // ),
+                // label: Text(
+                //  'daftargoogle'.tr,
+                //  style: TextStyle(fontWeight: FontWeight.bold),
+                // ),
+                // ),
+                // ),
                 Padding(
                   padding: EdgeInsets.only(top: 8.0),
                   child: Row(

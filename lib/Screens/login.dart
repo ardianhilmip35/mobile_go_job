@@ -210,35 +210,35 @@ class _LoginState extends State<Login> {
                     // },
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-                  child: new Text(
-                    //untuk text or
-                    "atau".tr,
-                    style: TextStyle(
-                      fontSize: 15.0,
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: 210,
-                  child: ElevatedButton.icon(
-                    style: ElevatedButton.styleFrom(
-                      primary: primarycolor,
-                    ),
-                    onPressed: () {
-                      // controller.login();
-                    },
-                    icon: Icon(
-                      Icons.login,
-                      size: 24.0,
-                    ),
-                    label: Text(
-                      'masukgoogle'.tr,
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ),
+                //  Padding(
+                //   padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                //    child: new Text(
+                //    //untuk text or
+                //     "atau".tr,
+                //   style: TextStyle(
+                //     fontSize: 15.0,
+                //    ),
+                //   ),
+                // ),
+                // SizedBox(
+                //  width: 210,
+                //  child: ElevatedButton.icon(
+                //    style: ElevatedButton.styleFrom(
+                //     primary: primarycolor,
+                //   ),
+                //   onPressed: () {
+                // controller.login();
+                //    },
+                //   icon: Icon(
+                //     Icons.login,
+                //     size: 24.0,
+                //   ),
+                //   label: Text(
+                //    'masukgoogle'.tr,
+                //    style: TextStyle(fontWeight: FontWeight.bold),
+                //   ),
+                //  ),
+                //  ),
                 Padding(
                   padding: EdgeInsets.only(top: 8),
                   child: Row(
