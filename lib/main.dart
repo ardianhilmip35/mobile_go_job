@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:mobile_go_job/Screens/dashboard.dart';
 import 'package:mobile_go_job/Screens/edit_profil.dart';
@@ -55,40 +56,42 @@ class _MyBottomBarState extends State<MyBottomBar> {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: unnecessary_new
     return new Scaffold(
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         //untuk bottom navigation barl
         elevation: 30,
         unselectedItemColor: Colors.grey,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
         selectedIconTheme: IconThemeData(color: primarycolor, size: 30),
+        selectedItemColor: primarycolor,
         iconSize: 30,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home,
             ),
-            label: 'Beranda',
+            label: 'beranda'.tr,
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.search,
             ),
-            label: 'Cari',
+            label: 'carilowongan'.tr,
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.notifications,
             ),
-            label: 'Informasi',
+            label: 'informasi'.tr,
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.person,
             ),
-            label: 'Profil',
+            label: 'profil'.tr,
           ),
         ],
         onTap: onTappedBar,

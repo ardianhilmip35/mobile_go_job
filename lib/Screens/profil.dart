@@ -23,7 +23,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Profil extends StatefulWidget {
-
   @override
   State<Profil> createState() => _ProfilState();
 }
@@ -46,14 +45,14 @@ class _ProfilState extends State<Profil> {
     AuthServices.getUser(idUser).then((value) {
       if (mounted) {
         setState(() {
-        _namaPelamar = value.namaPelamar;
-        _email = value.email;
-      });
+          _namaPelamar = value.namaPelamar;
+          _email = value.email;
+        });
       }
     });
   }
 
-   _userSession() async {
+  _userSession() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     pref.setString("nama_pelamar", _namaPelamar.toString());
     pref.setString("email", _email.toString());
@@ -194,19 +193,29 @@ class _ProfilState extends State<Profil> {
               ),
               child: Row(
                 children: <Widget>[
-                  Padding(padding: EdgeInsets.only(left: 10)),
-                  CircleAvatar(
-                      radius: 50,
-                      child: Image.asset(
-                        //untuk logo image
-                        'assets/images/logo1.png',
-                        height: 50,
-                        width: 100,
-                      )
-                      // Image(
-                      //         controller.googleAccount.value?.photoUrl ?? '')
-                      //     .image,
-                      ),
+                  Padding(padding: EdgeInsets.only(left: 15)),
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          //Container Foto Profil
+                          width: 90,
+                          height: 90,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white, width: 4),
+                            shape: BoxShape.circle,
+                          ),
+                          child: Icon(
+                            //Icon Foto Profil
+                            Icons.person,
+                            color: Colors.white,
+                            size: 70,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                   Container(
                     //Container Nama Profil
                     margin: EdgeInsets.only(left: 20),
@@ -223,15 +232,12 @@ class _ProfilState extends State<Profil> {
                               fontSize: 20,
                               color: Colors.white),
                         ),
-                        
                         Text(
                           // "$_email",
                           "$_email",
                           // controller.googleAccount.value?.displayName ?? '',
                           style: GoogleFonts.poppins(
-                              fontSize: 15,
-                              color: Colors.white),
-                              
+                              fontSize: 15, color: Colors.white),
                         ),
                         Padding(padding: EdgeInsets.only(top: 12)),
                         RichText(
@@ -363,9 +369,12 @@ class _ProfilState extends State<Profil> {
               ),
               child: RaisedButton(
                 //Button Logout
-                onPressed: () {
+                onPressed: () async {
                   // controller.logout();
                   confirmLogout(context);
+                  SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
+                  prefs.remove('email');
                 },
                 color: Colors.white,
                 child: Container(
@@ -391,7 +400,6 @@ class _ProfilState extends State<Profil> {
       ),
     );
   }
-  
 
   // void logout() async {
   //   setState(() {

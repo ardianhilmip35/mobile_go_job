@@ -78,6 +78,8 @@ class LocaleString extends Translations {
           'passwordbeda' : 'Password must be same as above',
           'pernahbekerja' : 'Have worked at',
           'halo' : 'Hello, ',
+          'beranda' : 'Home',
+          'carilowongan' : 'Find Job',
           
           
         },
@@ -155,6 +157,8 @@ class LocaleString extends Translations {
           'passwordbeda' : 'Kata Sandi harus cocok',
           'pernahbekerja': 'Pernah bekerja di',
           'halo' : 'Halo, ',
+            'beranda' : 'Beranda',
+          'carilowongan' : 'Cari Lowongan',
         }
       };
 }
