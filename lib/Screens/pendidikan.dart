@@ -73,7 +73,7 @@ class _EditPendidikanState extends State<EditPendidikan> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text(
-          "Edit Pendidikan".tr,
+          "editpendidikan".tr,
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
@@ -90,7 +90,7 @@ class _EditPendidikanState extends State<EditPendidikan> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                "Universitas".tr,
+                "universitas".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
@@ -101,7 +101,7 @@ class _EditPendidikanState extends State<EditPendidikan> {
                 ),
               ),
               Text(
-                "Jurusan".tr,
+                "jurusan".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
@@ -112,7 +112,7 @@ class _EditPendidikanState extends State<EditPendidikan> {
                 ),
               ),
               Text(
-                "Program Studi".tr,
+                "prodi".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
@@ -123,7 +123,7 @@ class _EditPendidikanState extends State<EditPendidikan> {
                 ),
               ),
               Text(
-                "Tahun Lulus".tr,
+                "tahun".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
@@ -141,7 +141,7 @@ class _EditPendidikanState extends State<EditPendidikan> {
                       textColor: Colors.white,
                       color: primarycolor,
                       child: Text(
-                        "Simpan".tr,
+                        "simpan".tr,
                         style: TextStyle(fontSize: 18, color: Colors.white),
                       ),
                       onPressed: () {
@@ -158,7 +158,7 @@ class _EditPendidikanState extends State<EditPendidikan> {
                       textColor: Colors.white,
                       color: Colors.red,
                       child: Text(
-                        "Batal".tr,
+                        "batal".tr,
                         style: TextStyle(fontSize: 18, color: Colors.white),
                       ),
                       onPressed: () {

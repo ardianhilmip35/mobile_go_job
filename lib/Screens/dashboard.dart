@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_go_job/Screens/detail_lowongan.dart';
+import 'package:mobile_go_job/Screens/informasi.dart';
 import 'package:mobile_go_job/Screens/lamar_sekarang.dart';
 import 'package:mobile_go_job/Screens/login.dart';
 import 'package:mobile_go_job/Screens/lowongan_pekerjaan.dart';
@@ -152,6 +153,28 @@ class _DashboardState extends State<Dashboard> {
                     ]),
               ),
               Container(
+                color: secondarycolor,
+                padding: EdgeInsets.all(15),
+                child: Row(
+                  children: <Widget>[
+                    Text(
+                      'halo'.tr,
+                      style: GoogleFonts.poppins(fontSize: 25),
+                    ),
+                    Text(
+                      "$_namaPelamar",
+                      // controller.googleAccount.value?.displayName ?? '',
+                      style: GoogleFonts.poppins(
+                          fontSize: 25, color: Colors.black),
+                    ),
+                    Text(
+                      '👋',
+                      style: GoogleFonts.poppins(fontSize: 25),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
                 padding: EdgeInsets.all(5),
                 color: secondarycolor,
                 child: Column(
@@ -174,13 +197,19 @@ class _DashboardState extends State<Dashboard> {
                             ),
                             Padding(padding: EdgeInsets.only(bottom: 5)),
                             Text(
-                              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
+                              "Untuk Informasi lebih lanjut silahkan klik tombol di bawah ini",
                               style: GoogleFonts.poppins(
                                   fontSize: 15, color: Colors.black),
                             ),
                             Padding(padding: EdgeInsets.only(bottom: 5)),
                             ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Informasi()),
+                                );
+                              },
                               child: Text(
                                 'info'.tr,
                                 style: TextStyle(fontWeight: FontWeight.bold),

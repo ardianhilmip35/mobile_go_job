@@ -82,7 +82,7 @@ class _PengalamanState extends State<Pengalaman> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text(
-          "Pengalaman".tr,
+          "pengalaman".tr,
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
@@ -99,7 +99,7 @@ class _PengalamanState extends State<Pengalaman> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                "Pengalaman Kerja".tr,
+                "pengalamankerja".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextFormField(
@@ -114,7 +114,7 @@ class _PengalamanState extends State<Pengalaman> {
                         TextStyle(fontWeight: FontWeight.normal, fontSize: 14)),
               ),
               Text(
-                "Posisi Sebelumnya".tr,
+                "posisi".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
@@ -125,7 +125,7 @@ class _PengalamanState extends State<Pengalaman> {
                 ),
               ),
               Text(
-                "Pernah Bekerja di".tr,
+                "pernahbekerja".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
@@ -136,7 +136,7 @@ class _PengalamanState extends State<Pengalaman> {
                 ),
               ),
               Text(
-                "Spesialis".tr,
+                "spesialis".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
@@ -147,7 +147,7 @@ class _PengalamanState extends State<Pengalaman> {
                 ),
               ),
               Text(
-                "Lokasi Kerja Sebelumnya".tr,
+                "lokasi".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
@@ -158,7 +158,7 @@ class _PengalamanState extends State<Pengalaman> {
                 ),
               ),
               Text(
-                "Gaji".tr,
+                "gaji".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
@@ -176,7 +176,7 @@ class _PengalamanState extends State<Pengalaman> {
                       textColor: Colors.white,
                       color: primarycolor,
                       child: Text(
-                        "Simpan".tr,
+                        "simpan".tr,
                         style: TextStyle(fontSize: 18, color: Colors.white),
                       ),
                       onPressed: () {
@@ -193,7 +193,7 @@ class _PengalamanState extends State<Pengalaman> {
                       textColor: Colors.white,
                       color: Colors.red,
                       child: Text(
-                        "Batal".tr,
+                        "batal".tr,
                         style: TextStyle(fontSize: 18, color: Colors.white),
                       ),
                       onPressed: () {

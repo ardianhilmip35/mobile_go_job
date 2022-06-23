@@ -77,6 +77,7 @@ class LocaleString extends Translations {
           'gaji' : 'Desired Salary',
           'passwordbeda' : 'Password must be same as above',
           'pernahbekerja' : 'Have worked at',
+          'halo' : 'Hello, ',
           
           
         },
@@ -153,6 +154,7 @@ class LocaleString extends Translations {
           'gaji' : 'Gaji yang diinginkan',
           'passwordbeda' : 'Kata Sandi harus cocok',
           'pernahbekerja': 'Pernah bekerja di',
+          'halo' : 'Halo, ',
         }
       };
 }

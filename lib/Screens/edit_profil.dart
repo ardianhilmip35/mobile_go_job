@@ -86,7 +86,7 @@ class _EditProfilState extends State<EditProfil> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text(
-          "Edit Profil".tr,
+          "editprofil".tr,
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
@@ -102,7 +102,7 @@ class _EditProfilState extends State<EditProfil> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                "Nama".tr,
+                "nama".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
@@ -113,7 +113,7 @@ class _EditProfilState extends State<EditProfil> {
                 ),
               ),
               Text(
-                "Alamat Lengkap".tr,
+                "alamat".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
@@ -124,7 +124,7 @@ class _EditProfilState extends State<EditProfil> {
                 ),
               ),
               Text(
-                "Agama".tr,
+                "agama".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
@@ -135,7 +135,7 @@ class _EditProfilState extends State<EditProfil> {
                 ),
               ),
               Text(
-                "Nomor Telepon".tr,
+                "nohp".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
@@ -146,7 +146,7 @@ class _EditProfilState extends State<EditProfil> {
                 ),
               ),
               Text(
-                "Jenis Kelamin".tr,
+                "jeniskelamin".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
@@ -157,7 +157,7 @@ class _EditProfilState extends State<EditProfil> {
                 ),
               ),
               Text(
-                "Tanggal Lahir".tr,
+                "tanggallahir".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
@@ -175,7 +175,7 @@ class _EditProfilState extends State<EditProfil> {
                       textColor: Colors.white,
                       color: primarycolor,
                       child: Text(
-                        "Simpan".tr,
+                        "simpan".tr,
                         style: TextStyle(fontSize: 18, color: Colors.white),
                       ),
                       onPressed: () {
@@ -192,7 +192,7 @@ class _EditProfilState extends State<EditProfil> {
                       textColor: Colors.white,
                       color: Colors.red,
                       child: Text(
-                        "Batal".tr,
+                        "batal".tr,
                         style: TextStyle(fontSize: 18, color: Colors.white),
                       ),
                       onPressed: () {
