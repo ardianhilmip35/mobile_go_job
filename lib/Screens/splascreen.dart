@@ -14,11 +14,11 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreen extends State<SplashScreen> {
 
   bool isAuth = false;
+  
   _splashScreen() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    var token = prefs.getString('token');
     var id = prefs.getString('id');
-    if (token != null && id != null) {
+    if (id != null) {
       if (mounted) {
         setState(() {
           isAuth = true;
