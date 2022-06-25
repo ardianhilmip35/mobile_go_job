@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mobile_go_job/Notifikasi/toast.dart';
+import 'package:mobile_go_job/Services/auth_services.dart';
 import 'package:mobile_go_job/shared/shared.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class RiwayatLamaran extends StatefulWidget {
   const RiwayatLamaran({Key? key}) : super(key: key);
@@ -11,6 +14,29 @@ class RiwayatLamaran extends StatefulWidget {
 }
 
 class _RiwayatLamaranState extends State<RiwayatLamaran> {
+  final _toast = ShowToast();
+  String _namaPerusahaan = "", _namaPekerjaan = "";
+  String _pelamarId = "";
+  String? _lowonganId, _deskripsiLamaran;
+
+  _getRiwayat() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    String pelamarId = preferences.getString("pelamar_id") ?? "";
+
+    AuthServices.riwayat(pelamarId).then((value) {
+      setState(() {
+        _lowonganId = value.lowonganId;
+        _deskripsiLamaran = value.deskripsiLamaran;
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _getRiwayat();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +50,7 @@ class _RiwayatLamaranState extends State<RiwayatLamaran> {
       ),
       body: SingleChildScrollView(
         child: Container(
-         height: MediaQuery.of(context).size.height * 100, 
+          height: MediaQuery.of(context).size.height * 100,
           padding: EdgeInsets.all(20),
           width: double.infinity,
           color: secondarycolor,
@@ -44,9 +70,7 @@ class _RiwayatLamaranState extends State<RiwayatLamaran> {
                         style:
                             GoogleFonts.poppins(fontWeight: FontWeight.bold)),
                     Text('-Software Engineering', style: GoogleFonts.poppins()),
-                    Text(
-                        'Handling many projects related with digital media marketing',
-                        style: GoogleFonts.poppins()),
+                    Text('$_deskripsiLamaran', style: GoogleFonts.poppins()),
                     Container(
                       margin: EdgeInsets.only(top: 10),
                       width: double.infinity,
