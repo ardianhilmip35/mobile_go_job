@@ -38,7 +38,7 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
   Future<void> sessionDetailLowongan() async {
     final SharedPreferences pref = await SharedPreferences.getInstance();
     setState(() {
-      // pref.setString("id", _lowongan[_index].id.toString());
+      pref.setString("idlowongan", _lowongan[_index].idlowongan.toString());
       // pref.setString("logo", _lowongan[_index].logo.toString());
       pref.setString("namalowongan", _lowongan[_index].namalowongan.toString());
       pref.setString(
@@ -72,7 +72,6 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
         automaticallyImplyLeading: false,
         centerTitle: true,
         backgroundColor: primarycolor,
-      
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.fromLTRB(10.0, 8.0, 8.0, 8.0),
@@ -195,8 +194,6 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                                                   .size
                                                   .width /
                                               2.2,
-                                            
-                                       
                                           child: Text(
                                             // "Surabaya, Jawa Timur",
                                             _lowongan[index]

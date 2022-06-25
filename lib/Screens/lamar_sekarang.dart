@@ -56,7 +56,8 @@ class _LamarSekarangState extends State<LamarSekarang> {
       _namaLowongan = pref.getString("namalowongan").toString();
       _alamatPerusahaan = pref.getString("alamatperusahaan").toString();
       _gaji = pref.getString("gajipekerjaan").toString();
-      _idLowongan = pref.getString("lowongan_id").toString();
+      _idLowongan = pref.getString("idlowongan").toString();
+      print(_idLowongan);
     });
   }
 
@@ -67,7 +68,8 @@ class _LamarSekarangState extends State<LamarSekarang> {
     AuthServices.getUser(idUser).then((value) {
       setState(() {
         _idUser = idUser;
-
+        print(_idUser);
+        
         // _idLowongan = idLowongan;
         // _namaPelamar = value.namaPelamar;
       });
@@ -148,7 +150,7 @@ class _LamarSekarangState extends State<LamarSekarang> {
                     children: <Widget>[
                       Container(
                         padding: EdgeInsets.all(3),
-                        constraints: BoxConstraints(maxHeight: double.infinity),
+                        height: 125,
                         width: double.infinity,
                         decoration: BoxDecoration(
                             color: Color.fromARGB(255, 219, 217, 217)),

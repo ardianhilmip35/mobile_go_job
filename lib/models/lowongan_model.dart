@@ -10,7 +10,7 @@ String lowonganToJson(List<Lowongan> data) => json.encode(List<dynamic>.from(dat
 
 class Lowongan {
     Lowongan({
-      required this.id,
+      required this.idlowongan,
       required this.usersId,
       required this.namalowongan,
       required this.jenispekerjaan,
@@ -29,7 +29,7 @@ class Lowongan {
       required this.updatedAt,
     });
 
-    int id;
+    int idlowongan;
     String usersId;
     String namalowongan;
     String jenispekerjaan;
@@ -48,7 +48,7 @@ class Lowongan {
     DateTime updatedAt;
 
     factory Lowongan.fromJson(Map<String, dynamic> json) => Lowongan(
-        id: json["id"],
+        idlowongan: json["idlowongan"],
         usersId: json["users_id"],
         namalowongan: json["namalowongan"],
         jenispekerjaan: json["jenispekerjaan"],
@@ -68,7 +68,7 @@ class Lowongan {
     );
 
     Map<String, dynamic> toJson() => {
-        "id": id,
+        "idlowongan": idlowongan,
         "users_id": usersId,
         "namalowongan": namalowongan,
         "jenispekerjaan": jenispekerjaan,

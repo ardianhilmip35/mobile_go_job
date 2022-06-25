@@ -4,6 +4,7 @@ import 'package:mobile_go_job/Screens/lamar_sekarang.dart';
 import 'package:mobile_go_job/Services/globals.dart';
 import 'package:http/http.dart' as http;
 import 'package:mobile_go_job/models/lamaran_model.dart';
+import 'package:mobile_go_job/models/riwayatLamaran.dart';
 import 'package:mobile_go_job/models/updatePendidikan_model.dart';
 import 'package:mobile_go_job/models/updatePengalaman.dart';
 import 'package:mobile_go_job/models/update_model.dart';
@@ -220,6 +221,7 @@ class AuthServices {
     }
   }
 
+  
   //Update Pengalaman
   static Future<UpdatePengalaman> updatePengalaman(String idUser, pengalaman, posisi, perusahaan, spesialis, lokasi, gaji) async {
     final Uri updateURL =  Uri.parse("https://ws-tif.com/kel24/api/profile/update-pengalaman");
@@ -240,6 +242,19 @@ class AuthServices {
       return UpdatePengalaman.fromJson(json.decode(response.body));
     } else {
       throw Exception("Failed to update Pengalaman");
+    }
+  }
+
+  //Riwayat Lamaran
+  static Future<RiwayatLamaran> riwayat(String id) async {
+    final Uri profilURL =  Uri.parse("https://ws-tif.com/kel24/api/lamaran/lihat");
+
+    var response = await http.post(profilURL, body: {"pelamar_id": id});
+
+    if (response.statusCode == 200) {
+      return RiwayatLamaran.fromJson(json.decode(response.body));
+    } else {
+      throw Exception("Failed to read user");
     }
   }
 }
