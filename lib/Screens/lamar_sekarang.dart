@@ -3,6 +3,7 @@ import 'package:mobile_go_job/Notifikasi/toast.dart';
 import 'package:mobile_go_job/Screens/profil.dart';
 import 'package:mobile_go_job/Screens/profil_perusahaan.dart';
 import 'package:mobile_go_job/Services/auth_services.dart';
+import 'package:mobile_go_job/main.dart';
 import 'package:mobile_go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
@@ -89,7 +90,7 @@ class _LamarSekarangState extends State<LamarSekarang> {
           // _toast.showToast(value.pesan);
           // _getSessionLamaran();
           Navigator.of(context).push(
-              MaterialPageRoute(builder: (BuildContext context) => Profil()));
+              MaterialPageRoute(builder: (BuildContext context) => MyBottomBar()));
         } else {
           _toast.showToast(value.pesan);
         }
