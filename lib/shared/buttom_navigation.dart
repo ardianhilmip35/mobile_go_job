@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_go_job/Screens/dashboard.dart';
+import 'package:mobile_go_job/Screens/informasi.dart';
 import 'package:mobile_go_job/Screens/lowongan_pekerjaan.dart';
 import 'package:mobile_go_job/Screens/profil.dart';
-import 'package:mobile_go_job/Screens/simpan_lowongan.dart';
 import 'package:mobile_go_job/shared/shared.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -21,7 +21,7 @@ class _MyBottomBarState extends State<MyBottomBar> {
   final List<Widget> _children = [
     Dashboard(),
     LowonganPekerjaan(),
-    SimpanLowongan(),
+    Informasi(),
     Profil(),
   ];
 

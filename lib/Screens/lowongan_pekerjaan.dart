@@ -73,7 +73,7 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
         backgroundColor: primarycolor,
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.fromLTRB(10.0, 8.0, 8.0, 8.0),
+        padding: EdgeInsets.all(10),
         child: Column(
           children: [
             TextFormField(
@@ -91,10 +91,10 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
             ),
             GridView.builder(
               shrinkWrap: true,
+              physics: ScrollPhysics(),
               padding: EdgeInsets.only(top: 15.0),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 1,
-              ),
+                  crossAxisCount: 1, childAspectRatio: 9 / 5),
               itemCount: _lowongan.length,
               itemBuilder: (context, index) {
                 return InkWell(
@@ -110,18 +110,7 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                         ),
                         child: Column(
                           children: <Widget>[
-                            Container(
-                              //Container Foto Profil
-                              margin: EdgeInsets.only(top: 10, bottom: 10),
-                              width: 50,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                color: Colors.grey,
-                                border:
-                                    Border.all(color: Colors.grey, width: 4),
-                                shape: BoxShape.circle,
-                              ),
-                            ),
+                            Padding(padding: EdgeInsets.only(top: 10)),
                             Text(
                               _lowongan[index].namaperusahaan.toString(),
                               // "PT Patma Tirta Jaya",
@@ -152,6 +141,8 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                                           CrossAxisAlignment.start,
                                       children: <Widget>[
                                         Container(
+                                          padding: EdgeInsets.only(
+                                              top: 10, left: 10, right: 10),
                                           child: Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
@@ -173,6 +164,8 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                                         Padding(
                                             padding: EdgeInsets.only(top: 20)),
                                         Container(
+                                          padding: EdgeInsets.only(
+                                              left: 10, right: 10),
                                           width: MediaQuery.of(context)
                                                   .size
                                                   .width /
@@ -191,8 +184,11 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                                           ),
                                         ),
                                         Padding(
-                                            padding: EdgeInsets.only(top: 70)),
+                                            padding: EdgeInsets.only(
+                                                top: 30, left: 10, right: 10)),
                                         Container(
+                                          padding: EdgeInsets.only(
+                                              left: 10, right: 10),
                                           child: Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,

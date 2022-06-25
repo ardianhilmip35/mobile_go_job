@@ -47,7 +47,7 @@ dependencies:
   plugin_platform_interface: ^2.1.2
   cool_alert: ^1.1.0
   file_picker: ^4.6.1
-  
+  intl: ^0.17.0
  
 
 dev_dependencies:

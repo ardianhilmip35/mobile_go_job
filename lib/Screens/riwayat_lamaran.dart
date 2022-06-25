@@ -40,6 +40,7 @@ class _RiwayatLamaranState extends State<RiwayatLamaran> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: secondarycolor,
       appBar: AppBar(
         title: Text(
           'history'.tr,

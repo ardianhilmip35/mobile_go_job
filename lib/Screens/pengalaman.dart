@@ -62,7 +62,7 @@ class _PengalamanState extends State<Pengalaman> {
         if (value.kode == 1) {
           // _alert.coolAlertSucces(value.pesan, context, "OK");
           Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => ViewProfil()));
+              context, MaterialPageRoute(builder: (context) => ViewProfil()));
         } else {
           _alert.coolAlertFail(value.pesan, context, "OK");
         }
@@ -79,6 +79,7 @@ class _PengalamanState extends State<Pengalaman> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: secondarycolor,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text(
@@ -87,14 +88,12 @@ class _PengalamanState extends State<Pengalaman> {
         ),
         centerTitle: true,
         backgroundColor: primarycolor,
-      
       ),
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.all(20),
           width: double.infinity,
           height: MediaQuery.of(context).size.height,
-          decoration: BoxDecoration(color: Colors.white),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -107,12 +106,15 @@ class _PengalamanState extends State<Pengalaman> {
                 controller: _pengalamanController,
                 style: Theme.of(context).textTheme.bodyText1,
                 decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
                     hintText: "Pengalaman",
                     border: OutlineInputBorder(),
                     focusColor: Colors.grey,
                     labelStyle:
                         TextStyle(fontWeight: FontWeight.normal, fontSize: 14)),
               ),
+              Padding(padding: EdgeInsets.only(bottom: 15)),
               Text(
                 "posisi".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
@@ -120,10 +122,13 @@ class _PengalamanState extends State<Pengalaman> {
               TextField(
                 controller: _posisiController,
                 decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
                   border: OutlineInputBorder(),
                   hintText: "manajer",
                 ),
               ),
+              Padding(padding: EdgeInsets.only(bottom: 15)),
               Text(
                 "pernahbekerja".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
@@ -131,10 +136,13 @@ class _PengalamanState extends State<Pengalaman> {
               TextField(
                 controller: _perusahaanController,
                 decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
                   border: OutlineInputBorder(),
                   hintText: "alfamart",
                 ),
               ),
+              Padding(padding: EdgeInsets.only(bottom: 15)),
               Text(
                 "spesialis".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
@@ -142,10 +150,13 @@ class _PengalamanState extends State<Pengalaman> {
               TextField(
                 controller: _spesialisController,
                 decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
                   border: OutlineInputBorder(),
                   hintText: "-",
                 ),
               ),
+              Padding(padding: EdgeInsets.only(bottom: 15)),
               Text(
                 "lokasi".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
@@ -153,10 +164,13 @@ class _PengalamanState extends State<Pengalaman> {
               TextField(
                 controller: _lokasiController,
                 decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
                   border: OutlineInputBorder(),
                   hintText: "Jakarta",
                 ),
               ),
+              Padding(padding: EdgeInsets.only(bottom: 15)),
               Text(
                 "gaji".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
@@ -164,11 +178,13 @@ class _PengalamanState extends State<Pengalaman> {
               TextField(
                 controller: _gajiController,
                 decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
                   border: OutlineInputBorder(),
                   hintText: "Rp. 1.000.000",
                 ),
               ),
-              Padding(padding: EdgeInsets.only(bottom: 10)),
+              Padding(padding: EdgeInsets.only(bottom: 20)),
               Row(
                 children: <Widget>[
                   Container(

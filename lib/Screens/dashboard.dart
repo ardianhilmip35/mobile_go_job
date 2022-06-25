@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:mobile_go_job/Screens/detail_lowongan.dart';
 import 'package:mobile_go_job/Screens/informasi.dart';
@@ -5,18 +7,20 @@ import 'package:mobile_go_job/Screens/lamar_sekarang.dart';
 import 'package:mobile_go_job/Screens/login.dart';
 import 'package:mobile_go_job/Screens/lowongan_pekerjaan.dart';
 import 'package:mobile_go_job/Screens/profil.dart';
-import 'package:mobile_go_job/Screens/simpan_lowongan.dart';
 import 'package:mobile_go_job/controller/logincontroller.dart';
 import 'package:mobile_go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_go_job/Screens/localestring.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:intl/intl.dart';
 import '../Notifikasi/alert.dart';
 import '../Notifikasi/toast.dart';
 import '../Services/auth_services.dart';
 import '../models/lowongan_model.dart';
+
+DateTime now = DateTime.now();
+String formattedDate = DateFormat.MMMEd().format(DateTime.now());
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -102,6 +106,7 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: secondarycolor,
         appBar: AppBar(
           automaticallyImplyLeading: false,
           title: Text(
@@ -114,28 +119,68 @@ class _DashboardState extends State<Dashboard> {
         ),
         body: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Container(
-                color: secondarycolor,
-                padding: EdgeInsets.all(15),
-                child: Row(
-                  children: <Widget>[
-                    Text(
-                      'halo'.tr,
-                      style: GoogleFonts.poppins(fontSize: 25),
+              Padding(padding: EdgeInsets.only(top: 30)),
+              Row(
+                children: <Widget>[
+                  Padding(padding: EdgeInsets.only(left: 20)),
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          //Container Foto Profil
+                          width: 55,
+                          height: 55,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(color: primarycolor, width: 4),
+                            shape: BoxShape.circle,
+                          ),
+                          child: Icon(
+                            //Icon Foto Profil
+                            Icons.person,
+                            color: primarycolor,
+                            size: 45,
+                          ),
+                        ),
+                      ],
                     ),
-                    Text(
-                      "$_namaPelamar",
-                      // controller.googleAccount.value?.displayName ?? '',
-                      style: GoogleFonts.poppins(
-                          fontSize: 25, color: Colors.black),
+                  ),
+                  Container(
+                    //Container Nama Profil
+                    margin: EdgeInsets.only(left: 12, top: 15),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Row(
+                          children: <Widget>[
+                            Text(
+                              'halo'.tr,
+                              style: GoogleFonts.poppins(fontSize: 17),
+                            ),
+                            Text(
+                              "$_namaPelamar",
+                              // controller.googleAccount.value?.displayName ?? '',
+                              style: GoogleFonts.poppins(
+                                  fontSize: 17, color: Colors.black),
+                            ),
+                            Text(
+                              '👋,',
+                              style: GoogleFonts.poppins(fontSize: 17),
+                            ),
+                          ],
+                        ),
+                        Text("$formattedDate",
+                            style: GoogleFonts.poppins(
+                                fontSize: 20, fontWeight: FontWeight.bold)),
+                        Padding(padding: EdgeInsets.only(top: 12)),
+                      ],
                     ),
-                    Text(
-                      '👋',
-                      style: GoogleFonts.poppins(fontSize: 25),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
               Container(
                 padding: EdgeInsets.all(5),
@@ -144,9 +189,19 @@ class _DashboardState extends State<Dashboard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      color: Colors.white,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.3),
+                            spreadRadius: 5,
+                            blurRadius: 7,
+                            offset: Offset(0, 3), // changes position of shadow
+                          ),
+                        ],
+                      ),
                       margin: EdgeInsets.only(left: 10, right: 10),
-                      padding: EdgeInsets.all(30),
+                      padding: EdgeInsets.all(20),
                       width: double.infinity,
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -185,7 +240,7 @@ class _DashboardState extends State<Dashboard> {
                     ),
                     Container(
                       width: double.infinity,
-                      padding: EdgeInsets.all(10),
+                      padding: EdgeInsets.only(top: 17, left: 10, right: 10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
@@ -221,12 +276,12 @@ class _DashboardState extends State<Dashboard> {
                     ),
                     GridView.builder(
                         shrinkWrap: true,
-                        padding: EdgeInsets.only(top: 15.0),
+                        padding: EdgeInsets.only(top: 10),
+                        physics: ScrollPhysics(),
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 1,
-                        ),
-                        itemCount: _lowongan.length,
+                                crossAxisCount: 1, childAspectRatio: 7 / 2),
+                        itemCount: _lowongan.length < 3 ? _lowongan.length : 3,
                         itemBuilder: (context, index) {
                           return InkWell(
                               child: Column(
@@ -235,11 +290,20 @@ class _DashboardState extends State<Dashboard> {
                                 width: double.infinity,
                                 margin: EdgeInsets.only(left: 10, right: 10),
                                 padding: EdgeInsets.only(
-                                    left: 10, right: 10, top: 5),
+                                    left: 12, right: 12, top: 7, bottom: 7),
                                 constraints:
                                     BoxConstraints(maxHeight: double.infinity),
                                 decoration: BoxDecoration(
                                   color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.3),
+                                      spreadRadius: 5,
+                                      blurRadius: 7,
+                                      offset: Offset(
+                                          0, 3), // changes position of shadow
+                                    ),
+                                  ],
                                 ),
                                 child: Container(
                                   child: Column(

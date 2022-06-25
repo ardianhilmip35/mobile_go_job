@@ -12,7 +12,6 @@ import 'package:mobile_go_job/controller/logincontroller.dart';
 import 'package:mobile_go_job/Screens/lamar_sekarang.dart';
 import 'package:mobile_go_job/Services/auth_services.dart';
 import 'package:mobile_go_job/Screens/riwayat_lamaran.dart';
-import 'package:mobile_go_job/Screens/simpan_lowongan.dart';
 import 'package:mobile_go_job/Screens/view_profil.dart';
 import 'package:mobile_go_job/main.dart';
 import 'package:mobile_go_job/shared/shared.dart';
@@ -172,6 +171,7 @@ class _ProfilState extends State<Profil> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: secondarycolor,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text(

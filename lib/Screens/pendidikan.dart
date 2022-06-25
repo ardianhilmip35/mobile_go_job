@@ -70,6 +70,7 @@ class _EditPendidikanState extends State<EditPendidikan> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: secondarycolor,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text(
@@ -78,14 +79,12 @@ class _EditPendidikanState extends State<EditPendidikan> {
         ),
         centerTitle: true,
         backgroundColor: primarycolor,
-      
       ),
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.all(20),
           width: double.infinity,
           height: MediaQuery.of(context).size.height,
-          decoration: BoxDecoration(color: Colors.white),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -96,10 +95,13 @@ class _EditPendidikanState extends State<EditPendidikan> {
               TextField(
                 controller: _universitasController,
                 decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
                   border: OutlineInputBorder(),
                   hintText: "Politeknik Negeri Jember",
                 ),
               ),
+              Padding(padding: EdgeInsets.only(bottom: 15)),
               Text(
                 "jurusan".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
@@ -107,10 +109,13 @@ class _EditPendidikanState extends State<EditPendidikan> {
               TextField(
                 controller: _jurusanController,
                 decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
                   border: OutlineInputBorder(),
                   hintText: "Teknologi Informasi",
                 ),
               ),
+              Padding(padding: EdgeInsets.only(bottom: 15)),
               Text(
                 "prodi".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
@@ -118,10 +123,13 @@ class _EditPendidikanState extends State<EditPendidikan> {
               TextField(
                 controller: _prodiController,
                 decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
                   border: OutlineInputBorder(),
                   hintText: "Teknik Informatika",
                 ),
               ),
+              Padding(padding: EdgeInsets.only(bottom: 15)),
               Text(
                 "tahun".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
@@ -129,11 +137,13 @@ class _EditPendidikanState extends State<EditPendidikan> {
               TextField(
                 controller: _tahunLulusController,
                 decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
                   border: OutlineInputBorder(),
                   hintText: "2024",
                 ),
               ),
-              Padding(padding: EdgeInsets.only(bottom: 10)),
+              Padding(padding: EdgeInsets.only(bottom: 20)),
               Row(
                 children: <Widget>[
                   Container(

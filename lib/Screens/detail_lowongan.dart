@@ -20,7 +20,8 @@ class _DetailLowonganState extends State<DetailLowongan> {
   String _namaPerusahaan = "",
       _namaPekerjaan = "",
       _alamatPerusahaan = "",
-      _deskripsiPekerjaan = "";
+      _deskripsiPekerjaan = "",
+      _gaji = "";
 
   // final _imgBaseUrl = Url.imageBaseUrl;
 
@@ -31,6 +32,7 @@ class _DetailLowonganState extends State<DetailLowongan> {
       _namaPekerjaan = pref.getString("namalowongan").toString();
       _alamatPerusahaan = pref.getString("alamatperusahaan").toString();
       _deskripsiPekerjaan = pref.getString("deskripsipekerjaan").toString();
+      _gaji = pref.getString("gajipekerjaan").toString();
     });
   }
 
@@ -43,6 +45,7 @@ class _DetailLowonganState extends State<DetailLowongan> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: secondarycolor,
       appBar: AppBar(
         title: Text(
           "detailpekerjaan".tr,
@@ -79,6 +82,7 @@ class _DetailLowonganState extends State<DetailLowongan> {
               //       )),
               // ),
               Container(
+                color: Colors.white,
                 padding: EdgeInsets.only(top: 15.0, bottom: 5.0),
                 child: Column(
                   children: <Widget>[
@@ -90,39 +94,32 @@ class _DetailLowonganState extends State<DetailLowongan> {
                         border: Border.all(color: primarycolor, width: 2),
                       ),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            width: MediaQuery.of(context).size.width / 2.2,
-                            child: MaterialButton(
-                              child: Text(
-                                "pekerjaan".tr,
-                                style:
-                                    TextStyle(fontSize: 20, color: primarycolor),
-                              ),
-                              onPressed: () {
-                                Route route = MaterialPageRoute(
-                                    builder: (context) => DetailLowongan());
-                                Navigator.push(context, route);
-                              },
+                          MaterialButton(
+                            color: secondarycolor,
+                            child: Text(
+                              "pekerjaan".tr,
+                              style:
+                                  TextStyle(fontSize: 20, color: primarycolor),
                             ),
+                            onPressed: () {
+                              Route route = MaterialPageRoute(
+                                  builder: (context) => DetailLowongan());
+                              Navigator.push(context, route);
+                            },
                           ),
-                          Container(
-                            alignment: Alignment.centerRight,
-                            width: MediaQuery.of(context).size.width / 2.2,
-                            child: MaterialButton(
-                              child: Text(
-                                "perusahaan".tr,
-                                style:
-                                    TextStyle(fontSize: 20, color: primarycolor),
-                              ),
-                              onPressed: () {
-                                Route route = MaterialPageRoute(
-                                    builder: (context) => ProfilPerusahaan());
-                                Navigator.push(context, route);
-                              },
+                          MaterialButton(
+                            child: Text(
+                              "perusahaan".tr,
+                              style:
+                                  TextStyle(fontSize: 20, color: primarycolor),
                             ),
+                            onPressed: () {
+                              Route route = MaterialPageRoute(
+                                  builder: (context) => ProfilPerusahaan());
+                              Navigator.push(context, route);
+                            },
                           ),
                         ],
                       ),
@@ -132,50 +129,24 @@ class _DetailLowonganState extends State<DetailLowongan> {
               ),
               Column(
                 children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.only(top: 10, bottom: 10),
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: Colors.grey,
-                      border: Border.all(color: Colors.grey, width: 4),
-                      shape: BoxShape.circle,
-                    ),
-                  ),
+                  Padding(padding: EdgeInsets.only(top: 20)),
                   Text(
                     // "PT Patma Tirta Jaya",
-                    _namaPerusahaan.toString(),
+                    _namaPekerjaan.toString(),
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 20,
+                        fontSize: 24,
                         color: primarycolor),
                   ),
                   Column(
                     children: <Widget>[
                       Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            Padding(padding: EdgeInsets.only(top: 40)),
-                            Text(
-                              // "Web Developtment Staff",
-                              _namaPekerjaan.toString(),
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15,
-                                  color: primarycolor),
-                            ),
-                          ]),
-                    ],
-                  ),
-                  Column(
-                    children: <Widget>[
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Padding(padding: EdgeInsets.only(top: 30)),
                             Text(
-                              // "Surabaya, Jawa Timur",
-                              _alamatPerusahaan.toString(),
+                              "IDR $_gaji /Bulan",
+                              // _gaji.toString(),
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 15,
@@ -186,21 +157,27 @@ class _DetailLowonganState extends State<DetailLowongan> {
                   ),
                 ],
               ),
+
               Padding(padding: EdgeInsets.only(top: 10)),
               Container(
                 padding: EdgeInsets.all(15),
                 constraints: BoxConstraints(maxHeight: double.infinity),
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: Colors.grey,
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.3),
+                      spreadRadius: 5,
+                      blurRadius: 7,
+                      offset: Offset(0, 3), // changes position of shadow
+                    ),
+                  ],
                 ),
                 child: Text(
                   // 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
                   _deskripsiPekerjaan.toString(),
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
-                      color: primarycolor),
+                  style: TextStyle(fontSize: 15, color: Colors.black),
                 ),
               ),
             ],

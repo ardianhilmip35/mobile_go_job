@@ -10,7 +10,6 @@ import 'package:mobile_go_job/Screens/login.dart';
 import 'package:mobile_go_job/Screens/lowongan_pekerjaan.dart';
 import 'package:mobile_go_job/Screens/profil.dart';
 import 'package:mobile_go_job/Screens/register.dart';
-import 'package:mobile_go_job/Screens/simpan_lowongan.dart';
 import 'package:mobile_go_job/Screens/splascreen.dart';
 import 'package:mobile_go_job/Screens/view_profil.dart';
 import 'package:mobile_go_job/models/lowongan_model.dart';

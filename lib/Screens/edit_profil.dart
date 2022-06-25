@@ -73,7 +73,6 @@ class _EditProfilState extends State<EditProfil> {
     });
   }
 
-
   @override
   void initState() {
     super.initState();
@@ -83,6 +82,7 @@ class _EditProfilState extends State<EditProfil> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: secondarycolor,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text(
@@ -97,7 +97,6 @@ class _EditProfilState extends State<EditProfil> {
           padding: EdgeInsets.all(20),
           width: double.infinity,
           height: MediaQuery.of(context).size.height,
-          decoration: BoxDecoration(color: Colors.white),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -108,10 +107,13 @@ class _EditProfilState extends State<EditProfil> {
               TextField(
                 controller: _namaController,
                 decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
                   border: OutlineInputBorder(),
                   hintText: "Anisa",
                 ),
               ),
+              Padding(padding: EdgeInsets.only(bottom: 15)),
               Text(
                 "alamat".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
@@ -119,10 +121,13 @@ class _EditProfilState extends State<EditProfil> {
               TextField(
                 controller: _alamatController,
                 decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
                   border: OutlineInputBorder(),
                   hintText: "Jember",
                 ),
               ),
+              Padding(padding: EdgeInsets.only(bottom: 15)),
               Text(
                 "agama".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
@@ -130,10 +135,13 @@ class _EditProfilState extends State<EditProfil> {
               TextField(
                 controller: _agamaController,
                 decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
                   border: OutlineInputBorder(),
                   hintText: "Islam",
                 ),
               ),
+              Padding(padding: EdgeInsets.only(bottom: 15)),
               Text(
                 "nohp".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
@@ -141,10 +149,13 @@ class _EditProfilState extends State<EditProfil> {
               TextField(
                 controller: _noHpController,
                 decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
                   border: OutlineInputBorder(),
                   hintText: "085236815716",
                 ),
               ),
+              Padding(padding: EdgeInsets.only(bottom: 15)),
               Text(
                 "jeniskelamin".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
@@ -152,10 +163,13 @@ class _EditProfilState extends State<EditProfil> {
               TextField(
                 controller: _jnsKelaminController,
                 decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
                   border: OutlineInputBorder(),
                   hintText: "Laki - Laki / Perempuan",
                 ),
               ),
+              Padding(padding: EdgeInsets.only(bottom: 15)),
               Text(
                 "tanggallahir".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
@@ -163,11 +177,13 @@ class _EditProfilState extends State<EditProfil> {
               TextField(
                 controller: _tglLahirController,
                 decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
                   border: OutlineInputBorder(),
                   hintText: "2001-01-01",
                 ),
               ),
-              Padding(padding: EdgeInsets.only(bottom: 10)),
+              Padding(padding: EdgeInsets.only(bottom: 20)),
               Row(
                 children: <Widget>[
                   Container(

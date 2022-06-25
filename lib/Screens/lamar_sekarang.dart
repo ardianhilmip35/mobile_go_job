@@ -70,7 +70,7 @@ class _LamarSekarangState extends State<LamarSekarang> {
       setState(() {
         _idUser = idUser;
         print(_idUser);
-        
+
         // _idLowongan = idLowongan;
         // _namaPelamar = value.namaPelamar;
       });
@@ -89,8 +89,8 @@ class _LamarSekarangState extends State<LamarSekarang> {
           // _idLamaran = value.kode;
           // _toast.showToast(value.pesan);
           // _getSessionLamaran();
-          Navigator.of(context).push(
-              MaterialPageRoute(builder: (BuildContext context) => MyBottomBar()));
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (BuildContext context) => MyBottomBar()));
         } else {
           _toast.showToast(value.pesan);
         }
@@ -109,6 +109,7 @@ class _LamarSekarangState extends State<LamarSekarang> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: secondarycolor,
       appBar: AppBar(
         title: Text(
           'lamarsekarang'.tr,
@@ -126,10 +127,12 @@ class _LamarSekarangState extends State<LamarSekarang> {
         ),
       ),
       body: SingleChildScrollView(
-        child: Form(
+        child: Container(
+          constraints: BoxConstraints(maxHeight: double.infinity),
+          color: secondarycolor,
           key: _formKey,
           child: Padding(
-            padding: EdgeInsets.fromLTRB(10.0, 8.0, 8.0, 8.0),
+            padding: EdgeInsets.all(10),
             child: Column(
               children: [
                 // TextFormField(
@@ -150,11 +153,23 @@ class _LamarSekarangState extends State<LamarSekarang> {
                   child: Column(
                     children: <Widget>[
                       Container(
-                        padding: EdgeInsets.all(3),
-                        height: 125,
+                        padding: EdgeInsets.only(
+                          top: 10,
+                          left: 17,
+                        ),
+                        constraints: BoxConstraints(maxHeight: double.infinity),
                         width: double.infinity,
                         decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 219, 217, 217)),
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.3),
+                            spreadRadius: 5,
+                            blurRadius: 7,
+                            offset: Offset(0, 3), // changes position of shadow
+                          ),
+                        ],
+                      ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
@@ -183,43 +198,41 @@ class _LamarSekarangState extends State<LamarSekarang> {
                                         Text(
                                           // "PT Patma Tirta Jaya",
                                           // _namaPerusahaan.toString(),
-                                          "$_namaPerusahaan",
+                                          "IDR $_gaji /Bulan",
                                           style: TextStyle(
                                               fontSize: 15,
                                               color: primarycolor),
                                         ),
                                       ],
                                     )),
-                                Container(
-                                    alignment: Alignment.centerRight,
-                                    width:
-                                        MediaQuery.of(context).size.width / 2.2,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
-                                      children: <Widget>[
-                                        MaterialButton(
-                                          textColor: primarycolor,
-                                          child: new Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.end,
-                                              children: [
-                                                Icon(Icons.navigate_next)
-                                              ]),
-                                          onPressed: () {
-                                            Route route = MaterialPageRoute(
-                                                builder: (context) =>
-                                                    ProfilPerusahaan());
-                                            Navigator.push(context, route);
-                                            // if (_formKey.currentState!
-                                            //     .validate()) {}
-                                          },
-                                          splashColor: Colors.transparent,
-                                        ),
-                                      ],
-                                    )),
                               ],
                             ),
+                            Padding(padding: EdgeInsets.only(bottom: 10)),
+                            Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: <Widget>[
+                                  MaterialButton(
+                                    textColor: primarycolor,
+                                    child: Row(
+                                      children: <Widget>[
+                                        Text(
+                                          'Selengkapnya',
+                                          style: GoogleFonts.poppins(),
+                                        ),
+                                        Icon(Icons.navigate_next)
+                                      ],
+                                    ),
+                                    onPressed: () {
+                                      Route route = MaterialPageRoute(
+                                          builder: (context) =>
+                                              ProfilPerusahaan());
+                                      Navigator.push(context, route);
+                                      // if (_formKey.currentState!
+                                      //     .validate()) {}
+                                    },
+                                    splashColor: Colors.transparent,
+                                  ),
+                                ])
                             // Padding (padding: EdgeInsets.all(7),),
                             // Text(
                             //   "PT Patma Tirta Jaya",
@@ -227,37 +240,6 @@ class _LamarSekarangState extends State<LamarSekarang> {
                             //     fontSize: 15,
                             //     color: primarycolor),
                             // ),
-                            Padding(padding: EdgeInsets.only(bottom: 15)),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: <Widget>[
-                                Container(
-                                    alignment: Alignment.centerLeft,
-                                    width:
-                                        MediaQuery.of(context).size.width / 2.2,
-                                    child: Column(
-                                      children: <Widget>[
-                                        Text(
-                                          // "Surabaya, Jawa Timur"
-                                          _alamatPerusahaan.toString(),
-                                        ),
-                                      ],
-                                    )),
-                                Container(
-                                    width:
-                                        MediaQuery.of(context).size.width / 2.2,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
-                                      children: <Widget>[
-                                        Text(
-                                          // "5 Hari Yang Lalu"
-                                          _gaji.toString(),
-                                        ),
-                                      ],
-                                    )),
-                              ],
-                            ),
                           ],
                         ),
                       ),
@@ -351,11 +333,16 @@ class _LamarSekarangState extends State<LamarSekarang> {
                 TextFormField(
                   controller: _pengalamanController,
                   maxLines: 5,
-                  style: Theme.of(context).textTheme.bodyText1,
                   decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.white,
                       hintText: "informasipengalaman".tr,
-                      border: OutlineInputBorder(),
-                      focusColor: Colors.grey,
+                      enabledBorder: new OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black),
+                      ),
+                      focusedBorder: new OutlineInputBorder(
+                        borderSide: BorderSide(color: primarycolor),
+                      ),
                       labelStyle: TextStyle(
                           fontWeight: FontWeight.normal, fontSize: 14)),
                   validator: (value) {

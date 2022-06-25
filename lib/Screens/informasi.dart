@@ -14,6 +14,7 @@ class _InformasiState extends State<Informasi> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: secondarycolor,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text(
