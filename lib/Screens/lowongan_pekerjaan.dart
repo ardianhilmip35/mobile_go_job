@@ -22,7 +22,6 @@ class LowonganPekerjaan extends StatefulWidget {
 }
 
 class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
-  Color _iconColor = Colors.grey;
   int _index = 0;
   List<Lowongan> _lowongan = [];
 
@@ -72,7 +71,6 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
         automaticallyImplyLeading: false,
         centerTitle: true,
         backgroundColor: primarycolor,
-      
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.fromLTRB(10.0, 8.0, 8.0, 8.0),
@@ -169,22 +167,6 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                                                     color: primarycolor),
                                                 overflow: TextOverflow.ellipsis,
                                               ),
-                                              IconButton(
-                                                  iconSize: 45,
-                                                  color: _iconColor,
-                                                  onPressed: () {
-                                                    setState(() {
-                                                      if (_iconColor ==
-                                                          Colors.grey) {
-                                                        _iconColor =
-                                                            primarycolor;
-                                                      } else {
-                                                        _iconColor =
-                                                            Colors.grey;
-                                                      }
-                                                    });
-                                                  },
-                                                  icon: Icon(Icons.bookmark)),
                                             ],
                                           ),
                                         ),
@@ -195,8 +177,6 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                                                   .size
                                                   .width /
                                               2.2,
-                                            
-                                       
                                           child: Text(
                                             // "Surabaya, Jawa Timur",
                                             _lowongan[index]

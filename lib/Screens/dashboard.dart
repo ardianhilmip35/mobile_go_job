@@ -99,7 +99,6 @@ class _DashboardState extends State<Dashboard> {
 
   final controller = Get.put(LoginController());
 
-  Color _iconColor = Colors.grey;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -116,42 +115,6 @@ class _DashboardState extends State<Dashboard> {
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              Container(
-                padding: EdgeInsets.all(10),
-                color: secondarycolor,
-                width: double.infinity,
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: <Widget>[
-                      Container(
-                        child: Row(children: <Widget>[
-                          Text(
-                            "$_namaPelamar",
-                            // controller.googleAccount.value?.displayName ?? '',
-                            textAlign: TextAlign.end,
-                            style: GoogleFonts.poppins(
-                                fontSize: 20, color: Colors.black),
-                          ),
-                          Padding(padding: EdgeInsets.only(left: 10)),
-                          Container(
-                            //Container Foto Profil
-                            width: 30,
-                            height: 30,
-                            decoration: BoxDecoration(
-                              color: Colors.grey,
-                              shape: BoxShape.circle,
-                            ),
-                            child: Icon(
-                              //Icon Foto Profil
-                              Icons.person,
-                              color: primarycolor,
-                              size: 30,
-                            ),
-                          ),
-                        ]),
-                      ),
-                    ]),
-              ),
               Container(
                 color: secondarycolor,
                 padding: EdgeInsets.all(15),
@@ -351,23 +314,6 @@ class _DashboardState extends State<Dashboard> {
                                                       ],
                                                     ),
                                                   ),
-                                                  IconButton(
-                                                      iconSize: 45,
-                                                      color: _iconColor,
-                                                      onPressed: () {
-                                                        setState(() {
-                                                          if (_iconColor ==
-                                                              Colors.grey) {
-                                                            _iconColor =
-                                                                primarycolor;
-                                                          } else {
-                                                            _iconColor =
-                                                                Colors.grey;
-                                                          }
-                                                        });
-                                                      },
-                                                      icon:
-                                                          Icon(Icons.bookmark)),
                                                 ],
                                               ),
                                             ),
