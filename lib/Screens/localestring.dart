@@ -79,7 +79,10 @@ class LocaleString extends Translations {
           'pernahbekerja': 'Have worked at',
           'halo': 'Hello ',
           'beranda': 'Home',
-          'carilowongan': 'Find Job',
+          'lowongan': 'Job',
+          'selengkapnya' : 'More',
+          'bulan' : 'Month',
+          'carilowongan' : 'Find Job'
         },
         'id_ID': {
           'kelola': 'Kelola Profilmu',
@@ -156,7 +159,10 @@ class LocaleString extends Translations {
           'pernahbekerja': 'Pernah bekerja di',
           'halo': 'Halo ',
           'beranda': 'Beranda',
-          'carilowongan': 'Cari Lowongan',
+          'lowongan': 'Lowongan',
+          'selengkapnya' : 'Selengkapnya',
+          'bulan' : 'Bulan',
+          'carilowongan' : 'Cari Lowongan',
         }
       };
 }

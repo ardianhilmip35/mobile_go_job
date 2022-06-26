@@ -99,6 +99,7 @@ class _ViewProfilState extends State<ViewProfil> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
           "lihatprofil".tr,

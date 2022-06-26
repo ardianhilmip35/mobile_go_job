@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mobile_go_job/Screens/dashboard.dart';
 import 'package:mobile_go_job/Screens/informasi.dart';
 import 'package:mobile_go_job/Screens/lowongan_pekerjaan.dart';
@@ -17,7 +18,7 @@ class _MyBottomBarState extends State<MyBottomBar> {
   PageController pageController = PageController(viewportFraction: 0.8);
   int _currentIndex = 0;
   bool isAuth = false;
-  
+
   final List<Widget> _children = [
     Dashboard(),
     LowonganPekerjaan(),
@@ -51,34 +52,35 @@ class _MyBottomBarState extends State<MyBottomBar> {
         //untuk bottom navigation barl
         elevation: 30,
         unselectedItemColor: Colors.grey,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
         selectedIconTheme: IconThemeData(color: primarycolor, size: 30),
+        selectedItemColor: primarycolor,
         iconSize: 30,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home,
             ),
-            label: 'Beranda',
+            label: 'beranda'.tr,
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.search,
+              Icons.business_center,
             ),
-            label: 'Cari',
+            label: 'lowongan'.tr,
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.bookmark,
+              Icons.notifications,
             ),
-            label: 'Tersimpan',
+            label: 'informasi'.tr,
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.person,
             ),
-            label: 'Profil',
+            label: 'profil'.tr,
           ),
         ],
         onTap: onTappedBar,

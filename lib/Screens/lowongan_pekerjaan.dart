@@ -1,6 +1,7 @@
 import 'dart:convert';
+import 'dart:math';
 // import 'dart:ffi';
-
+import 'package:searchfield/searchfield.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_go_job/Screens/lamar_sekarang.dart';
 import 'package:mobile_go_job/Services/auth_services.dart';
@@ -63,9 +64,10 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
   Widget build(BuildContext context) {
     // getLowongan();
     return Scaffold(
+      backgroundColor: secondarycolor,
       appBar: AppBar(
         title: Text(
-          "Lowongan",
+          "carilowongan".tr,
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         automaticallyImplyLeading: false,
@@ -76,25 +78,13 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
         padding: EdgeInsets.all(10),
         child: Column(
           children: [
-            TextFormField(
-              textInputAction: TextInputAction.search,
-              style: Theme.of(context).textTheme.bodyText1,
-              decoration: InputDecoration(
-                  labelText: 'caripekerjaan'.tr,
-                  border: OutlineInputBorder(),
-                  focusColor: Color(0xFF0A9EA2),
-                  labelStyle:
-                      TextStyle(fontWeight: FontWeight.normal, fontSize: 14),
-                  prefixIcon: Icon(
-                    Icons.search,
-                  )),
-            ),
+        
             GridView.builder(
               shrinkWrap: true,
               physics: ScrollPhysics(),
               padding: EdgeInsets.only(top: 15.0),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 1, childAspectRatio: 9 / 5),
+                  crossAxisCount: 1, childAspectRatio: 9 / 6),
               itemCount: _lowongan.length,
               itemBuilder: (context, index) {
                 return InkWell(
@@ -107,6 +97,15 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                         decoration: BoxDecoration(
                           color: primarycolor,
                           border: Border.all(color: primarycolor, width: 4),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.2),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset:
+                                  Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
                         ),
                         child: Column(
                           children: <Widget>[
@@ -199,7 +198,7 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                                                     .gajipekerjaan
                                                     .toString(),
                                                 style: TextStyle(
-                                                    fontSize: 20,
+                                                    fontSize: 17,
                                                     color: primarycolor),
                                               ),
                                               RaisedButton(

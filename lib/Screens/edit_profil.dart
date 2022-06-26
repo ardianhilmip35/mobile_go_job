@@ -180,7 +180,7 @@ class _EditProfilState extends State<EditProfil> {
                   filled: true,
                   fillColor: Colors.white,
                   border: OutlineInputBorder(),
-                  hintText: "2001-01-01",
+                  hintText: "yyyy-mm-dd",
                 ),
               ),
               Padding(padding: EdgeInsets.only(bottom: 20)),

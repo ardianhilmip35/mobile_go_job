@@ -145,7 +145,15 @@ class _DetailLowonganState extends State<DetailLowongan> {
                           children: <Widget>[
                             Padding(padding: EdgeInsets.only(top: 30)),
                             Text(
-                              "IDR $_gaji /Bulan",
+                              "IDR $_gaji/",
+                              // _gaji.toString(),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                  color: primarycolor),
+                            ),
+                            Text(
+                              "bulan".tr,
                               // _gaji.toString(),
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,

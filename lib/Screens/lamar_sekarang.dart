@@ -160,16 +160,17 @@ class _LamarSekarangState extends State<LamarSekarang> {
                         constraints: BoxConstraints(maxHeight: double.infinity),
                         width: double.infinity,
                         decoration: BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.3),
-                            spreadRadius: 5,
-                            blurRadius: 7,
-                            offset: Offset(0, 3), // changes position of shadow
-                          ),
-                        ],
-                      ),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.3),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset:
+                                  Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
+                        ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
@@ -190,15 +191,21 @@ class _LamarSekarangState extends State<LamarSekarang> {
                               children: <Widget>[
                                 Container(
                                     alignment: Alignment.centerLeft,
-                                    width:
-                                        MediaQuery.of(context).size.width / 2.2,
                                     padding: EdgeInsets.only(top: 10),
-                                    child: Column(
+                                    child: Row(
                                       children: <Widget>[
                                         Text(
                                           // "PT Patma Tirta Jaya",
                                           // _namaPerusahaan.toString(),
-                                          "IDR $_gaji /Bulan",
+                                          "IDR $_gaji/",
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              color: primarycolor),
+                                        ),
+                                        Text(
+                                          // "PT Patma Tirta Jaya",
+                                          // _namaPerusahaan.toString(),
+                                          "bulan".tr,
                                           style: TextStyle(
                                               fontSize: 15,
                                               color: primarycolor),
@@ -216,7 +223,7 @@ class _LamarSekarangState extends State<LamarSekarang> {
                                     child: Row(
                                       children: <Widget>[
                                         Text(
-                                          'Selengkapnya',
+                                          'selengkapnya'.tr,
                                           style: GoogleFonts.poppins(),
                                         ),
                                         Icon(Icons.navigate_next)

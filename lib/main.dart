@@ -76,9 +76,9 @@ class _MyBottomBarState extends State<MyBottomBar> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.search,
+              Icons.business_center
             ),
-            label: 'carilowongan'.tr,
+            label: 'lowongan'.tr,
           ),
           BottomNavigationBarItem(
             icon: Icon(

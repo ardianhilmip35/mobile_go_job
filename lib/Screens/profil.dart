@@ -239,7 +239,7 @@ class _ProfilState extends State<Profil> {
                           style: GoogleFonts.poppins(
                               fontSize: 15, color: Colors.white),
                         ),
-                        Padding(padding: EdgeInsets.only(top: 12)),
+                        Padding(padding: EdgeInsets.only(top: 5)),
                         RichText(
                           text: TextSpan(children: [
                             WidgetSpan(
@@ -247,7 +247,7 @@ class _ProfilState extends State<Profil> {
                               child: Text(
                                 'kelola'.tr,
                                 style: GoogleFonts.poppins(
-                                    fontSize: 15, color: Colors.white),
+                                    fontSize: 15, color: Colors.white.withOpacity(0.7)),
                               ),
                               onTap: () {
                                 Navigator.push(

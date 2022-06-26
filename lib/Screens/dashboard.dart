@@ -280,7 +280,7 @@ class _DashboardState extends State<Dashboard> {
                         physics: ScrollPhysics(),
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 1, childAspectRatio: 7 / 2),
+                                crossAxisCount: 1, childAspectRatio: 9 / 3),
                         itemCount: _lowongan.length < 3 ? _lowongan.length : 3,
                         itemBuilder: (context, index) {
                           return InkWell(
@@ -297,7 +297,7 @@ class _DashboardState extends State<Dashboard> {
                                   color: Colors.white,
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Colors.grey.withOpacity(0.3),
+                                      color: Colors.grey.withOpacity(0.2),
                                       spreadRadius: 5,
                                       blurRadius: 7,
                                       offset: Offset(
@@ -322,9 +322,9 @@ class _DashboardState extends State<Dashboard> {
                                                 shape: BoxShape.circle,
                                               ),
                                               child: Icon(
-                                                Icons.business_center,
+                                                Icons.cases_outlined,
                                                 color: Colors.black,
-                                                size: 40,
+                                                size: 35,
                                               ),
                                             ),
                                             SizedBox(
@@ -334,7 +334,7 @@ class _DashboardState extends State<Dashboard> {
                                               width: MediaQuery.of(context)
                                                       .size
                                                       .width /
-                                                  1.44,
+                                                  1.50,
                                               child: Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
