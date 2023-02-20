@@ -1,4 +1,4 @@
-* mobile_go_job
++ mobile_go_job
 
 A new Flutter project.
 
